@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Интерактивная концепция AR-обучения сервисных инженеров медицинского оборудования">
   <title>AR-обучение сервисных инженеров</title>
+  <script type="module" src="model-viewer.min.js"></script>
   <style>
     :root {
       color-scheme: dark;
@@ -495,6 +496,124 @@
     .principle b { display: block; margin-bottom: 8px; color: var(--cyan); font-size: 13px; }
     .principle span { color: var(--muted); font-size: 13px; }
 
+    .model-section { position: relative; border-top: 1px solid var(--line); overflow: hidden; }
+    .model-section::before {
+      content: "";
+      position: absolute;
+      top: 18%;
+      left: -180px;
+      width: 460px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(53, 217, 255, .07);
+      border-radius: 50%;
+      box-shadow: 0 0 0 70px rgba(53, 217, 255, .018), 0 0 0 145px rgba(53, 217, 255, .01);
+      pointer-events: none;
+    }
+    .model-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(290px, .55fr); gap: 22px; align-items: stretch; }
+    .model-stage {
+      position: relative;
+      min-height: 620px;
+      border: 1px solid rgba(53, 217, 255, .24);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 50% 46%, rgba(53, 217, 255, .12), transparent 34%),
+        linear-gradient(145deg, rgba(10, 28, 51, .96), rgba(4, 13, 27, .98));
+      box-shadow: var(--shadow), inset 0 0 70px rgba(53, 217, 255, .025);
+      overflow: hidden;
+    }
+    .model-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(53, 217, 255, .12) 1px, transparent 1.4px);
+      background-size: 25px 25px;
+      mask-image: radial-gradient(circle at 50% 46%, black, transparent 68%);
+      opacity: .32;
+      pointer-events: none;
+    }
+    model-viewer {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 620px;
+      --poster-color: transparent;
+      --progress-bar-color: var(--cyan);
+      --progress-bar-height: 3px;
+      background: transparent;
+    }
+    .model-poster { display: grid; place-items: center; width: 100%; height: 100%; color: var(--muted); text-align: center; }
+    .model-poster strong { display: block; margin-bottom: 8px; color: var(--cyan); font-size: 22px; letter-spacing: .04em; }
+    .model-badge {
+      position: absolute;
+      z-index: 4;
+      top: 22px;
+      left: 22px;
+      padding: 8px 11px;
+      border: 1px solid rgba(185, 243, 75, .38);
+      border-radius: 999px;
+      background: rgba(5, 16, 31, .82);
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      backdrop-filter: blur(10px);
+    }
+    .model-status {
+      position: absolute;
+      z-index: 4;
+      top: 27px;
+      right: 24px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .model-controls {
+      position: absolute;
+      z-index: 5;
+      right: 22px;
+      bottom: 22px;
+      left: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .model-controls-group { display: flex; flex-wrap: wrap; gap: 9px; }
+    .model-control {
+      min-height: 43px;
+      padding: 0 14px;
+      border: 1px solid rgba(53, 217, 255, .25);
+      border-radius: 12px;
+      background: rgba(5, 16, 31, .86);
+      color: #d7e5f5;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      pointer-events: auto;
+      transition: border-color .18s ease, color .18s ease, transform .18s ease;
+    }
+    .model-control:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+    .model-control[aria-pressed="true"] { border-color: var(--lime); color: var(--lime); }
+    .model-copy-card {
+      display: flex;
+      flex-direction: column;
+      padding: 31px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(11, 26, 49, .94), rgba(5, 14, 29, .96));
+      box-shadow: var(--shadow);
+    }
+    .model-copy-card .eyebrow { margin-bottom: 36px; }
+    .model-copy-card h3 { margin-bottom: 14px; font-size: 32px; line-height: 1.05; letter-spacing: -.03em; }
+    .model-copy-card > p { color: var(--muted); }
+    .model-meta { display: grid; gap: 9px; margin: 22px 0; padding: 0; list-style: none; }
+    .model-meta li { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 9px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .model-meta strong { color: #d8e4f3; font-weight: 650; text-align: right; }
+    .model-use { margin: auto 0 24px; padding: 18px; border-left: 2px solid var(--lime); background: var(--lime-soft); color: #d7e5f5; font-size: 13px; }
+    .model-download { width: 100%; }
+    .model-note { margin: 14px 0 0; color: var(--muted); font-size: 11px; }
+
     .site-footer { padding: 34px 0 46px; border-top: 1px solid var(--line); color: var(--muted); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-inner strong { color: var(--text); }
@@ -512,6 +631,8 @@
       .system-map { min-height: 620px; }
       .architecture-layout { grid-template-columns: 1fr; }
       .detail-panel { min-height: 360px; }
+      .model-layout { grid-template-columns: 1fr; }
+      .model-copy-card { min-height: 420px; }
       .scenario-workbench { grid-template-columns: 1fr; }
       .scenario-copy { border-right: 0; border-bottom: 1px solid var(--line); }
       .principles { grid-template-columns: repeat(2, 1fr); }
@@ -536,6 +657,8 @@
       .layer { min-height: 180px; }
       .layer:not(:last-child)::after { display: none; }
       .architecture-stage { min-height: auto; padding: 22px; }
+      .model-stage, model-viewer { min-height: 480px; height: 480px; }
+      .model-copy-card { padding: 26px; min-height: auto; }
       .scenario-tabs { grid-template-columns: 1fr; }
       .scenario-tab { min-height: 112px; }
       .scenario-tab .tab-index { margin-bottom: 13px; }
@@ -552,6 +675,7 @@
       .nav-links a:nth-child(1)::before { content: "01"; }
       .nav-links a:nth-child(2)::before { content: "02"; }
       .nav-links a:nth-child(3)::before { content: "03"; }
+      .nav-links a:nth-child(4)::before { content: "04"; }
       .system-map { grid-template-columns: 1fr; }
       .layer-flow { grid-template-columns: 1fr; }
       .scenario-copy, .scenario-visual { padding: 22px; }
@@ -577,6 +701,7 @@
       <div class="nav-links">
         <a href="#concept" aria-current="true">Концепция</a>
         <a href="#architecture">Архитектура</a>
+        <a href="#model">3D-модель</a>
         <a href="#scenarios">Сценарии</a>
       </div>
     </nav>
@@ -655,7 +780,7 @@
             </div>
           </div>
 
-          <aside class="detail-panel" aria-live="polite">
+          <aside class="detail-panel" aria-labelledby="detail-title" aria-live="polite">
             <p class="eyebrow">Выбранный слой</p>
             <div class="detail-icon" id="detail-icon" aria-hidden="true">01</div>
             <h3 id="detail-title">Устройство инженера</h3>
@@ -670,10 +795,67 @@
       </div>
     </section>
 
+    <section class="section model-section" id="model" aria-labelledby="model-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">03 / 3D-МОДЕЛЬ</span><h2 id="model-title">WATO EX-35 в интерактивном виде</h2></div>
+          <p>Упрощённая учебная модель наркозно-дыхательного аппарата для знакомства с конструкцией, подготовки будущих AR-сценариев и визуального сопровождения сервисных процедур.</p>
+        </div>
+
+        <div class="model-layout reveal">
+          <div class="model-stage" id="model-stage">
+            <span class="model-badge">MESTARO / TRAINING MODEL</span>
+            <p class="model-status" id="model-status" aria-live="polite">Загрузка 3D-модели…</p>
+            <model-viewer
+              id="wato-model"
+              src="WATO_EX35_simplified_2025.glb"
+              alt="Упрощённая трёхмерная модель наркозно-дыхательного аппарата Mindray WATO EX-35"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="700"
+              rotation-per-second="18deg"
+              shadow-intensity="1"
+              shadow-softness=".85"
+              exposure="1.05"
+              environment-image="neutral"
+              interaction-prompt="auto"
+              touch-action="pan-y"
+              loading="eager">
+              <div class="model-poster" slot="poster"><div><strong>WATO EX-35</strong><span>Подготовка интерактивной модели…</span></div></div>
+            </model-viewer>
+
+            <div class="model-controls" role="group" aria-label="Управление 3D-моделью">
+              <div class="model-controls-group">
+                <button class="model-control" id="toggle-rotation" type="button" aria-pressed="true">Ⅱ Остановить вращение</button>
+              </div>
+              <div class="model-controls-group">
+                <button class="model-control" id="model-fullscreen" type="button">⛶ На весь экран</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="model-copy-card" aria-labelledby="model-card-title">
+            <p class="eyebrow">Учебный объект</p>
+            <h3 id="model-card-title">Mindray WATO EX-35</h3>
+            <p>Вращайте модель мышью или пальцем, приближайте колесом и рассматривайте аппарат с нужного ракурса.</p>
+            <ul class="model-meta">
+              <li><span>Формат</span><strong>GLB / glTF 2.0</strong></li>
+              <li><span>Версия</span><strong>Упрощённая, 2025</strong></li>
+              <li><span>Размер</span><strong>2,6 МБ</strong></li>
+              <li><span>Назначение</span><strong>Обучение и AR-прототип</strong></li>
+            </ul>
+            <p class="model-use">Следующий этап — добавить интерактивные точки компонентов и связать их с регламентами, подсказками и сервисными операциями.</p>
+            <a class="primary-action model-download" href="WATO_EX35_simplified_2025.glb" download><span class="arrow" aria-hidden="true">↓</span> Скачать модель GLB</a>
+            <p class="model-note">Учебная визуализация не заменяет официальную сервисную документацию производителя.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="section scenarios" id="scenarios" aria-labelledby="scenarios-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div><span class="section-index">03 / СЦЕНАРИИ</span><h2 id="scenarios-title">От тренировки к сервису</h2></div>
+          <div><span class="section-index">04 / СЦЕНАРИИ</span><h2 id="scenarios-title">От тренировки к сервису</h2></div>
           <p>Выберите сценарий и пройдите его по шагам. Каждый маршрут использует одну архитектуру, но по-разному связывает знания, эксперта и сервисные данные.</p>
         </div>
 
@@ -897,7 +1079,36 @@
     });
     renderScenario();
 
-    const sections = ['concept', 'architecture', 'scenarios'].map((id) => document.getElementById(id));
+    const modelViewer = document.querySelector('#wato-model');
+    const modelStatus = document.querySelector('#model-status');
+    const rotationButton = document.querySelector('#toggle-rotation');
+    const fullscreenButton = document.querySelector('#model-fullscreen');
+    const modelStage = document.querySelector('#model-stage');
+
+    modelViewer.addEventListener('load', () => {
+      modelStatus.textContent = 'Модель готова';
+    });
+    modelViewer.addEventListener('error', () => {
+      modelStatus.textContent = 'Не удалось загрузить модель';
+    });
+    rotationButton.addEventListener('click', () => {
+      const isRotating = modelViewer.hasAttribute('auto-rotate');
+      modelViewer.toggleAttribute('auto-rotate', !isRotating);
+      rotationButton.setAttribute('aria-pressed', String(!isRotating));
+      rotationButton.textContent = isRotating ? '▶ Включить вращение' : 'Ⅱ Остановить вращение';
+    });
+    fullscreenButton.addEventListener('click', async () => {
+      if (!document.fullscreenElement) {
+        await modelStage.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      fullscreenButton.textContent = document.fullscreenElement ? '× Закрыть полный экран' : '⛶ На весь экран';
+    });
+
+    const sections = ['concept', 'architecture', 'model', 'scenarios'].map((id) => document.getElementById(id));
     const navLinks = $$('.nav-links a');
     const sectionObserver = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
