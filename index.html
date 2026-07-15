@@ -701,8 +701,8 @@
       <div class="nav-links">
         <a href="#concept" aria-current="true">Концепция</a>
         <a href="#architecture">Архитектура</a>
-        <a href="#model">3D-модель</a>
         <a href="#scenarios">Сценарии</a>
+        <a href="#model">3D-модель</a>
       </div>
     </nav>
   </header>
@@ -795,67 +795,10 @@
       </div>
     </section>
 
-    <section class="section model-section" id="model" aria-labelledby="model-title">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <div><span class="section-index">03 / 3D-МОДЕЛЬ</span><h2 id="model-title">WATO EX-35 в интерактивном виде</h2></div>
-          <p>Упрощённая учебная модель наркозно-дыхательного аппарата для знакомства с конструкцией, подготовки будущих AR-сценариев и визуального сопровождения сервисных процедур.</p>
-        </div>
-
-        <div class="model-layout reveal">
-          <div class="model-stage" id="model-stage">
-            <span class="model-badge">MESTARO / TRAINING MODEL</span>
-            <p class="model-status" id="model-status" aria-live="polite">Загрузка 3D-модели…</p>
-            <model-viewer
-              id="wato-model"
-              src="WATO_EX35_simplified_2025.glb"
-              alt="Упрощённая трёхмерная модель наркозно-дыхательного аппарата Mindray WATO EX-35"
-              camera-controls
-              auto-rotate
-              auto-rotate-delay="700"
-              rotation-per-second="18deg"
-              shadow-intensity="1"
-              shadow-softness=".85"
-              exposure="1.05"
-              environment-image="neutral"
-              interaction-prompt="auto"
-              touch-action="pan-y"
-              loading="eager">
-              <div class="model-poster" slot="poster"><div><strong>WATO EX-35</strong><span>Подготовка интерактивной модели…</span></div></div>
-            </model-viewer>
-
-            <div class="model-controls" role="group" aria-label="Управление 3D-моделью">
-              <div class="model-controls-group">
-                <button class="model-control" id="toggle-rotation" type="button" aria-pressed="true">Ⅱ Остановить вращение</button>
-              </div>
-              <div class="model-controls-group">
-                <button class="model-control" id="model-fullscreen" type="button">⛶ На весь экран</button>
-              </div>
-            </div>
-          </div>
-
-          <aside class="model-copy-card" aria-labelledby="model-card-title">
-            <p class="eyebrow">Учебный объект</p>
-            <h3 id="model-card-title">Mindray WATO EX-35</h3>
-            <p>Вращайте модель мышью или пальцем, приближайте колесом и рассматривайте аппарат с нужного ракурса.</p>
-            <ul class="model-meta">
-              <li><span>Формат</span><strong>GLB / glTF 2.0</strong></li>
-              <li><span>Версия</span><strong>Упрощённая, 2025</strong></li>
-              <li><span>Размер</span><strong>2,6 МБ</strong></li>
-              <li><span>Назначение</span><strong>Обучение и AR-прототип</strong></li>
-            </ul>
-            <p class="model-use">Следующий этап — добавить интерактивные точки компонентов и связать их с регламентами, подсказками и сервисными операциями.</p>
-            <a class="primary-action model-download" href="WATO_EX35_simplified_2025.glb" download><span class="arrow" aria-hidden="true">↓</span> Скачать модель GLB</a>
-            <p class="model-note">Учебная визуализация не заменяет официальную сервисную документацию производителя.</p>
-          </aside>
-        </div>
-      </div>
-    </section>
-
     <section class="section scenarios" id="scenarios" aria-labelledby="scenarios-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div><span class="section-index">04 / СЦЕНАРИИ</span><h2 id="scenarios-title">От тренировки к сервису</h2></div>
+          <div><span class="section-index">03 / СЦЕНАРИИ</span><h2 id="scenarios-title">От тренировки к сервису</h2></div>
           <p>Выберите сценарий и пройдите его по шагам. Каждый маршрут использует одну архитектуру, но по-разному связывает знания, эксперта и сервисные данные.</p>
         </div>
 
@@ -903,6 +846,65 @@
           <li class="principle"><b>QUALITY BUILT-IN</b><span>Контрольные точки и подтверждения встроены в маршрут, а не добавлены после.</span></li>
           <li class="principle"><b>TRACEABLE</b><span>Результат обучения и сервисной операции формирует проверяемую историю.</span></li>
         </ul>
+      </div>
+    </section>
+
+    <section class="section model-section" id="model" aria-labelledby="model-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">04 / 3D-МОДЕЛЬ</span><h2 id="model-title">WATO EX-35 в интерактивном виде</h2></div>
+          <p>Упрощённая учебная модель наркозно-дыхательного аппарата для знакомства с конструкцией, подготовки будущих AR-сценариев и визуального сопровождения сервисных процедур.</p>
+        </div>
+
+        <div class="model-layout reveal">
+          <div class="model-stage" id="model-stage">
+            <span class="model-badge">MESTARO / TRAINING MODEL</span>
+            <p class="model-status" id="model-status" aria-live="polite">Загрузка 3D-модели…</p>
+            <model-viewer
+              id="wato-model"
+              src="WATO_EX35_simplified_2025.glb"
+              alt="Упрощённая трёхмерная модель наркозно-дыхательного аппарата Mindray WATO EX-35"
+              camera-controls
+              camera-target="auto 0.9m auto"
+              scale="-1 1 1"
+              auto-rotate
+              auto-rotate-delay="700"
+              rotation-per-second="18deg"
+              shadow-intensity="1"
+              shadow-softness=".85"
+              exposure="1.05"
+              environment-image="neutral"
+              interaction-prompt="auto"
+              touch-action="pan-y"
+              loading="eager">
+              <div class="model-poster" slot="poster"><div><strong>WATO EX-35</strong><span>Подготовка интерактивной модели…</span></div></div>
+            </model-viewer>
+
+            <div class="model-controls" role="group" aria-label="Управление 3D-моделью">
+              <div class="model-controls-group">
+                <button class="model-control" id="toggle-rotation" type="button" aria-pressed="true">Ⅱ Остановить вращение</button>
+              </div>
+              <div class="model-controls-group">
+                <button class="model-control" id="model-fullscreen" type="button">⛶ На весь экран</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="model-copy-card" aria-labelledby="model-card-title">
+            <p class="eyebrow">Учебный объект</p>
+            <h3 id="model-card-title">Mindray WATO EX-35</h3>
+            <p>Вращайте модель мышью или пальцем, приближайте колесом и рассматривайте аппарат с нужного ракурса.</p>
+            <ul class="model-meta">
+              <li><span>Формат</span><strong>GLB / glTF 2.0</strong></li>
+              <li><span>Версия</span><strong>Упрощённая, 2025</strong></li>
+              <li><span>Размер</span><strong>2,6 МБ</strong></li>
+              <li><span>Назначение</span><strong>Обучение и AR-прототип</strong></li>
+            </ul>
+            <p class="model-use">Следующий этап — добавить интерактивные точки компонентов и связать их с регламентами, подсказками и сервисными операциями.</p>
+            <a class="primary-action model-download" href="WATO_EX35_simplified_2025.glb" download><span class="arrow" aria-hidden="true">↓</span> Скачать модель GLB</a>
+            <p class="model-note">Учебная визуализация не заменяет официальную сервисную документацию производителя.</p>
+          </aside>
+        </div>
       </div>
     </section>
   </main>
@@ -1108,7 +1110,7 @@
       fullscreenButton.textContent = document.fullscreenElement ? '× Закрыть полный экран' : '⛶ На весь экран';
     });
 
-    const sections = ['concept', 'architecture', 'model', 'scenarios'].map((id) => document.getElementById(id));
+    const sections = ['concept', 'architecture', 'scenarios', 'model'].map((id) => document.getElementById(id));
     const navLinks = $$('.nav-links a');
     const sectionObserver = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
