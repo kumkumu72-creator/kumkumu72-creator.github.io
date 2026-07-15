@@ -592,6 +592,7 @@
       pointer-events: none;
     }
     .model-controls-group { display: flex; flex-wrap: wrap; gap: 9px; }
+    .drawer-controls { flex: 1 1 360px; justify-content: center; }
     .model-control {
       min-height: 43px;
       padding: 0 14px;
@@ -606,6 +607,8 @@
     }
     .model-control:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
     .model-control[aria-pressed="true"] { border-color: var(--lime); color: var(--lime); }
+    .model-control:disabled { opacity: .48; cursor: wait; transform: none; }
+    .drawer-control { min-width: 104px; }
     .model-copy-card {
       display: flex;
       flex-direction: column;
@@ -668,6 +671,7 @@
       .layer:not(:last-child)::after { display: none; }
       .architecture-stage { min-height: auto; padding: 22px; }
       .model-stage, model-viewer { min-height: 480px; height: 480px; }
+      .drawer-controls { order: 3; flex-basis: 100%; }
       .model-copy-card { padding: 26px; min-height: auto; }
       .scenario-tabs { grid-template-columns: 1fr; }
       .scenario-tab { min-height: 112px; }
@@ -893,6 +897,11 @@
               <div class="model-controls-group">
                 <button class="model-control" id="toggle-rotation" type="button" aria-pressed="true">Ⅱ Остановить вращение</button>
               </div>
+              <div class="model-controls-group drawer-controls" role="group" aria-label="Управление ящиками">
+                <button class="model-control drawer-control" type="button" data-drawer="1" aria-pressed="false" disabled>Ящик 1</button>
+                <button class="model-control drawer-control" type="button" data-drawer="2" aria-pressed="false" disabled>Ящик 2</button>
+                <button class="model-control drawer-control" type="button" data-drawer="3" aria-pressed="false" disabled>Ящик 3</button>
+              </div>
               <div class="model-controls-group">
                 <button class="model-control" id="model-fullscreen" type="button">⛶ На весь экран</button>
               </div>
@@ -902,14 +911,14 @@
           <aside class="model-copy-card" aria-labelledby="model-card-title">
             <p class="eyebrow">Учебный объект</p>
             <h3 id="model-card-title">Mindray WATO EX-35</h3>
-            <p>Вращайте модель мышью или пальцем, приближайте колесом и рассматривайте аппарат с нужного ракурса.</p>
+            <p>Вращайте модель мышью или пальцем, приближайте колесом и нажимайте на фасады ящиков, чтобы выдвинуть их. Те же действия доступны кнопками под моделью.</p>
             <ul class="model-meta">
               <li><span>Формат</span><strong>GLB / glTF 2.0</strong></li>
               <li><span>Версия</span><strong>Упрощённая, 2025</strong></li>
               <li><span>Размер</span><strong>2,6 МБ</strong></li>
               <li><span>Назначение</span><strong>Обучение и AR-прототип</strong></li>
             </ul>
-            <p class="model-use">Следующий этап — добавить интерактивные точки компонентов и связать их с регламентами, подсказками и сервисными операциями.</p>
+            <p class="model-use">Все три ящика открываются независимо: повторное нажатие плавно возвращает выбранный ящик в корпус аппарата.</p>
             <p class="model-note">Учебная визуализация не заменяет официальную сервисную документацию производителя.</p>
           </aside>
         </div>
@@ -1094,12 +1103,92 @@
     const rotationButton = document.querySelector('#toggle-rotation');
     const fullscreenButton = document.querySelector('#model-fullscreen');
     const modelStage = document.querySelector('#model-stage');
+    const drawerButtons = $$('.drawer-control', modelStage);
+    const drawerLabels = {
+      1: 'Верхний ящик',
+      2: 'Средний ящик',
+      3: 'Нижний ящик'
+    };
+    const drawerMeshMap = new Map([
+      [24, 1], [25, 1],
+      [26, 2], [27, 2],
+      [28, 3], [29, 3]
+    ]);
+    const openDrawers = new Set();
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let drawersReady = false;
+    let pointerStart = null;
+
+    function stopModelRotation() {
+      if (!modelViewer.hasAttribute('auto-rotate')) return;
+      modelViewer.removeAttribute('auto-rotate');
+      rotationButton.setAttribute('aria-pressed', 'false');
+      rotationButton.textContent = '▶ Включить вращение';
+    }
+
+    function updateDrawerButton(drawerNumber, isOpen) {
+      const button = drawerButtons.find((item) => Number(item.dataset.drawer) === drawerNumber);
+      if (!button) return;
+      const label = drawerLabels[drawerNumber].toLowerCase();
+      button.setAttribute('aria-pressed', String(isOpen));
+      button.setAttribute('aria-label', `${isOpen ? 'Закрыть' : 'Выдвинуть'} ${label}`);
+    }
+
+    function toggleDrawer(drawerNumber) {
+      if (!drawersReady) return;
+      const button = drawerButtons.find((item) => Number(item.dataset.drawer) === drawerNumber);
+      if (!button || button.disabled) return;
+
+      const animationName = `drawer-${drawerNumber}`;
+      const isOpening = !openDrawers.has(drawerNumber);
+      button.disabled = true;
+      stopModelRotation();
+
+      if (isOpening) {
+        openDrawers.add(drawerNumber);
+        modelViewer.appendAnimation(animationName, {
+          repetitions: '1',
+          fade: false,
+          timeScale: prefersReducedMotion ? 100 : 1
+        });
+      } else {
+        openDrawers.delete(drawerNumber);
+        modelViewer.detachAnimation(animationName, { fade: prefersReducedMotion ? false : 0.38 });
+      }
+
+      updateDrawerButton(drawerNumber, isOpening);
+      modelStatus.textContent = `${drawerLabels[drawerNumber]} ${isOpening ? 'выдвинут' : 'закрыт'}`;
+      window.setTimeout(() => {
+        button.disabled = false;
+      }, prefersReducedMotion ? 30 : isOpening ? 900 : 460);
+    }
 
     modelViewer.addEventListener('load', () => {
-      modelStatus.textContent = 'Модель готова';
+      const availableAnimations = new Set(modelViewer.availableAnimations);
+      drawersReady = [1, 2, 3].every((number) => availableAnimations.has(`drawer-${number}`));
+      drawerButtons.forEach((button) => {
+        button.disabled = !drawersReady;
+        updateDrawerButton(Number(button.dataset.drawer), false);
+      });
+      modelStatus.textContent = drawersReady ? 'Модель готова · ящики интерактивны' : 'Модель готова';
     });
     modelViewer.addEventListener('error', () => {
+      drawersReady = false;
+      drawerButtons.forEach((button) => { button.disabled = true; });
       modelStatus.textContent = 'Не удалось загрузить модель';
+    });
+    drawerButtons.forEach((button) => {
+      button.addEventListener('click', () => toggleDrawer(Number(button.dataset.drawer)));
+    });
+    modelViewer.addEventListener('pointerdown', (event) => {
+      pointerStart = { x: event.clientX, y: event.clientY };
+    });
+    modelViewer.addEventListener('click', (event) => {
+      if (!pointerStart || Math.hypot(event.clientX - pointerStart.x, event.clientY - pointerStart.y) > 7) return;
+      const surface = modelViewer.surfaceFromPoint(event.clientX, event.clientY);
+      if (!surface) return;
+      const drawerNumber = drawerMeshMap.get(Number(surface.split(/\s+/)[0]));
+      if (drawerNumber) toggleDrawer(drawerNumber);
     });
     rotationButton.addEventListener('click', () => {
       const isRotating = modelViewer.hasAttribute('auto-rotate');
