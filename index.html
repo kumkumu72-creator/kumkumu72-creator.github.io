@@ -542,6 +542,17 @@
       --progress-bar-height: 3px;
       background: transparent;
     }
+    #model-stage:fullscreen {
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      border: 0;
+      border-radius: 0;
+    }
+    #model-stage:fullscreen model-viewer {
+      height: 100vh;
+      min-height: 100vh;
+    }
     .model-poster { display: grid; place-items: center; width: 100%; height: 100%; color: var(--muted); text-align: center; }
     .model-poster strong { display: block; margin-bottom: 8px; color: var(--cyan); font-size: 22px; letter-spacing: .04em; }
     .model-badge {
@@ -1107,6 +1118,9 @@
     });
     document.addEventListener('fullscreenchange', () => {
       fullscreenButton.textContent = document.fullscreenElement ? '× Закрыть полный экран' : '⛶ На весь экран';
+      requestAnimationFrame(() => {
+        modelViewer.updateFraming().then(() => modelViewer.jumpCameraToGoal());
+      });
     });
 
     const sections = ['concept', 'architecture', 'scenarios', 'model'].map((id) => document.getElementById(id));
