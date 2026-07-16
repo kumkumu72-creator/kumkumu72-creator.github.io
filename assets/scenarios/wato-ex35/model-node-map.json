@@ -1,0 +1,1413 @@
+{
+  "schemaVersion": "1.1.0",
+  "scenarioId": "wato-ex35-accessories-setup-v2",
+  "asset": {
+    "fileName": "WATO_EX35_simplified_2025.glb",
+    "webPath": "/WATO_EX35_simplified_2025.glb",
+    "expectedNamedNodes": 178,
+    "mappingStatus": "prototype_partial_with_documented_fallbacks"
+  },
+  "rules": {
+    "logicalIdsAreStable": true,
+    "glbNodeNamesMayChange": true,
+    "matchOrder": [
+      "glbNodeName",
+      "aliases",
+      "fallback"
+    ],
+    "caseSensitive": false,
+    "productionRequirement": "Все узлы применимой конфигурации должны быть сопоставлены и визуально проверены. requiredForProduction=true означает обязательную проверку для базового сценария."
+  },
+  "cameraPresets": {
+    "front_three_quarter": {
+      "target": "wato_ex35_root",
+      "fit": "bounds",
+      "azimuthDeg": 35,
+      "elevationDeg": 15,
+      "padding": 1.18
+    },
+    "breathing_circuit_mount_close": {
+      "target": "breathing_circuit_adapter",
+      "fit": "bounds",
+      "azimuthDeg": -28,
+      "elevationDeg": 8,
+      "padding": 1.45
+    },
+    "breathing_circuit_components_close": {
+      "target": "breathing_circuit",
+      "fit": "bounds",
+      "azimuthDeg": -20,
+      "elevationDeg": 4,
+      "padding": 1.35
+    },
+    "bag_console_close": {
+      "target": "bag_console",
+      "fit": "bounds",
+      "azimuthDeg": -80,
+      "elevationDeg": 8,
+      "padding": 1.5
+    },
+    "bellows_close": {
+      "target": "bellows_housing",
+      "fit": "bounds",
+      "azimuthDeg": -12,
+      "elevationDeg": 6,
+      "padding": 1.5
+    },
+    "flow_sensor_close": {
+      "target": "flow_sensor",
+      "fit": "bounds",
+      "azimuthDeg": -48,
+      "elevationDeg": 2,
+      "padding": 1.65
+    },
+    "o2_sensor_close": {
+      "target": "oxygen_sensor_o2",
+      "fit": "bounds",
+      "azimuthDeg": -35,
+      "elevationDeg": 4,
+      "padding": 1.7
+    },
+    "absorber_close": {
+      "target": "absorber_canister",
+      "fit": "bounds",
+      "azimuthDeg": -18,
+      "elevationDeg": 0,
+      "padding": 1.5
+    },
+    "breathing_tubes_close": {
+      "target": "breathing_tubes",
+      "fit": "bounds",
+      "azimuthDeg": -45,
+      "elevationDeg": 5,
+      "padding": 1.4
+    },
+    "vaporizer_close": {
+      "target": "vaporizer_mount",
+      "fit": "bounds",
+      "azimuthDeg": 12,
+      "elevationDeg": 8,
+      "padding": 1.45
+    },
+    "gas_module_mount_close": {
+      "target": "module_adapter_plate",
+      "fit": "bounds",
+      "azimuthDeg": 24,
+      "elevationDeg": 8,
+      "padding": 1.5
+    },
+    "aspirator_close": {
+      "target": "aspirator_regulator",
+      "fit": "bounds",
+      "azimuthDeg": 78,
+      "elevationDeg": 3,
+      "padding": 1.5
+    },
+    "rear_gas_panel_close": {
+      "target": "rear_connection_panel",
+      "fit": "bounds",
+      "azimuthDeg": 178,
+      "elevationDeg": 4,
+      "padding": 1.45
+    },
+    "rear_three_quarter": {
+      "target": "wato_ex35_root",
+      "fit": "bounds",
+      "azimuthDeg": 145,
+      "elevationDeg": 12,
+      "padding": 1.18
+    },
+    "agss_installation_close": {
+      "target": "agss_transfer_unit",
+      "fit": "bounds",
+      "azimuthDeg": -105,
+      "elevationDeg": -4,
+      "padding": 1.5
+    },
+    "rear_power_panel_close": {
+      "target": "power_panel",
+      "fit": "bounds",
+      "azimuthDeg": 174,
+      "elevationDeg": 0,
+      "padding": 1.45
+    },
+    "front_display_close": {
+      "target": "front_display",
+      "fit": "bounds",
+      "azimuthDeg": 2,
+      "elevationDeg": 3,
+      "padding": 1.45
+    },
+    "agss_float_close": {
+      "target": "agss_float",
+      "fit": "bounds",
+      "azimuthDeg": -95,
+      "elevationDeg": 0,
+      "padding": 1.8
+    }
+  },
+  "nodes": {
+    "wato_ex35_root": {
+      "glbNodeName": "01_CHASSIS_AND_CASTERS",
+      "aliases": [
+        "WATO_EX35",
+        "WATO EX-35",
+        "Root",
+        "Machine"
+      ],
+      "role": "Корневой объект аппарата",
+      "manualRef": "2.2",
+      "requiredForProduction": true,
+      "fallback": null,
+      "modelViewerPosition": [
+        0.0,
+        0.76,
+        0.0
+      ]
+    },
+    "front_display": {
+      "glbNodeName": "DISPLAY_ACTIVE_AREA",
+      "aliases": [
+        "Display",
+        "Screen",
+        "Touchscreen",
+        "Monitor"
+      ],
+      "role": "Дисплей и органы управления",
+      "manualRef": "2.2.1",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      },
+      "modelViewerPosition": [
+        -0.155,
+        1.23,
+        -0.112
+      ]
+    },
+    "rear_connection_panel": {
+      "glbNodeName": "REAR_SERVICE_PANEL",
+      "aliases": [
+        "RearPanel",
+        "ConnectionPanel",
+        "GasPanel"
+      ],
+      "role": "Задняя панель подключений",
+      "manualRef": "2.2.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      },
+      "modelViewerPosition": [
+        -0.035,
+        1.095,
+        0.245
+      ]
+    },
+    "breathing_circuit": {
+      "glbNodeName": "06_BREATHING_SYSTEM",
+      "aliases": [
+        "BreathingCircuit",
+        "BreathingSystem",
+        "BreathingBlock",
+        "CircleSystem"
+      ],
+      "role": "Дыхательный контур",
+      "manualRef": "12.1.3",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      },
+      "modelViewerPosition": [
+        0.39,
+        0.865,
+        -0.025
+      ]
+    },
+    "breathing_circuit_adapter": {
+      "glbNodeName": "BREATHING_MANIFOLD",
+      "aliases": [
+        "BreathingCircuitAdapter",
+        "CircuitAdapter",
+        "AdapterPlate"
+      ],
+      "role": "Адаптер дыхательного контура с направляющими",
+      "manualRef": "12.1.3",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.39,
+        0.865,
+        -0.16
+      ]
+    },
+    "breathing_circuit_lock": {
+      "glbNodeName": null,
+      "aliases": [
+        "BreathingCircuitLock",
+        "CircuitLock",
+        "LockButton"
+      ],
+      "role": "Клавиша блокировки дыхательного контура",
+      "manualRef": "12.1.3",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.365,
+        0.875,
+        -0.185
+      ]
+    },
+    "airway_pressure_gauge": {
+      "glbNodeName": null,
+      "aliases": [
+        "AirwayPressureGauge",
+        "PressureGauge",
+        "Manometer"
+      ],
+      "role": "Манометр воздуховода",
+      "manualRef": "13.3.11",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.29,
+        0.94,
+        -0.15
+      ]
+    },
+    "water_collection_cup": {
+      "glbNodeName": null,
+      "aliases": [
+        "WaterCollectionCup",
+        "WaterCup",
+        "CircuitWaterCup"
+      ],
+      "role": "Стакан для сбора воды дыхательного контура",
+      "manualRef": "13.3.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.45,
+        0.63,
+        -0.11
+      ]
+    },
+    "bag_console": {
+      "glbNodeName": "BAG_ARM_METAL_TUBE",
+      "aliases": [
+        "BagConsole",
+        "BagArm",
+        "ReservoirBagArm"
+      ],
+      "role": "Консоль мешка",
+      "manualRef": "12.1.4",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.5,
+        1.06,
+        -0.08
+      ]
+    },
+    "bag_console_clamp_nut": {
+      "glbNodeName": "BAG_CONNECTOR",
+      "aliases": [
+        "BagConsoleClampNut",
+        "BagArmNut",
+        "ClampNut"
+      ],
+      "role": "Зажимная гайка консоли мешка",
+      "manualRef": "12.1.4",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "bag_console"
+      }
+    },
+    "bellows": {
+      "glbNodeName": "BELLOWS_TOP",
+      "aliases": [
+        "Bellows",
+        "BreathingBellows"
+      ],
+      "role": "Сильфон",
+      "manualRef": "12.1.5",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.35,
+        1.16,
+        0.015
+      ]
+    },
+    "bellows_base": {
+      "glbNodeName": "BREATHING_MANIFOLD",
+      "aliases": [
+        "BellowsBase",
+        "BellowsMount"
+      ],
+      "role": "Основание сильфона",
+      "manualRef": "12.1.5",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "bellows"
+      }
+    },
+    "bellows_seal": {
+      "glbNodeName": "BELLOWS_RING_1",
+      "aliases": [
+        "BellowsSeal",
+        "BellowsGasket",
+        "BellowsO_Ring"
+      ],
+      "role": "Уплотнитель корпуса сильфона",
+      "manualRef": "12.1.5",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "bellows_base"
+      }
+    },
+    "bellows_housing": {
+      "glbNodeName": "BELLOWS_HOUSING",
+      "aliases": [
+        "BellowsHousing",
+        "BellowsJar",
+        "BellowsCover"
+      ],
+      "role": "Прозрачный корпус сильфона со шкалой",
+      "manualRef": "12.1.5",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "bellows"
+      },
+      "modelViewerPosition": [
+        0.35,
+        1.03,
+        0.015
+      ]
+    },
+    "flow_sensor": {
+      "glbNodeName": null,
+      "aliases": [
+        "FlowSensor",
+        "InspiratoryExpiratoryFlowSensor"
+      ],
+      "role": "Датчик потока",
+      "manualRef": "12.1.6",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.405,
+        0.895,
+        -0.175
+      ]
+    },
+    "flow_sensor_clamp_nuts": {
+      "glbNodeName": null,
+      "aliases": [
+        "FlowSensorClampNuts",
+        "FlowSensorNuts",
+        "ClampNuts"
+      ],
+      "role": "Зажимные гайки датчика потока",
+      "manualRef": "12.1.6",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "flow_sensor"
+      },
+      "modelViewerPosition": [
+        0.405,
+        0.895,
+        -0.185
+      ]
+    },
+    "inspiratory_connector": {
+      "glbNodeName": "BREATHING_PORT_1",
+      "aliases": [
+        "InspiratoryConnector",
+        "InspirationPort",
+        "INSP"
+      ],
+      "role": "Соединитель линии вдоха",
+      "manualRef": "12.1.6",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "flow_sensor"
+      }
+    },
+    "expiratory_connector": {
+      "glbNodeName": "BREATHING_PORT_2",
+      "aliases": [
+        "ExpiratoryConnector",
+        "ExpirationPort",
+        "EXP"
+      ],
+      "role": "Соединитель линии выдоха",
+      "manualRef": "12.1.6",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "flow_sensor"
+      }
+    },
+    "oxygen_sensor_o2": {
+      "glbNodeName": null,
+      "aliases": [
+        "O2Sensor",
+        "OxygenSensor",
+        "MO2"
+      ],
+      "role": "Датчик O2 дыхательного контура",
+      "manualRef": "12.1.7",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.335,
+        0.895,
+        -0.175
+      ]
+    },
+    "oxygen_sensor_gasket": {
+      "glbNodeName": null,
+      "aliases": [
+        "O2SensorGasket",
+        "OxygenSensorSeal",
+        "O2Seal"
+      ],
+      "role": "Прокладка датчика O2",
+      "manualRef": "12.1.7",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "oxygen_sensor_o2"
+      },
+      "modelViewerPosition": [
+        0.335,
+        0.895,
+        -0.185
+      ]
+    },
+    "oxygen_sensor_cable": {
+      "glbNodeName": null,
+      "aliases": [
+        "O2SensorCable",
+        "OxygenSensorCable"
+      ],
+      "role": "Кабель датчика O2",
+      "manualRef": "12.1.7",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "oxygen_sensor_o2"
+      },
+      "modelViewerPosition": [
+        0.315,
+        0.915,
+        -0.155
+      ]
+    },
+    "oxygen_sensor_adapter_port": {
+      "glbNodeName": null,
+      "aliases": [
+        "O2SensorAdapterPort",
+        "O2CablePort",
+        "OxygenSensorConnector"
+      ],
+      "role": "Разъём кабеля датчика O2 на адаптере контура",
+      "manualRef": "12.1.7",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit_adapter"
+      },
+      "modelViewerPosition": [
+        0.35,
+        0.875,
+        -0.16
+      ]
+    },
+    "absorber_canister": {
+      "glbNodeName": "ABSORBER_CANISTER",
+      "aliases": [
+        "AbsorberCanister",
+        "SodaLimeCanister",
+        "CO2Canister"
+      ],
+      "role": "Канистра с поглотителем CO2",
+      "manualRef": "12.1.8",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.425,
+        0.695,
+        -0.095
+      ]
+    },
+    "absorber_canister_seal": {
+      "glbNodeName": "ABSORBER_TOP",
+      "aliases": [
+        "AbsorberCanisterSeal",
+        "CanisterGasket",
+        "CanisterSeal"
+      ],
+      "role": "Прокладка канистры поглотителя",
+      "manualRef": "12.1.8",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "absorber_canister"
+      }
+    },
+    "absorber_canister_mount": {
+      "glbNodeName": null,
+      "aliases": [
+        "AbsorberCanisterMount",
+        "CanisterSlot",
+        "CanisterSupport"
+      ],
+      "role": "Монтажный паз и опора канистры",
+      "manualRef": "12.1.8.1",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.425,
+        0.765,
+        -0.095
+      ]
+    },
+    "absorber_canister_lock": {
+      "glbNodeName": null,
+      "aliases": [
+        "AbsorberCanisterLock",
+        "CanisterHandle",
+        "CanisterLatch"
+      ],
+      "role": "Поворотная ручка фиксации канистры",
+      "manualRef": "12.1.8.1",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "absorber_canister"
+      },
+      "modelViewerPosition": [
+        0.425,
+        0.745,
+        -0.155
+      ]
+    },
+    "breathing_tubes": {
+      "glbNodeName": null,
+      "aliases": [
+        "BreathingTubes",
+        "BreathingHoses",
+        "PatientCircuit"
+      ],
+      "role": "Дыхательные трубки",
+      "manualRef": "12.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.44,
+        0.89,
+        -0.18
+      ]
+    },
+    "y_piece": {
+      "glbNodeName": null,
+      "aliases": [
+        "YPiece",
+        "Y_Piece",
+        "PatientY"
+      ],
+      "role": "Y-образный тройник дыхательных трубок",
+      "manualRef": "12.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_tubes"
+      },
+      "modelViewerPosition": [
+        0.58,
+        0.8,
+        -0.2
+      ]
+    },
+    "breathing_filter": {
+      "glbNodeName": null,
+      "aliases": [
+        "BreathingFilter",
+        "PatientFilter",
+        "CircuitFilter"
+      ],
+      "role": "Фильтр на Y-образном тройнике",
+      "manualRef": "12.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "y_piece"
+      },
+      "modelViewerPosition": [
+        0.54,
+        0.83,
+        -0.2
+      ]
+    },
+    "manual_ventilation_bag": {
+      "glbNodeName": "RESERVOIR_BAG",
+      "aliases": [
+        "ManualVentilationBag",
+        "ReservoirBag",
+        "BreathingBag"
+      ],
+      "role": "Мешок ручной вентиляции",
+      "manualRef": "12.3",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "bag_console"
+      },
+      "modelViewerPosition": [
+        0.62,
+        0.875,
+        -0.09
+      ]
+    },
+    "vaporizer_mount": {
+      "glbNodeName": "05_VAPORIZERS",
+      "aliases": [
+        "VaporizerMount",
+        "VaporizerRack",
+        "Selectatec"
+      ],
+      "role": "Коллектор Selectatec для одного или двух испарителей",
+      "manualRef": "12.4",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      },
+      "modelViewerPosition": [
+        -0.19,
+        0.995,
+        -0.135
+      ]
+    },
+    "vaporizer_left": {
+      "glbNodeName": "VAPORIZER_LEFT",
+      "aliases": [
+        "VaporizerLeft",
+        "Vaporizer_L",
+        "LeftVaporizer"
+      ],
+      "role": "Левая позиция испарителя",
+      "manualRef": "12.4.1",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "vaporizer_mount"
+      },
+      "modelViewerPosition": [
+        -0.125,
+        0.995,
+        -0.135
+      ]
+    },
+    "vaporizer_right": {
+      "glbNodeName": "VAPORIZER_RIGHT",
+      "aliases": [
+        "VaporizerRight",
+        "Vaporizer_R",
+        "RightVaporizer"
+      ],
+      "role": "Правая позиция испарителя",
+      "manualRef": "12.4.1",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "vaporizer_mount"
+      },
+      "modelViewerPosition": [
+        -0.25,
+        0.995,
+        -0.135
+      ]
+    },
+    "vaporizer_interlock": {
+      "glbNodeName": null,
+      "aliases": [
+        "VaporizerInterlock",
+        "SelectatecInterlock",
+        "Interlock"
+      ],
+      "role": "Механизм взаимоблокировки испарителей",
+      "manualRef": "12.4.1",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "vaporizer_mount"
+      },
+      "modelViewerPosition": [
+        -0.19,
+        1.03,
+        -0.145
+      ]
+    },
+    "module_adapter_plate": {
+      "glbNodeName": "LEFT_ACCESSORY_RAIL",
+      "aliases": [
+        "ModuleAdapterPlate",
+        "GasModulePlate",
+        "M4AdapterPlate"
+      ],
+      "role": "Плата адаптера газового модуля на верхней левой панели",
+      "manualRef": "12.10",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      },
+      "modelViewerPosition": [
+        0.29,
+        1.075,
+        0.02
+      ]
+    },
+    "module_cable_clamp": {
+      "glbNodeName": null,
+      "aliases": [
+        "ModuleCableClamp",
+        "GasModuleCableClip"
+      ],
+      "role": "Зажим провода газового модуля",
+      "manualRef": "12.10",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "module_adapter_plate"
+      }
+    },
+    "module_water_separator": {
+      "glbNodeName": null,
+      "aliases": [
+        "ModuleWaterSeparator",
+        "WaterTrap",
+        "DRYLINE"
+      ],
+      "role": "Влагоотделитель модуля CO2 или АГ",
+      "manualRef": "12.10",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "module_adapter_plate"
+      }
+    },
+    "co2_module": {
+      "glbNodeName": null,
+      "aliases": [
+        "CO2Module",
+        "CO2_Module",
+        "CapnographyModule"
+      ],
+      "role": "Внешний модуль CO2",
+      "manualRef": "12.10",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "module_adapter_plate"
+      }
+    },
+    "ag_module": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGModule",
+        "MultigasModule",
+        "AG_O2",
+        "MULTIGAS"
+      ],
+      "role": "Модуль анестезирующих газов, возможно объединённый с O2",
+      "manualRef": "12.11",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "module_adapter_plate"
+      },
+      "modelViewerPosition": [
+        0.29,
+        1.12,
+        0.02
+      ]
+    },
+    "gas_sample_line": {
+      "glbNodeName": null,
+      "aliases": [
+        "GasSampleLine",
+        "SampleLine"
+      ],
+      "role": "Пробоотборная линия газового модуля",
+      "manualRef": "9.4",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "ag_module"
+      },
+      "modelViewerPosition": [
+        0.31,
+        1.08,
+        -0.02
+      ]
+    },
+    "gas_sample_exhaust_line": {
+      "glbNodeName": null,
+      "aliases": [
+        "GasSampleExhaustLine",
+        "ModuleExhaustTube",
+        "SampleGasReturnLine"
+      ],
+      "role": "Газовыпускная трубка модуля АГ",
+      "manualRef": "12.11",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "ag_module"
+      },
+      "modelViewerPosition": [
+        0.31,
+        1.05,
+        -0.02
+      ]
+    },
+    "sample_gas_return_plate": {
+      "glbNodeName": null,
+      "aliases": [
+        "SampleGasReturnPlate",
+        "MetalReturnPlate",
+        "AGSSReturn"
+      ],
+      "role": "Металлическая пластина возврата пробы газа",
+      "manualRef": "12.11",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      },
+      "modelViewerPosition": [
+        -0.02,
+        1.04,
+        0.255
+      ]
+    },
+    "aspirator_regulator": {
+      "glbNodeName": null,
+      "aliases": [
+        "AspiratorRegulator",
+        "SuctionRegulator",
+        "NegativePressureRegulator"
+      ],
+      "role": "Регулятор аспиратора с отрицательным давлением",
+      "manualRef": "12.12",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      },
+      "modelViewerPosition": [
+        0.29,
+        0.9,
+        0.02
+      ]
+    },
+    "aspirator_bottle": {
+      "glbNodeName": null,
+      "aliases": [
+        "AspiratorBottle",
+        "SuctionBottle",
+        "CollectionBottle"
+      ],
+      "role": "Бутылка для сбора жидкости",
+      "manualRef": "12.12",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "aspirator_regulator"
+      }
+    },
+    "aspirator_holder": {
+      "glbNodeName": null,
+      "aliases": [
+        "AspiratorHolder",
+        "SuctionBottleHolder",
+        "BottleBracket"
+      ],
+      "role": "Подставка бутылки аспиратора",
+      "manualRef": "12.12.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      }
+    },
+    "aspirator_filter": {
+      "glbNodeName": null,
+      "aliases": [
+        "AspiratorFilter",
+        "SuctionFilter"
+      ],
+      "role": "Фильтр аспиратора",
+      "manualRef": "12.12.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "aspirator_regulator"
+      }
+    },
+    "aspirator_overflow_protection": {
+      "glbNodeName": null,
+      "aliases": [
+        "AspiratorOverflowProtection",
+        "OverflowProtection",
+        "SuctionOverflow"
+      ],
+      "role": "Защита аспиратора от переполнения",
+      "manualRef": "12.12",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "aspirator_regulator"
+      }
+    },
+    "aspirator_tubing": {
+      "glbNodeName": null,
+      "aliases": [
+        "AspiratorTubing",
+        "SuctionTubing"
+      ],
+      "role": "Трубки аспиратора",
+      "manualRef": "12.12.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "aspirator_regulator"
+      }
+    },
+    "aspirator_propellant_t_connector": {
+      "glbNodeName": null,
+      "aliases": [
+        "AspiratorPropellantTConnector",
+        "SuctionTConnector",
+        "PropellantGasT"
+      ],
+      "role": "Т-образный соединитель вытесняющего газа",
+      "manualRef": "12.12.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      }
+    },
+    "medical_gas_o2_inlet": {
+      "glbNodeName": "REAR_PORT_1",
+      "aliases": [
+        "O2Inlet",
+        "MedicalO2",
+        "O2"
+      ],
+      "role": "Вход трубопровода O2",
+      "manualRef": "12.7",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      },
+      "modelViewerPosition": [
+        0.155,
+        1.16,
+        0.258
+      ]
+    },
+    "medical_gas_n2o_inlet": {
+      "glbNodeName": "REAR_PORT_2",
+      "aliases": [
+        "N2OInlet",
+        "MedicalN2O",
+        "N2O"
+      ],
+      "role": "Вход трубопровода N2O",
+      "manualRef": "12.7",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      },
+      "modelViewerPosition": [
+        0.155,
+        1.065,
+        0.258
+      ]
+    },
+    "medical_gas_air_inlet": {
+      "glbNodeName": "REAR_PORT_3",
+      "aliases": [
+        "AirInlet",
+        "MedicalAir",
+        "AIR"
+      ],
+      "role": "Вход трубопровода AIR",
+      "manualRef": "12.7",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      },
+      "modelViewerPosition": [
+        0.155,
+        0.97,
+        0.258
+      ]
+    },
+    "medical_gas_hoses": {
+      "glbNodeName": null,
+      "aliases": [
+        "MedicalGasHoses",
+        "GasHoseBundle",
+        "PipelineHoses"
+      ],
+      "role": "Шланги медицинских газов",
+      "manualRef": "12.7.1",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      },
+      "modelViewerPosition": [
+        0.155,
+        1.065,
+        0.27
+      ]
+    },
+    "power_cables": {
+      "glbNodeName": null,
+      "aliases": [
+        "PowerCables",
+        "MainsCable",
+        "CableBundle"
+      ],
+      "role": "Кабели питания и дополнительного оборудования",
+      "manualRef": "2.2.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "power_panel"
+      },
+      "modelViewerPosition": [
+        -0.095,
+        0.75,
+        0.28
+      ]
+    },
+    "agss_connector": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSConnector",
+        "AGSSPort",
+        "SUGAConnector"
+      ],
+      "role": "Единственный 30-мм соединитель СУГА аппарата",
+      "manualRef": "12.8",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      },
+      "modelViewerPosition": [
+        -0.18,
+        0.82,
+        0.258
+      ]
+    },
+    "agss_holder": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSHolder",
+        "SUGAHolder",
+        "AGSSBracket"
+      ],
+      "role": "Держатель СУГА на нижней левой декоративной панели",
+      "manualRef": "12.9.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "wato_ex35_root"
+      },
+      "modelViewerPosition": [
+        0.29,
+        0.55,
+        0.1
+      ]
+    },
+    "agss_transfer_unit": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSTransferUnit",
+        "AGSSReceiver",
+        "SUGAUnit"
+      ],
+      "role": "Система передачи и приёма газа СУГА",
+      "manualRef": "12.9",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "agss_holder"
+      }
+    },
+    "agss_gas_inlet_hose": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSGasInletHose",
+        "AGSSInputHose",
+        "SUGAHose"
+      ],
+      "role": "Газовпускной шланг между СУГА и аппаратом",
+      "manualRef": "12.9.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "agss_transfer_unit"
+      }
+    },
+    "agss_active_extraction_tube": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSActiveExtractionTube",
+        "AGSSActiveHose",
+        "ActiveScavengingTube"
+      ],
+      "role": "Трубка активного отсоса к больничной системе",
+      "manualRef": "12.9.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "agss_transfer_unit"
+      }
+    },
+    "agss_pressure_compensation_opening": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSPressureCompensationOpening",
+        "AGSSReliefOpening",
+        "CompensationPort"
+      ],
+      "role": "Отверстие компенсации давления СУГА",
+      "manualRef": "12.9.1",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "agss_transfer_unit"
+      }
+    },
+    "agss_float": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSFloat",
+        "SUGAFloat",
+        "FlowFloat"
+      ],
+      "role": "Поплавок СУГА",
+      "manualRef": "6.11",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "agss_transfer_unit"
+      }
+    },
+    "agss_min_mark": {
+      "glbNodeName": null,
+      "aliases": [
+        "AGSSMinMark",
+        "MIN",
+        "MinimumFlowMark"
+      ],
+      "role": "Отметка MIN на СУГА",
+      "manualRef": "6.11",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "agss_transfer_unit"
+      }
+    },
+    "power_panel": {
+      "glbNodeName": "REAR_SERVICE_PANEL",
+      "aliases": [
+        "PowerPanel",
+        "ElectricalPanel"
+      ],
+      "role": "Панель электроподключений",
+      "manualRef": "2.2.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "rear_connection_panel"
+      },
+      "modelViewerPosition": [
+        -0.035,
+        0.9,
+        0.245
+      ]
+    },
+    "mains_inlet": {
+      "glbNodeName": "REAR_POWER_INLET",
+      "aliases": [
+        "MainsInlet",
+        "ACInlet",
+        "PowerInput"
+      ],
+      "role": "Вход сети переменного тока",
+      "manualRef": "2.2.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "power_panel"
+      },
+      "modelViewerPosition": [
+        -0.095,
+        0.775,
+        0.258
+      ]
+    },
+    "auxiliary_power_outlets": {
+      "glbNodeName": null,
+      "aliases": [
+        "AuxiliaryPowerOutlets",
+        "AuxPowerOutlet",
+        "PowerOutlets"
+      ],
+      "role": "Дополнительные электрические выходы",
+      "manualRef": "2.2.2",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "power_panel"
+      },
+      "modelViewerPosition": [
+        0.02,
+        0.83,
+        0.258
+      ]
+    },
+    "isolation_transformer_variant": {
+      "glbNodeName": null,
+      "aliases": [
+        "IsolationTransformer",
+        "IsolatedPowerVariant",
+        "TransformerVariant"
+      ],
+      "role": "Признаки конфигурации с развязывающим трансформатором",
+      "manualRef": "2.2.2",
+      "requiredForProduction": false,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "power_panel"
+      }
+    },
+    "equipotential_terminal": {
+      "glbNodeName": null,
+      "aliases": [
+        "EquipotentialTerminal",
+        "EquipotentialGround",
+        "GroundTerminal"
+      ],
+      "role": "Эквипотенциальный вывод заземления",
+      "manualRef": "B.4",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "power_panel"
+      },
+      "modelViewerPosition": [
+        -0.16,
+        0.82,
+        0.258
+      ]
+    },
+    "preuse_test_control": {
+      "glbNodeName": "DISPLAY_ACTIVE_AREA",
+      "aliases": [
+        "PreUseTest",
+        "LeakTest",
+        "SystemTest"
+      ],
+      "role": "Интерфейс предэксплуатационного теста",
+      "manualRef": "6.8",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "front_display"
+      },
+      "modelViewerPosition": [
+        -0.155,
+        1.23,
+        -0.112
+      ]
+    },
+    "apl_valve": {
+      "glbNodeName": "BREATHING_VALVE_4",
+      "aliases": [
+        "APLValve",
+        "APL",
+        "PressureLimitValve"
+      ],
+      "role": "Клапан APL",
+      "manualRef": "6.8.4",
+      "requiredForProduction": true,
+      "fallback": {
+        "type": "parent",
+        "logicalId": "breathing_circuit"
+      },
+      "modelViewerPosition": [
+        0.265,
+        0.925,
+        -0.15
+      ]
+    }
+  }
+}

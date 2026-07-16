@@ -1,0 +1,1132 @@
+{
+  "$schema": "./scenario.schema.json",
+  "schemaVersion": "1.1.0",
+  "id": "wato-ex35-accessories-setup-v2",
+  "revision": 7,
+  "status": "draft_requires_sme_review",
+  "locale": "ru-RU",
+  "title": "Сборка принадлежностей и предэксплуатационная проверка Mindray WATO EX-35",
+  "shortTitle": "WATO EX-35: сборка и проверка",
+  "description": "AR-сценарий сборки дыхательного контура, подключения документированных принадлежностей и обязательных предэксплуатационных проверок WATO EX-35 для четырёх утверждённых профилей комплектации. Руководство производителя является основным источником; видеоролик используется только для визуальной привязки.",
+  "equipment": {
+    "manufacturer": "Mindray",
+    "model": "WATO EX-35",
+    "category": "Наркозно-дыхательный аппарат",
+    "configurationPolicy": "Перед началом пользователь обязан выбрать один из профилей 0619B-PA00228, 0619B-PA00229, 0619B-PA00231 или 0619B-PA00232 и сверить его с маркировкой аппарата; опциональные шаги выполняются только для подтверждённых узлов.",
+    "modelAsset": {
+      "fileName": "WATO_EX35_simplified_2025.glb",
+      "webPath": "/WATO_EX35_simplified_2025.glb",
+      "format": "glb",
+      "scale": "1:1",
+      "dimensionsMm": { "height": 1410, "width": 780, "depth": 690 },
+      "expectedNamedNodes": 149,
+      "nodeMap": "./model-node-map.template.json",
+      "accuracy": "visual_prototype_not_engineering_accurate"
+    }
+  },
+  "configurations": [
+    {
+      "id": "0619B-PA00228",
+      "label": "0619B-PA00228 · АГ · с компрессором",
+      "sourceWorkbook": "WATO EX-35_0619B-PA00228_AG_с компрессором_v4.xlsx",
+      "sourceWorkbookVersion": "v4",
+      "sourceSheet": "Rec. EX-35",
+      "sourceWorkbookSha256": "a4133e9930bab9bdd979a1695376eea85a801d38df9464226ec1e9fc22c6d740",
+      "summary": {
+        "drive": "integrated_compressor",
+        "gasModule": "ag",
+        "aspirator": "none",
+        "agss": "passive",
+        "vaporizerPositions": 2,
+        "suppliedVaporizers": 1
+      },
+      "includedOptionCodes": [
+        "DJ20-0002-006",
+        "DJ20-0027-001",
+        "DJ20-0062-001",
+        "DJ20-0028-001",
+        "DJ20-0077-003",
+        "DJ20-0056-004",
+        "DJ20-0005-005",
+        "DJ20-0001-024",
+        "DJ20-0021-001",
+        "DJ20-0023-006",
+        "DJ20-0004-002",
+        "DJ20-0068-017",
+        "DJ20-0010-001",
+        "DJ20-0003-003",
+        "DJ20-0032-001",
+        "DJ20-0015-007",
+        "DJ20-0029-001",
+        "DJ20-0011-001",
+        "DJ20-0013-001",
+        "DJ20-0016-001",
+        "DJ20-0020-001",
+        "DJ20-0060-001",
+        "115-005350-00",
+        "DJ20-0005-004",
+        "DJ20-0030-002",
+        "DJ20-0007-002",
+        "DJ20-0070-001"
+      ],
+      "actionDefaults": {
+        "select-drive-configuration": "integrated_compressor",
+        "select-vaporizer-configuration": "dual_interlocked",
+        "select-gas-module-configuration": "ag",
+        "select-aspirator-configuration": "none",
+        "select-agss-configuration": "passive_requires_separate_manual",
+        "select-power-configuration": "without_isolation_transformer",
+        "select-installed-vaporizers": "single",
+        "confirm-co2-module": "not_applicable",
+        "confirm-co2-water-separator": "not_applicable",
+        "select-ag-module-variant": "ag_without_o2",
+        "confirm-aspirator-mount": "not_applicable",
+        "confirm-aspirator-lines": "not_applicable",
+        "select-connected-gases": ["o2", "n2o", "air"],
+        "select-active-agss-flow": "not_applicable",
+        "confirm-agss-mount": "not_applicable",
+        "confirm-agss-single-connector": "not_applicable",
+        "confirm-agss-hospital-line": "not_applicable",
+        "select-power-variant": "without_isolation_transformer",
+        "confirm-agss-applicability": "not_applicable"
+      }
+    },
+    {
+      "id": "0619B-PA00229",
+      "label": "0619B-PA00229 · АГ+O₂ · с компрессором",
+      "sourceWorkbook": "WATO EX-35_0619B-PA00229_AG_O2_с компрессором_v4.xlsx",
+      "sourceWorkbookVersion": "v4",
+      "sourceSheet": "Rec. EX-35",
+      "sourceWorkbookSha256": "e5de5476eef12e7968468d55214eae55d3f079bb29a2490643d5174b9fdafa75",
+      "summary": {
+        "drive": "integrated_compressor",
+        "gasModule": "ag_with_o2",
+        "aspirator": "none",
+        "agss": "passive",
+        "vaporizerPositions": 2,
+        "suppliedVaporizers": 1
+      },
+      "includedOptionCodes": [
+        "DJ20-0619-009-P",
+        "DJ20-0027-001",
+        "DJ20-0062-001",
+        "DJ20-0005-004",
+        "DJ20-0028-001",
+        "DJ20-0077-003",
+        "DJ20-0056-004",
+        "DJ20-0002-006",
+        "115-005350-00",
+        "DJ20-0030-002",
+        "DJ20-0007-001",
+        "DJ20-0070-001"
+      ],
+      "actionDefaults": {
+        "select-drive-configuration": "integrated_compressor",
+        "select-vaporizer-configuration": "dual_interlocked",
+        "select-gas-module-configuration": "ag_with_o2",
+        "select-aspirator-configuration": "none",
+        "select-agss-configuration": "passive_requires_separate_manual",
+        "select-power-configuration": "without_isolation_transformer",
+        "select-installed-vaporizers": "single",
+        "confirm-co2-module": "not_applicable",
+        "confirm-co2-water-separator": "not_applicable",
+        "select-ag-module-variant": "ag_with_o2",
+        "confirm-aspirator-mount": "not_applicable",
+        "confirm-aspirator-lines": "not_applicable",
+        "select-connected-gases": ["o2", "n2o", "air"],
+        "select-active-agss-flow": "not_applicable",
+        "confirm-agss-mount": "not_applicable",
+        "confirm-agss-single-connector": "not_applicable",
+        "confirm-agss-hospital-line": "not_applicable",
+        "select-power-variant": "without_isolation_transformer",
+        "confirm-agss-applicability": "not_applicable"
+      }
+    },
+    {
+      "id": "0619B-PA00231",
+      "label": "0619B-PA00231 · АГ+O₂ · без компрессора",
+      "sourceWorkbook": "WATO EX-35_0619B-PA00231_AG_O2_без компрессора_v4.xlsx",
+      "sourceWorkbookVersion": "v4",
+      "sourceSheet": "Rec. EX-35",
+      "sourceWorkbookSha256": "df490a11f4713fe629f9dccb1b8341759e705e63c23d080049f25087d63d2a81",
+      "summary": {
+        "drive": "central_air",
+        "gasModule": "ag_with_o2",
+        "aspirator": "none",
+        "agss": "passive",
+        "vaporizerPositions": 2,
+        "suppliedVaporizers": 1
+      },
+      "includedOptionCodes": [
+        "DJ20-0619-007-P",
+        "DJ20-0027-001",
+        "DJ20-0062-001",
+        "DJ20-0028-001",
+        "DJ20-0077-003",
+        "DJ20-0056-001",
+        "DJ20-0002-006",
+        "115-005350-00",
+        "DJ20-0065-001",
+        "DJ20-0030-002",
+        "DJ20-0007-001",
+        "DJ20-0070-001"
+      ],
+      "actionDefaults": {
+        "select-drive-configuration": "central_air",
+        "select-vaporizer-configuration": "dual_interlocked",
+        "select-gas-module-configuration": "ag_with_o2",
+        "select-aspirator-configuration": "none",
+        "select-agss-configuration": "passive_requires_separate_manual",
+        "select-power-configuration": "without_isolation_transformer",
+        "select-installed-vaporizers": "single",
+        "confirm-co2-module": "not_applicable",
+        "confirm-co2-water-separator": "not_applicable",
+        "select-ag-module-variant": "ag_with_o2",
+        "confirm-aspirator-mount": "not_applicable",
+        "confirm-aspirator-lines": "not_applicable",
+        "select-connected-gases": ["o2", "n2o", "air"],
+        "select-active-agss-flow": "not_applicable",
+        "confirm-agss-mount": "not_applicable",
+        "confirm-agss-single-connector": "not_applicable",
+        "confirm-agss-hospital-line": "not_applicable",
+        "select-power-variant": "without_isolation_transformer",
+        "confirm-agss-applicability": "not_applicable"
+      }
+    },
+    {
+      "id": "0619B-PA00232",
+      "label": "0619B-PA00232 · АГ · без компрессора",
+      "sourceWorkbook": "WATO EX-35_0619B-PA00232_AG_без компрессора_v4.xlsx",
+      "sourceWorkbookVersion": "v4",
+      "sourceSheet": "Rec. EX-35",
+      "sourceWorkbookSha256": "9ec9eead833007f9d5f3310152cdac3b7ccb2f93418e9af95428551630b9a227",
+      "summary": {
+        "drive": "central_air",
+        "gasModule": "ag",
+        "aspirator": "none",
+        "agss": "passive",
+        "vaporizerPositions": 2,
+        "suppliedVaporizers": 1
+      },
+      "includedOptionCodes": [
+        "DJ20-0002-006",
+        "DJ20-0027-001",
+        "DJ20-0062-001",
+        "DJ20-0028-001",
+        "DJ20-0077-003",
+        "DJ20-0056-001",
+        "DJ20-0001-024",
+        "DJ20-0021-001",
+        "DJ20-0023-006",
+        "DJ20-0004-002",
+        "DJ20-0068-017",
+        "DJ20-0010-001",
+        "DJ20-0003-003",
+        "DJ20-0032-001",
+        "DJ20-0005-002",
+        "DJ20-0015-007",
+        "DJ20-0029-001",
+        "DJ20-0011-001",
+        "DJ20-0013-001",
+        "DJ20-0016-001",
+        "DJ20-0020-001",
+        "DJ20-0060-001",
+        "115-005350-00",
+        "DJ20-0030-002",
+        "DJ20-0065-001",
+        "DJ20-0007-002",
+        "DJ20-0070-001"
+      ],
+      "actionDefaults": {
+        "select-drive-configuration": "central_air",
+        "select-vaporizer-configuration": "dual_interlocked",
+        "select-gas-module-configuration": "ag",
+        "select-aspirator-configuration": "none",
+        "select-agss-configuration": "passive_requires_separate_manual",
+        "select-power-configuration": "without_isolation_transformer",
+        "select-installed-vaporizers": "single",
+        "confirm-co2-module": "not_applicable",
+        "confirm-co2-water-separator": "not_applicable",
+        "select-ag-module-variant": "ag_without_o2",
+        "confirm-aspirator-mount": "not_applicable",
+        "confirm-aspirator-lines": "not_applicable",
+        "select-connected-gases": ["o2", "n2o", "air"],
+        "select-active-agss-flow": "not_applicable",
+        "confirm-agss-mount": "not_applicable",
+        "confirm-agss-single-connector": "not_applicable",
+        "confirm-agss-hospital-line": "not_applicable",
+        "select-power-variant": "without_isolation_transformer",
+        "confirm-agss-applicability": "not_applicable"
+      }
+    }
+  ],
+  "classification": {
+    "workType": "Сборка, подключение принадлежностей и предэксплуатационная проверка",
+    "scenarioType": "ar_instruction_checklist",
+    "trainingMode": "safe_training_environment",
+    "difficulty": "intermediate",
+    "estimatedDurationMin": 35,
+    "targetRoles": [
+      "сервисный инженер",
+      "инженер по медицинской технике",
+      "обучающийся под контролем допущенного специалиста"
+    ]
+  },
+  "referenceDocuments": [
+    {
+      "id": "mindray-wato-ex35-operation-manual-ru-2013",
+      "title": "WATO EX-35 Operation Manual, Russian",
+      "fileName": "WATO EX-35 Operation Manual_Ruassian_20131025(1).pdf",
+      "editionDate": "2013-05-13",
+      "language": "ru",
+      "pageCount": 264,
+      "role": "primary_normative_reference",
+      "integrity": "complete",
+      "sha256": "0dfe5c2470181f0759b9605c4edb506d5e84481c93f2594fae3e49f788a15599"
+    }
+  ],
+  "sourceMedia": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=OU9NWuIMcOk",
+    "title": "Подключение и настройка принадлежностей НДА Mindray WATO-EX35",
+    "publisher": "MEDFORD MEDIA",
+    "language": "ru",
+    "durationSec": 981,
+    "captions": "ru_auto_generated",
+    "usage": "visual_reference_only_manual_has_priority",
+    "chapters": [
+      { "startSec": 2, "title": "Введение" },
+      { "startSec": 28, "title": "Дыхательный контур" },
+      { "startSec": 84, "title": "Манометр и сбор воды" },
+      { "startSec": 107, "title": "Сильфон и корпус сильфона" },
+      { "startSec": 143, "title": "Консоль мешка и датчик O2" },
+      { "startSec": 254, "title": "Канистра поглотителя CO2" },
+      { "startSec": 290, "title": "Испарители" },
+      { "startSec": 382, "title": "Газоанализирующий модуль" },
+      { "startSec": 474, "title": "Дополнительные принадлежности из видео" },
+      { "startSec": 593, "title": "Аспиратор с отрицательным давлением" },
+      { "startSec": 726, "title": "Подключение медицинского воздуха" },
+      { "startSec": 749, "title": "Прокладка трубок" },
+      { "startSec": 813, "title": "Удаление анестезирующих газов" },
+      { "startSec": 877, "title": "Электрические подключения" },
+      { "startSec": 945, "title": "Предэксплуатационные тесты" },
+      { "startSec": 954, "title": "Заключение" }
+    ]
+  },
+  "sourcePriority": [
+    "Актуальное руководство конкретной конфигурации и локальный утверждённый регламент",
+    "Спецификация выбранной комплектации 0619B-PA00228, 0619B-PA00229, 0619B-PA00231 или 0619B-PA00232",
+    "Руководство WATO EX-35 2013 года, указанное в referenceDocuments",
+    "Видеоролик — только визуальная иллюстрация, не нормативная инструкция"
+  ],
+  "excludedContent": [
+    {
+      "item": "BIS и NMT",
+      "reason": "Не описаны в приложенном руководстве WATO EX-35 2013 года.",
+      "rule": "Не показывать монтаж до предоставления отдельного руководства для точной конфигурации."
+    },
+    {
+      "item": "Встроенный компрессор",
+      "reason": "Комплектации 0619B-PA00228 и 0619B-PA00229 содержат встроенный компрессор, но приложенное руководство не содержит процедуры его монтажа или обслуживания.",
+      "rule": "Учитывать компрессор как признак комплектации и источник приводного газа; не показывать его монтаж или обслуживание без отдельной сервисной документации."
+    },
+    {
+      "item": "Раздельные активный и пассивный порты АГСС",
+      "reason": "На аппарате документирован один 30-мм соединитель СУГА; варианты удаления газа являются конфигурациями линий, а не отдельными портами.",
+      "rule": "Использовать один логический узел agss_connector и взаимоисключающий выбор конфигурации."
+    }
+  ],
+  "learningObjectives": [
+    "Распознавать документированные узлы WATO EX-35 и точки их подключения.",
+    "Собирать дыхательный контур в последовательности, установленной руководством.",
+    "Правильно ориентировать датчик потока и датчик O2 и проверять их уплотнения.",
+    "Проверять взаимоблокировку испарителей и конфигурацию СУГА.",
+    "Завершать сборку предэксплуатационными тестами и блокировать эксплуатацию при FAIL."
+  ],
+  "prerequisites": [
+    "Допуск к работе с медицинской техникой в объёме, установленном организацией.",
+    "Доступ к актуальному руководству конкретной комплектации WATO EX-35.",
+    "Безопасный учебный стенд без пациента и разрешение ответственного специалиста.",
+    "Идентифицированные совместимые принадлежности, медицинские газы и электропитание."
+  ],
+  "safety": {
+    "disclaimer": "Сценарий является учебным интерфейсом и не заменяет руководство производителя, сервисную документацию, локальные регламенты и допуск специалиста. Он не является самостоятельным разрешением на клиническую эксплуатацию.",
+    "requiredConfirmations": [
+      "Модель и фактическая комплектация подтверждены как Mindray WATO EX-35.",
+      "Аппарат находится без пациента и приведён в безопасное для сборки состояние.",
+      "Все принадлежности совместимы, чисты, сухи и не повреждены.",
+      "Источники медицинских газов и электропитания идентифицированы по маркировке.",
+      "Для опциональных принадлежностей имеется документация их конкретной версии."
+    ],
+    "stopConditions": [
+      "Обнаружено повреждение, загрязнение, влага или отсутствующее уплотнение.",
+      "Соединение не совмещается или требует чрезмерного усилия.",
+      "Датчик потока ориентирован неверно либо его зажимные гайки не затягиваются.",
+      "Датчик O2 невозможно плотно установить рукой или его прокладка повреждена.",
+      "Одновременно включаются два испарителя.",
+      "Тип СУГА или больничной системы удаления газов не подтверждён.",
+      "Трубка пережата, перекручена, повреждена или попадает под подвижные части.",
+      "Предэксплуатационный тест, проверка APL или тест утечки/растяжимости завершились FAIL."
+    ],
+    "productionApproval": {
+      "required": true,
+      "roles": [
+        "сертифицированный сервисный специалист",
+        "ответственный за медицинскую технику",
+        "ответственный за клиническую эксплуатацию"
+      ]
+    }
+  },
+  "ui": {
+    "showProgress": true,
+    "allowPrevious": true,
+    "allowSkipOptional": true,
+    "requireExplicitConfirmation": true,
+    "showManualReferences": true,
+    "showSourcePriority": true,
+    "defaultCameraPreset": "front_three_quarter",
+    "highlight": { "effect": "outline_pulse", "color": "#18D1C3", "secondaryColor": "#FFB454", "hazardColor": "#E5484D" },
+    "labels": {
+      "next": "Далее",
+      "previous": "Назад",
+      "confirm": "Подтвердить",
+      "notApplicable": "Нет в комплектации",
+      "retry": "Проверить ещё раз",
+      "stop": "Остановить сценарий"
+    }
+  },
+  "completion": {
+    "requiredStepIds": [
+      "step-00-safety-and-configuration",
+      "step-01-breathing-circuit",
+      "step-02-gauge-and-water-cup",
+      "step-03-bag-console",
+      "step-04-bellows-assembly",
+      "step-05-flow-sensor",
+      "step-06-o2-sensor",
+      "step-07-absorber-canister",
+      "step-08-breathing-tubes-and-bag",
+      "step-13-medical-gas-supply",
+      "step-14-line-routing",
+      "step-16-electrical-configuration",
+      "step-17-preuse-tests",
+      "step-19-signoff"
+    ],
+    "optionalStepIds": [
+      "step-09-vaporizers",
+      "step-10-co2-module",
+      "step-11-ag-module",
+      "step-12-negative-pressure-aspirator",
+      "step-15-agss-installation",
+      "step-18-agss-inspection"
+    ],
+    "passRule": "all_required_steps_passed_all_configured_optional_steps_passed_and_no_open_stop_conditions",
+    "report": {
+      "format": "json",
+      "fields": [
+        "scenarioId",
+        "scenarioRevision",
+        "manualDocumentId",
+        "equipmentModel",
+        "equipmentConfiguration",
+        "equipmentSerialNumber",
+        "configurationSelections",
+        "engineerId",
+        "startedAt",
+        "completedAt",
+        "stepResults",
+        "warnings",
+        "photos",
+        "finalTestResult",
+        "signature"
+      ]
+    }
+  },
+  "assessment": {
+    "minimumScorePercent": 80,
+    "questions": [
+      {
+        "id": "q-01",
+        "type": "single_choice",
+        "prompt": "Как должен быть ориентирован датчик потока?",
+        "options": [
+          { "id": "a", "label": "Стрелка совпадает со стрелкой контура, маркированная сторона сверху, патрубки направлены вниз" },
+          { "id": "b", "label": "Ориентация не имеет значения" },
+          { "id": "c", "label": "Патрубки направлены вверх" }
+        ],
+        "correctOptionIds": ["a"]
+      },
+      {
+        "id": "q-02",
+        "type": "single_choice",
+        "prompt": "Сколько испарителей допускается включать одновременно?",
+        "options": [
+          { "id": "a", "label": "Только один" },
+          { "id": "b", "label": "Два, если они содержат разные анестетики" }
+        ],
+        "correctOptionIds": ["a"]
+      },
+      {
+        "id": "q-03",
+        "type": "single_choice",
+        "prompt": "Сколько соединителей СУГА документировано на аппарате?",
+        "options": [
+          { "id": "a", "label": "Один 30-мм соединитель; активный и пассивный варианты относятся к конфигурации линий" },
+          { "id": "b", "label": "Два отдельных порта — активный и пассивный" }
+        ],
+        "correctOptionIds": ["a"]
+      },
+      {
+        "id": "q-04",
+        "type": "single_choice",
+        "prompt": "Что делать при FAIL проверки утечки/растяжимости?",
+        "options": [
+          { "id": "a", "label": "Не использовать аппарат, проверить сильфон, трубки, канистру и уплотнения и привлечь обслуживающий персонал" },
+          { "id": "b", "label": "Продолжить после визуального осмотра" }
+        ],
+        "correctOptionIds": ["a"]
+      }
+    ]
+  },
+  "steps": [
+    {
+      "id": "step-00-safety-and-configuration",
+      "order": 0,
+      "kind": "mandatory",
+      "title": "Безопасность и выбор комплектации",
+      "source": { "startSec": 2, "endSec": 27, "chapter": "Введение" },
+      "sourceAuthority": "manual_primary_video_context",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "6.1", "pages": ["6-1"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "2.2", "pages": ["2-1", "2-11"] }
+      ],
+      "instruction": "Подтвердите модель, отсутствие пациента, безопасное состояние и фактическую комплектацию. Выберите только те опции, которые визуально идентифицированы и документированы.",
+      "expectedOutcome": "Аппарат и принадлежности идентифицированы; выбранная конфигурация сохранена в отчёте до начала сборки.",
+      "objects": ["wato_ex35_root", "front_display", "rear_connection_panel"],
+      "visual": {
+        "cameraPreset": "front_three_quarter",
+        "highlight": ["wato_ex35_root"],
+        "effect": "outline_pulse",
+        "annotations": [
+          { "object": "front_display", "label": "Подтвердите модель и безопасное состояние" },
+          { "object": "rear_connection_panel", "label": "Определите фактическую комплектацию" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-safe-state", "type": "confirm", "label": "Аппарат без пациента и подготовлен к безопасной сборке", "required": true },
+        { "id": "select-equipment-configuration", "type": "input_choice", "label": "Комплектация WATO EX-35", "required": true, "options": ["0619B-PA00228", "0619B-PA00229", "0619B-PA00231", "0619B-PA00232"] },
+        { "id": "select-drive-configuration", "type": "input_choice", "label": "Привод вентилятора", "required": true, "derivedFrom": "select-equipment-configuration", "options": ["integrated_compressor", "central_air"] },
+        { "id": "select-vaporizer-configuration", "type": "input_choice", "label": "Позиции испарителей", "required": true, "derivedFrom": "select-equipment-configuration", "options": ["none", "single", "dual_interlocked"] },
+        { "id": "select-gas-module-configuration", "type": "input_choice", "label": "Газоанализирующий модуль", "required": true, "derivedFrom": "select-equipment-configuration", "options": ["none", "co2", "ag", "ag_with_o2", "co2_and_ag"] },
+        { "id": "select-aspirator-configuration", "type": "input_choice", "label": "Аспиратор", "required": true, "derivedFrom": "select-equipment-configuration", "fixedByPolicy": true, "uiHidden": true, "options": ["none"] },
+        { "id": "select-agss-configuration", "type": "input_choice", "label": "СУГА", "required": true, "derivedFrom": "select-equipment-configuration", "fixedByPolicy": true, "uiHidden": true, "options": ["passive_requires_separate_manual"] },
+        { "id": "select-power-configuration", "type": "input_choice", "label": "Блок питания", "required": true, "derivedFrom": "select-equipment-configuration", "options": ["with_isolation_transformer", "without_isolation_transformer"] }
+      ],
+      "validation": {
+        "method": "configuration_gate",
+        "criteria": [
+          "Модель подтверждена как WATO EX-35.",
+          "Нет пациента и открытых условий остановки.",
+          "Каждая выбранная опция визуально подтверждена.",
+          "Для недокументированной опции предусмотрен отдельный утверждённый источник."
+        ],
+        "onFail": "block"
+      },
+      "warnings": ["Не переносите комплектацию из видеоролика на другой аппарат без проверки маркировки и руководства."],
+      "reporting": { "resultKey": "safetyAndConfiguration", "capture": ["confirmations", "choices", "warnings"] }
+    },
+    {
+      "id": "step-01-breathing-circuit",
+      "order": 1,
+      "kind": "mandatory",
+      "title": "Установка дыхательного контура",
+      "source": { "startSec": 28, "endSec": 83, "chapter": "Дыхательный контур" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.1.3", "pages": ["12-4", "12-5"] }],
+      "instruction": "Совместите отверстия направляющих штифтов дыхательного контура с направляющими адаптера. Прижмите контур к адаптеру без зазора и переведите клавишу блокировки в штатное положение.",
+      "expectedOutcome": "Дыхательный контур установлен без перекоса и зазора и надёжно зафиксирован на адаптере.",
+      "objects": ["breathing_circuit", "breathing_circuit_adapter", "breathing_circuit_lock"],
+      "visual": {
+        "cameraPreset": "breathing_circuit_mount_close",
+        "highlight": ["breathing_circuit_adapter", "breathing_circuit_lock"],
+        "effect": "assembly_path",
+        "annotations": [
+          { "object": "breathing_circuit_adapter", "label": "Совместите направляющие штифты" },
+          { "object": "breathing_circuit_lock", "label": "Проверьте положение блокировки" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-guide-alignment", "type": "confirm", "label": "Направляющие совмещены", "required": true },
+        { "id": "confirm-no-gap", "type": "confirm", "label": "Между контуром и адаптером нет зазора", "required": true },
+        { "id": "confirm-circuit-lock", "type": "confirm", "label": "Клавиша блокировки в штатном положении", "required": true }
+      ],
+      "validation": {
+        "method": "manual_checklist",
+        "criteria": ["Контур не перекошен.", "Зазор отсутствует.", "Фиксация выдерживает лёгкую ручную проверку без отсоединения."],
+        "onFail": "block"
+      },
+      "warnings": ["Ненадёжная фиксация может вызвать серьёзную утечку свежего газа и искажение измерения дыхательного объёма."],
+      "reporting": { "resultKey": "breathingCircuit", "capture": ["confirmation", "optionalPhoto"] }
+    },
+    {
+      "id": "step-02-gauge-and-water-cup",
+      "order": 2,
+      "kind": "mandatory",
+      "title": "Манометр воздуховода и стакан для сбора воды",
+      "source": { "startSec": 84, "endSec": 106, "chapter": "Манометр и сбор воды" },
+      "sourceAuthority": "manual_primary_video_context",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "13.3.2", "pages": ["13-18"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "13.3.11", "pages": ["13-21"] }
+      ],
+      "instruction": "Убедитесь, что манометр воздуховода и стакан для сбора воды чистые и полностью сухие. Вставьте манометр в штатное гнездо. Совместите стакан с резьбовым отверстием контура и затяните его против часовой стрелки, как указано в руководстве.",
+      "expectedOutcome": "Манометр и стакан для сбора воды установлены в предназначенные точки без перекоса и повреждений.",
+      "objects": ["airway_pressure_gauge", "water_collection_cup", "breathing_circuit"],
+      "visual": {
+        "cameraPreset": "breathing_circuit_components_close",
+        "highlight": ["airway_pressure_gauge", "water_collection_cup"],
+        "effect": "sequential_pulse",
+        "annotations": [
+          { "object": "airway_pressure_gauge", "label": "Манометр воздуховода" },
+          { "object": "water_collection_cup", "label": "Стакан для сбора воды — не влагоотделитель модуля" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-components-dry", "type": "confirm", "label": "Компоненты чистые и полностью сухие", "required": true },
+        { "id": "confirm-airway-gauge", "type": "confirm", "label": "Манометр установлен", "required": true },
+        { "id": "confirm-water-cup", "type": "confirm", "label": "Стакан совмещён и затянут без перекоса", "required": true }
+      ],
+      "validation": {
+        "method": "manual_checklist",
+        "criteria": ["Манометр полностью посажен.", "Резьба стакана не повреждена.", "Стакан затянут в указанном руководством направлении."],
+        "onFail": "block"
+      },
+      "warnings": ["Не путайте стакан дыхательного контура с влагоотделителем модуля CO2/АГ."],
+      "reporting": { "resultKey": "gaugeAndWaterCup", "capture": ["confirmation"] }
+    },
+    {
+      "id": "step-03-bag-console",
+      "order": 3,
+      "kind": "mandatory",
+      "title": "Установка консоли мешка",
+      "source": { "startSec": 143, "endSec": 176, "chapter": "Консоль мешка" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.1.4", "pages": ["12-5", "12-6"] }],
+      "instruction": "Совместите консоль мешка с соединителем на дыхательном контуре. Вставьте её без перекоса и затяните зажимную гайку по часовой стрелке.",
+      "expectedOutcome": "Консоль мешка полностью установлена и зафиксирована зажимной гайкой.",
+      "objects": ["bag_console", "bag_console_clamp_nut", "breathing_circuit"],
+      "visual": {
+        "cameraPreset": "bag_console_close",
+        "highlight": ["bag_console", "bag_console_clamp_nut"],
+        "effect": "assembly_path",
+        "annotations": [
+          { "object": "bag_console", "label": "Совместите с соединителем" },
+          { "object": "bag_console_clamp_nut", "label": "Затяните по часовой стрелке" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-bag-console-alignment", "type": "confirm", "label": "Консоль установлена без перекоса", "required": true },
+        { "id": "confirm-bag-console-nut", "type": "confirm", "label": "Зажимная гайка затянута", "required": true }
+      ],
+      "validation": { "method": "manual_checklist", "criteria": ["Соединитель полностью посажен.", "Консоль не имеет свободного перемещения."], "onFail": "retry" },
+      "warnings": ["Не перегружайте консоль мешка и не используйте её как опору."],
+      "reporting": { "resultKey": "bagConsole", "capture": ["confirmation"] }
+    },
+    {
+      "id": "step-04-bellows-assembly",
+      "order": 4,
+      "kind": "mandatory",
+      "title": "Установка сильфона и корпуса сильфона",
+      "source": { "startSec": 107, "endSec": 142, "chapter": "Сильфон и корпус сильфона" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.1.5", "pages": ["12-6", "12-7"] }],
+      "instruction": "Плотно прикрепите нижнее кольцо сильфона к основанию. Проверьте наличие уплотнителя. Совместите подпружиненные штифты корпуса с пазами, опустите корпус равномерно и поверните по часовой стрелке до упора; шкала должна смотреть на оператора.",
+      "expectedOutcome": "Сильфон плотно соединён с основанием, уплотнитель на месте, корпус зафиксирован до упора и ориентирован шкалой к оператору.",
+      "objects": ["bellows", "bellows_base", "bellows_seal", "bellows_housing"],
+      "visual": {
+        "cameraPreset": "bellows_close",
+        "highlight": ["bellows", "bellows_seal", "bellows_housing"],
+        "effect": "exploded_to_assembled",
+        "annotations": [
+          { "object": "bellows_seal", "label": "Уплотнитель должен быть на месте" },
+          { "object": "bellows_housing", "label": "Поверните до упора; шкала к оператору" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-bellows-ring", "type": "confirm", "label": "Нижнее кольцо сильфона плотно закреплено", "required": true },
+        { "id": "confirm-bellows-seal", "type": "confirm", "label": "Уплотнитель установлен и исправен", "required": true },
+        { "id": "confirm-bellows-housing", "type": "confirm", "label": "Корпус повёрнут до упора и ориентирован правильно", "required": true }
+      ],
+      "validation": { "method": "manual_checklist", "criteria": ["Сильфон не зажат и не перекручен.", "Корпус равномерно прижимает уплотнитель.", "Шкала видна оператору."], "onFail": "block" },
+      "warnings": ["Не устанавливайте корпус сильфона без уплотнителя."],
+      "reporting": { "resultKey": "bellowsAssembly", "capture": ["confirmation", "optionalPhoto"] }
+    },
+    {
+      "id": "step-05-flow-sensor",
+      "order": 5,
+      "kind": "mandatory",
+      "title": "Установка датчика потока",
+      "source": { "startSec": 84, "endSec": 142, "chapter": "Узлы дыхательного контура" },
+      "sourceAuthority": "manual_primary",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.1.6", "pages": ["12-8", "12-9"] }],
+      "instruction": "Совместите стрелку датчика потока со стрелкой дыхательного контура; маркированная сторона должна смотреть вверх. Вставьте датчик горизонтально, совместите линии вдоха и выдоха и затяните обе зажимные гайки по часовой стрелке. Патрубки дыхательных трубок направьте вниз.",
+      "expectedOutcome": "Датчик ориентирован правильно, обе гайки затянуты, патрубки вдоха и выдоха направлены вниз.",
+      "objects": ["flow_sensor", "inspiratory_connector", "expiratory_connector", "flow_sensor_clamp_nuts"],
+      "visual": {
+        "cameraPreset": "flow_sensor_close",
+        "highlight": ["flow_sensor", "flow_sensor_clamp_nuts", "inspiratory_connector", "expiratory_connector"],
+        "effect": "directional_assembly",
+        "annotations": [
+          { "object": "flow_sensor", "label": "Стрелки совпадают; маркировка сверху" },
+          { "object": "flow_sensor_clamp_nuts", "label": "Затяните обе гайки" },
+          { "object": "inspiratory_connector", "label": "Патрубки направлены вниз" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-flow-direction", "type": "confirm", "label": "Стрелки совпадают, маркированная сторона сверху", "required": true },
+        { "id": "confirm-flow-horizontal", "type": "confirm", "label": "Датчик вставлен горизонтально", "required": true },
+        { "id": "confirm-flow-clamps", "type": "confirm", "label": "Обе зажимные гайки затянуты", "required": true },
+        { "id": "confirm-ports-down", "type": "confirm", "label": "Патрубки вдоха и выдоха направлены вниз", "required": true }
+      ],
+      "validation": { "method": "manual_checklist", "criteria": ["Ориентация соответствует стрелкам.", "Датчик не повреждён.", "Обе гайки затянуты.", "Патрубки направлены вниз."], "onFail": "block" },
+      "warnings": ["Незатянутые гайки могут привести к неверным измерениям.", "Берегите датчик от удара при перемещении аппарата."],
+      "reporting": { "resultKey": "flowSensor", "capture": ["confirmation", "optionalPhoto"] }
+    },
+    {
+      "id": "step-06-o2-sensor",
+      "order": 6,
+      "kind": "mandatory",
+      "title": "Установка датчика O2",
+      "source": { "startSec": 177, "endSec": 253, "chapter": "Датчик O2" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.1.7", "pages": ["12-9", "12-11"] }],
+      "instruction": "Проверьте прокладку датчика O2. Совместите резьбу с обозначенным соединителем и плотно вкрутите датчик по часовой стрелке только рукой. Подключите кабель к датчику и к обозначенному разъёму на адаптере контура.",
+      "expectedOutcome": "Исправный датчик O2 плотно установлен рукой, его прокладка и оба подключения кабеля проверены.",
+      "objects": ["oxygen_sensor_o2", "oxygen_sensor_gasket", "oxygen_sensor_cable", "oxygen_sensor_adapter_port"],
+      "visual": {
+        "cameraPreset": "o2_sensor_close",
+        "highlight": ["oxygen_sensor_o2", "oxygen_sensor_gasket", "oxygen_sensor_cable"],
+        "effect": "sequential_pulse",
+        "annotations": [
+          { "object": "oxygen_sensor_gasket", "label": "Прокладка обязательна" },
+          { "object": "oxygen_sensor_o2", "label": "Затягивать только рукой" },
+          { "object": "oxygen_sensor_cable", "label": "Подключите оба конца кабеля" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-o2-gasket", "type": "confirm", "label": "Прокладка установлена и исправна", "required": true },
+        { "id": "confirm-o2-hand-tight", "type": "confirm", "label": "Датчик плотно затянут рукой без инструмента", "required": true },
+        { "id": "confirm-o2-cable", "type": "confirm", "label": "Оба конца кабеля подключены к обозначенным разъёмам", "required": true }
+      ],
+      "validation": { "method": "manual_checklist", "criteria": ["Прокладка цела.", "Датчик установлен без инструмента.", "Кабель подключён с двух сторон."], "onFail": "block" },
+      "warnings": ["При отсутствующей или повреждённой прокладке замените датчик O2.", "Гаечный ключ или другой инструмент может повредить датчик."],
+      "reporting": { "resultKey": "oxygenSensor", "capture": ["confirmation"] }
+    },
+    {
+      "id": "step-07-absorber-canister",
+      "order": 7,
+      "kind": "mandatory",
+      "title": "Установка канистры с поглотителем CO2",
+      "source": { "startSec": 254, "endSec": 289, "chapter": "Канистра поглотителя CO2" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.1.8", "pages": ["12-11", "12-15"] }],
+      "instruction": "Определите тип канистры. Проверьте цвет поглотителя, горловину, опору и прокладку; удалите частицы поглотителя. Совместите канистру с монтажным пазом, втолкните её, поверните ручку по часовой стрелке на 90° и отпустите для фиксации.",
+      "expectedOutcome": "Совместимая канистра установлена и зафиксирована, уплотнение чистое и целое; проверка утечки назначена обязательным последующим шагом.",
+      "objects": ["absorber_canister", "absorber_canister_seal", "absorber_canister_mount", "absorber_canister_lock"],
+      "visual": {
+        "cameraPreset": "absorber_close",
+        "highlight": ["absorber_canister", "absorber_canister_seal", "absorber_canister_lock"],
+        "effect": "assembly_path",
+        "annotations": [
+          { "object": "absorber_canister_seal", "label": "Удалите частицы с горловины и уплотнения" },
+          { "object": "absorber_canister_lock", "label": "Поверните на 90° и отпустите" }
+        ]
+      },
+      "actions": [
+        { "id": "select-canister-type", "type": "input_choice", "label": "Тип канистры", "required": true, "options": ["reusable", "sealed_disposable"] },
+        { "id": "confirm-absorbent-condition", "type": "confirm", "label": "Состояние поглотителя проверено", "required": true },
+        { "id": "confirm-canister-seal", "type": "confirm", "label": "Горловина, опора и прокладка чистые и целые", "required": true },
+        { "id": "confirm-canister-lock", "type": "confirm", "label": "Канистра зафиксирована поворотной ручкой", "required": true }
+      ],
+      "validation": { "method": "manual_checklist", "criteria": ["Тип канистры совместим.", "Поглотитель пригоден.", "Частицы на уплотнении отсутствуют.", "Фиксатор опущен в штатное положение."], "onFail": "block" },
+      "warnings": ["Поглотитель является едким веществом.", "Одноразовую герметичную канистру нельзя открывать и пополнять.", "После установки обязательна проверка утечки."],
+      "reporting": { "resultKey": "absorberCanister", "capture": ["choice", "confirmation", "optionalPhoto"] }
+    },
+    {
+      "id": "step-08-breathing-tubes-and-bag",
+      "order": 8,
+      "kind": "mandatory",
+      "title": "Дыхательные трубки, фильтр и мешок ручной вентиляции",
+      "source": { "startSec": 749, "endSec": 812, "chapter": "Прокладка дыхательных трубок" },
+      "sourceAuthority": "manual_primary_video_context",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.2", "pages": ["12-18", "12-19"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.3", "pages": ["12-19"] }
+      ],
+      "instruction": "Удерживая трубки за соединители, подключите их к патрубкам вдоха и выдоха. Подсоедините новый совместимый фильтр к Y-образному тройнику и мешок ручной вентиляции к соответствующему патрубку консоли.",
+      "expectedOutcome": "Трубки подключены к правильным патрубкам, фильтр установлен на Y-тройник, мешок закреплён на консоли без перегибов.",
+      "objects": ["breathing_tubes", "inspiratory_connector", "expiratory_connector", "y_piece", "breathing_filter", "manual_ventilation_bag"],
+      "visual": {
+        "cameraPreset": "breathing_tubes_close",
+        "highlight": ["breathing_tubes", "y_piece", "breathing_filter", "manual_ventilation_bag"],
+        "effect": "connection_path",
+        "annotations": [
+          { "object": "breathing_tubes", "label": "Подключайте, удерживая за соединители" },
+          { "object": "breathing_filter", "label": "Не используйте фильтр повторно" },
+          { "object": "manual_ventilation_bag", "label": "Патрубок ручной вентиляции" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-inspiratory-expiratory-tubes", "type": "confirm", "label": "Трубки подключены к правильным патрубкам", "required": true },
+        { "id": "confirm-new-filter", "type": "confirm", "label": "Установлен новый совместимый фильтр", "required": true },
+        { "id": "confirm-manual-bag", "type": "confirm", "label": "Мешок ручной вентиляции подключён", "required": true }
+      ],
+      "validation": { "method": "manual_checklist", "criteria": ["Соединения полностью посажены.", "Трубки не перекручены.", "Фильтр не использовался повторно.", "Мешок не повреждён."], "onFail": "block" },
+      "warnings": ["Не тяните дыхательные трубки за гофрированную часть."],
+      "reporting": { "resultKey": "breathingTubesAndBag", "capture": ["confirmation"] }
+    },
+    {
+      "id": "step-09-vaporizers",
+      "order": 9,
+      "kind": "optional",
+      "title": "Установка испарителя и проверка взаимоблокировки",
+      "source": { "startSec": 290, "endSec": 381, "chapter": "Испарители" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.4", "pages": ["12-19", "12-23"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "B.9", "pages": ["B-12"] }
+      ],
+      "instruction": "Если испаритель предусмотрен комплектацией, установите совместимый Selectatec-испаритель на коллектор, нажмите и поверните фиксирующую рукоятку по часовой стрелке. Проверьте горизонтальность и попытайтесь приподнять испаритель строго вверх. Для двух позиций проверьте все сочетания взаимоблокировки: одновременно должен включаться только один испаритель.",
+      "expectedOutcome": "Один или два документированных испарителя надёжно закреплены; взаимоблокировка исключает одновременное включение двух устройств.",
+      "objects": ["vaporizer_mount", "vaporizer_left", "vaporizer_right", "vaporizer_interlock"],
+      "visual": {
+        "cameraPreset": "vaporizer_close",
+        "highlight": ["vaporizer_mount", "vaporizer_left", "vaporizer_right", "vaporizer_interlock"],
+        "effect": "conditional_highlight",
+        "annotations": [
+          { "object": "vaporizer_mount", "label": "Конфигурация: одна или две позиции" },
+          { "object": "vaporizer_interlock", "label": "Одновременно включается только один" }
+        ]
+      },
+      "actions": [
+        { "id": "select-installed-vaporizers", "type": "input_choice", "label": "Установленная конфигурация", "required": true, "options": ["not_applicable", "single", "dual"] },
+        { "id": "confirm-vaporizer-lock", "type": "confirm_or_not_applicable", "label": "Испаритель закреплён или отсутствует в комплектации", "required": true },
+        { "id": "record-interlock-test", "type": "pass_fail", "label": "Фиксация и, для двух позиций, взаимоблокировка", "required": true }
+      ],
+      "validation": { "method": "conditional_device_test", "criteria": ["Испаритель совместим.", "Верхняя поверхность горизонтальна.", "Испаритель не поднимается с коллектора.", "Одновременное включение двух невозможно."], "onFail": "block" },
+      "warnings": ["Запрещается использовать одновременно более одного испарителя.", "Для испарителя десфлюрана применяйте отдельные требования его руководства и стационарное питание."],
+      "reporting": { "resultKey": "vaporizers", "capture": ["choice", "confirmation", "testResult", "optionalPhoto"] }
+    },
+    {
+      "id": "step-10-co2-module",
+      "order": 10,
+      "kind": "optional",
+      "title": "Установка модуля CO2",
+      "source": { "startSec": 382, "endSec": 473, "chapter": "Газоанализирующий модуль" },
+      "sourceAuthority": "manual_primary_video_context",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.10", "pages": ["12-38", "12-39"] }],
+      "instruction": "При наличии модуля CO2 закрепите винт платы адаптера M4×12 в гнезде верхней левой части аппарата. Установите плату адаптера, модуль и зажим провода комбинированным винтом M4×12; затем установите совместимый влагоотделитель.",
+      "expectedOutcome": "Модуль CO2 закреплён через документированную плату адаптера; провод и влагоотделитель установлены.",
+      "objects": ["co2_module", "module_adapter_plate", "module_cable_clamp", "module_water_separator"],
+      "visual": {
+        "cameraPreset": "gas_module_mount_close",
+        "highlight": ["module_adapter_plate", "co2_module", "module_water_separator"],
+        "effect": "assembly_path",
+        "annotations": [
+          { "object": "module_adapter_plate", "label": "Верхняя левая часть; винты M4×12" },
+          { "object": "module_water_separator", "label": "Совместимый влагоотделитель" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-co2-module", "type": "confirm_or_not_applicable", "label": "Модуль CO2 установлен или отсутствует", "required": true },
+        { "id": "confirm-co2-water-separator", "type": "confirm_or_not_applicable", "label": "Влагоотделитель установлен или шаг неприменим", "required": true }
+      ],
+      "validation": { "method": "conditional_checklist", "criteria": ["Использована плата адаптера.", "Оба крепления M4×12 установлены.", "Провод зафиксирован.", "Влагоотделитель пригоден."], "onFail": "block" },
+      "warnings": ["Не моделируйте модуль как вставляемый в универсальный слот: руководство показывает отдельное крепление сверху слева."],
+      "reporting": { "resultKey": "co2Module", "capture": ["applicability", "confirmation"] }
+    },
+    {
+      "id": "step-11-ag-module",
+      "order": 11,
+      "kind": "optional",
+      "title": "Установка модуля АГ и варианта O2",
+      "source": { "startSec": 382, "endSec": 473, "chapter": "Газоанализирующий модуль" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.11", "pages": ["12-39"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "9.1-9.5", "pages": ["9-1", "9-5"] }
+      ],
+      "instruction": "При наличии модуля АГ установите его через ту же плату адаптера, что описана для CO2, и закрепите влагоотделитель. Определите, объединён ли модуль с O2. Подсоедините газовыпускную трубку от выхода модуля к металлической возвратной пластине аппарата; пробоотборную линию подключайте только в соответствии с руководством модуля.",
+      "expectedOutcome": "Документированный модуль АГ закреплён, его вариант O2 записан, влагоотделитель и выпускная линия подключены к правильным точкам.",
+      "objects": ["ag_module", "module_adapter_plate", "module_water_separator", "gas_sample_line", "gas_sample_exhaust_line", "sample_gas_return_plate"],
+      "visual": {
+        "cameraPreset": "gas_module_mount_close",
+        "highlight": ["ag_module", "module_water_separator", "gas_sample_exhaust_line", "sample_gas_return_plate"],
+        "effect": "connection_path",
+        "annotations": [
+          { "object": "ag_module", "label": "АГ или АГ, объединённый с O2" },
+          { "object": "gas_sample_exhaust_line", "label": "Выход пробы газа" },
+          { "object": "sample_gas_return_plate", "label": "Металлическая возвратная пластина" }
+        ]
+      },
+      "actions": [
+        { "id": "select-ag-module-variant", "type": "input_choice", "label": "Вариант модуля АГ", "required": true, "options": ["not_applicable", "ag_without_o2", "ag_with_o2"] },
+        { "id": "confirm-ag-module", "type": "confirm_or_not_applicable", "label": "Модуль АГ установлен или отсутствует", "required": true },
+        { "id": "confirm-ag-exhaust-line", "type": "confirm_or_not_applicable", "label": "Газовыпускная трубка подключена или шаг неприменим", "required": true }
+      ],
+      "validation": { "method": "conditional_checklist", "criteria": ["Вариант O2 идентифицирован.", "Модуль закреплён через адаптер.", "Выпускная линия подключена к металлической пластине.", "Линии не пережаты."], "onFail": "block" },
+      "warnings": ["BIS и NMT не входят в этот шаг и требуют отдельной документации."],
+      "reporting": { "resultKey": "agModule", "capture": ["choice", "applicability", "confirmation"] }
+    },
+    {
+      "id": "step-12-negative-pressure-aspirator",
+      "order": 12,
+      "kind": "optional",
+      "title": "Установка аспиратора с отрицательным давлением",
+      "source": { "startSec": 593, "endSec": 725, "chapter": "Аспиратор с отрицательным давлением" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.12", "pages": ["12-40", "12-43"] }],
+      "instruction": "При наличии аспиратора закрепите держатель бутылки винтами, установите бутылку, фильтр и трубки по маркировке. Наденьте регулятор на предназначенную ручку и затяните гайку. Подключите защиту от переполнения и трубку вытесняющего газа к Т-образному соединителю аппарата.",
+      "expectedOutcome": "Аспиратор закреплён, фильтр, бутылка, защита от переполнения и линии соединены по документированной схеме.",
+      "objects": ["aspirator_regulator", "aspirator_bottle", "aspirator_holder", "aspirator_filter", "aspirator_overflow_protection", "aspirator_tubing", "aspirator_propellant_t_connector"],
+      "visual": {
+        "cameraPreset": "aspirator_close",
+        "highlight": ["aspirator_holder", "aspirator_bottle", "aspirator_filter", "aspirator_overflow_protection", "aspirator_propellant_t_connector"],
+        "effect": "exploded_to_assembled",
+        "annotations": [
+          { "object": "aspirator_filter", "label": "Фильтр" },
+          { "object": "aspirator_overflow_protection", "label": "Защита от переполнения" },
+          { "object": "aspirator_propellant_t_connector", "label": "Т-образный соединитель вытесняющего газа" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-aspirator-mount", "type": "confirm_or_not_applicable", "label": "Аспиратор установлен или отсутствует", "required": true },
+        { "id": "confirm-aspirator-lines", "type": "confirm_or_not_applicable", "label": "Фильтр, защита от переполнения и линии подключены или шаг неприменим", "required": true },
+        { "id": "record-aspirator-test", "type": "pass_fail", "label": "Функциональная проверка аспиратора", "required": true }
+      ],
+      "validation": { "method": "conditional_device_test", "criteria": ["Бутылка устойчива.", "Защита от переполнения подключена.", "Газовая трубка затянута на Т-соединителе.", "Функциональная проверка пройдена."], "onFail": "block" },
+      "warnings": ["Когда аспиратор не используется, держите его переключатель в положении OFF."],
+      "reporting": { "resultKey": "negativePressureAspirator", "capture": ["applicability", "confirmation", "testResult"] }
+    },
+    {
+      "id": "step-13-medical-gas-supply",
+      "order": 13,
+      "kind": "mandatory",
+      "title": "Подключение медицинских газов",
+      "source": { "startSec": 726, "endSec": 748, "chapter": "Подключение медицинского воздуха" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.7", "pages": ["12-32", "12-33"] }],
+      "instruction": "Идентифицируйте маркированные входы O2, N2O и AIR фактической комплектации. Для каждой используемой линии проверьте прокладку соединителя, совместите её с соответствующим входом, вставьте и затяните гайку. Используйте только медицинскую газовую сеть или документированный источник.",
+      "expectedOutcome": "Все требуемые газовые линии подключены к правильным маркированным входам; прокладки исправны и гайки затянуты.",
+      "objects": ["medical_gas_o2_inlet", "medical_gas_n2o_inlet", "medical_gas_air_inlet", "medical_gas_hoses", "rear_connection_panel"],
+      "visual": {
+        "cameraPreset": "rear_gas_panel_close",
+        "highlight": ["medical_gas_o2_inlet", "medical_gas_n2o_inlet", "medical_gas_air_inlet"],
+        "effect": "connection_path",
+        "annotations": [
+          { "object": "medical_gas_o2_inlet", "label": "O2" },
+          { "object": "medical_gas_n2o_inlet", "label": "N2O" },
+          { "object": "medical_gas_air_inlet", "label": "AIR" }
+        ]
+      },
+      "actions": [
+        { "id": "select-connected-gases", "type": "multi_choice", "label": "Подключённые газы", "required": true, "options": ["o2", "n2o", "air"] },
+        { "id": "confirm-gas-seals", "type": "confirm", "label": "Прокладки используемых соединителей исправны", "required": true },
+        { "id": "confirm-gas-connections", "type": "confirm", "label": "Линии подключены по маркировке и гайки затянуты", "required": true },
+        { "id": "confirm-backup-supply", "type": "confirm", "label": "Резервная подача предусмотрена по локальному регламенту", "required": true }
+      ],
+      "validation": { "method": "manual_checklist", "criteria": ["Используется медицинская газовая сеть.", "Газовые линии не перепутаны.", "Прокладки целы.", "Соединители зафиксированы."], "onFail": "block" },
+      "warnings": ["Газовые сети немедицинского стандарта могут содержать воду, масло или примеси.", "Перед отсоединением стравите остаточное давление.", "Внешняя тележка компрессора требует отдельной документации; встроенный компрессор этим руководством не подтверждён."],
+      "reporting": { "resultKey": "medicalGasSupply", "capture": ["choices", "confirmation"] }
+    },
+    {
+      "id": "step-14-line-routing",
+      "order": 14,
+      "kind": "mandatory",
+      "title": "Контроль прокладки трубок, шлангов и кабелей",
+      "source": { "startSec": 749, "endSec": 812, "chapter": "Прокладка трубок" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "9.4", "pages": ["9-3", "9-4"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.2", "pages": ["12-18", "12-19"] }
+      ],
+      "instruction": "Проследите каждую дыхательную, газовую, пробоотборную, выпускную и аспирационную линию от начала до конца. Исключите перегибы, натяжение, опасные петли, контакт с колёсами и подвижными частями. Адаптер пробоотборной линии ориентируйте трубкой вверх.",
+      "expectedOutcome": "Все линии однозначно прослеживаются, не пережаты и не мешают работе или перемещению аппарата.",
+      "objects": ["breathing_tubes", "medical_gas_hoses", "gas_sample_line", "gas_sample_exhaust_line", "aspirator_tubing", "power_cables"],
+      "visual": {
+        "cameraPreset": "rear_three_quarter",
+        "highlight": ["breathing_tubes", "medical_gas_hoses", "gas_sample_line", "gas_sample_exhaust_line", "aspirator_tubing", "power_cables"],
+        "effect": "route_animation",
+        "annotations": [
+          { "object": "gas_sample_line", "label": "Пробоотборная линия без перегибов; адаптер вверх" },
+          { "object": "medical_gas_hoses", "label": "Не допускать натяжения и контакта с колёсами" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-no-kinks", "type": "confirm", "label": "Перегибов, пережатия и перекручивания нет", "required": true },
+        { "id": "confirm-no-moving-contact", "type": "confirm", "label": "Линии не касаются колёс и подвижных частей", "required": true },
+        { "id": "confirm-sample-line-orientation", "type": "confirm_or_not_applicable", "label": "Пробоотборная линия ориентирована правильно или отсутствует", "required": true }
+      ],
+      "validation": { "method": "route_inspection", "criteria": ["Каждая линия прослежена.", "Опасные петли отсутствуют.", "Запас длины достаточен.", "Пробоотборный адаптер ориентирован вверх при наличии."], "onFail": "retry" },
+      "warnings": ["Не закрепляйте линии способом, затрудняющим аварийное отсоединение или обслуживание."],
+      "reporting": { "resultKey": "lineRouting", "capture": ["confirmation", "optionalPhoto"] }
+    },
+    {
+      "id": "step-15-agss-installation",
+      "order": 15,
+      "kind": "optional",
+      "title": "Установка активной системы СУГА",
+      "source": { "startSec": 813, "endSec": 876, "chapter": "Удаление анестезирующих газов" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.8", "pages": ["12-34"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.9.2", "pages": ["12-36"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.9.3", "pages": ["12-37"] }
+      ],
+      "instruction": "Для документированной активной СУГА установите держатель на нижнюю левую декоративную панель винтами M4, навесьте блок СУГА на держатель, соедините его газовпускным шлангом с единственным 30-мм разъёмом СУГА аппарата и трубкой активного отсоса — с больничной системой удаления газов. Не закрывайте отверстие компенсации давления.",
+      "expectedOutcome": "Активная СУГА установлена на документированный держатель и подключена через один разъём аппарата; тип потока больничной системы подтверждён.",
+      "objects": ["agss_connector", "agss_holder", "agss_transfer_unit", "agss_gas_inlet_hose", "agss_active_extraction_tube", "agss_pressure_compensation_opening"],
+      "visual": {
+        "cameraPreset": "agss_installation_close",
+        "highlight": ["agss_holder", "agss_transfer_unit", "agss_connector", "agss_active_extraction_tube"],
+        "effect": "assembly_path",
+        "annotations": [
+          { "object": "agss_holder", "label": "Нижняя левая декоративная панель; винты M4" },
+          { "object": "agss_connector", "label": "Единственный 30-мм разъём СУГА" },
+          { "object": "agss_pressure_compensation_opening", "label": "Не закрывать" }
+        ]
+      },
+      "actions": [
+        { "id": "select-active-agss-flow", "type": "input_choice", "label": "Активная конфигурация СУГА", "required": true, "options": ["not_applicable", "low_flow_25_50_l_min", "high_flow_75_105_l_min"] },
+        { "id": "confirm-agss-mount", "type": "confirm_or_not_applicable", "label": "Держатель и блок СУГА установлены или отсутствуют", "required": true },
+        { "id": "confirm-agss-single-connector", "type": "confirm_or_not_applicable", "label": "Газовпускной шланг подключён к единственному разъёму или шаг неприменим", "required": true },
+        { "id": "confirm-agss-hospital-line", "type": "confirm_or_not_applicable", "label": "Активный отсос подключён к совместимой больничной системе или шаг неприменим", "required": true }
+      ],
+      "validation": { "method": "conditional_checklist", "criteria": ["Нет вымышленного отдельного пассивного порта.", "Держатель закреплён винтами M4.", "Отверстие компенсации давления открыто.", "Диапазон потока больничной системы соответствует выбранной конфигурации."], "onFail": "block" },
+      "warnings": ["Если аппарат не оборудован активной СУГА, не подключайте его разъём к больничной активной системе.", "Пассивная линия упоминается только как принадлежность и требует отдельной утверждённой схемы."],
+      "reporting": { "resultKey": "agssInstallation", "capture": ["choice", "applicability", "confirmation", "optionalPhoto"] }
+    },
+    {
+      "id": "step-16-electrical-configuration",
+      "order": 16,
+      "kind": "mandatory",
+      "title": "Проверка электрической конфигурации",
+      "source": { "startSec": 877, "endSec": 888, "chapter": "Электрические подключения" },
+      "sourceAuthority": "manual_and_video",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "2.2.2", "pages": ["2-7", "2-11"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "12.6", "pages": ["12-32"] }
+      ],
+      "instruction": "Определите вариант блока питания — с развязывающим трансформатором или без него — по задней панели. Подключайте аппарат к сети требуемых параметров. К дополнительным выходам подключайте только разрешённое оборудование с подтверждёнными током, напряжением и соответствием медицинским стандартам.",
+      "expectedOutcome": "Вариант питания правильно идентифицирован, кабели зафиксированы, нагрузка выходов подтверждена и несанкционированные подключения отсутствуют.",
+      "objects": ["power_panel", "mains_inlet", "auxiliary_power_outlets", "isolation_transformer_variant", "equipotential_terminal"],
+      "visual": {
+        "cameraPreset": "rear_power_panel_close",
+        "highlight": ["power_panel", "mains_inlet", "auxiliary_power_outlets", "isolation_transformer_variant"],
+        "effect": "configuration_compare",
+        "annotations": [
+          { "object": "isolation_transformer_variant", "label": "Определите вариант: с трансформатором или без" },
+          { "object": "auxiliary_power_outlets", "label": "Только разрешённая нагрузка" }
+        ]
+      },
+      "actions": [
+        { "id": "select-power-variant", "type": "input_choice", "label": "Вариант блока питания", "required": true, "options": ["with_isolation_transformer", "without_isolation_transformer"] },
+        { "id": "confirm-mains-rating", "type": "confirm", "label": "Параметры сети соответствуют маркировке", "required": true },
+        { "id": "confirm-auxiliary-load", "type": "confirm", "label": "Нагрузка дополнительных выходов проверена", "required": true },
+        { "id": "confirm-authorized-equipment", "type": "confirm", "label": "Несанкционированные подключения отсутствуют", "required": true }
+      ],
+      "validation": { "method": "documented_confirmation", "criteria": ["Вариант блока питания определён по аппарату.", "Сеть соответствует требованиям.", "Ток и напряжение нагрузок подтверждены.", "Кабели защищены от выдёргивания."], "onFail": "block" },
+      "warnings": ["Не создавайте универсальный отдельный объект «гальваническая развязка»: руководство показывает две конфигурации блока питания.", "Несанкционированное оборудование может увеличить ток утечки и создать угрозу пациенту или оператору."],
+      "reporting": { "resultKey": "electricalConfiguration", "capture": ["choice", "confirmation"] }
+    },
+    {
+      "id": "step-17-preuse-tests",
+      "order": 17,
+      "kind": "mandatory",
+      "title": "Предэксплуатационная проверка и тест утечки/растяжимости",
+      "source": { "startSec": 945, "endSec": 953, "chapter": "Предэксплуатационные тесты" },
+      "sourceAuthority": "manual_primary_video_context",
+      "manualRefs": [
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "6.1", "pages": ["6-1"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "6.8.3", "pages": ["6-10", "6-12"] },
+        { "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "6.8.4", "pages": ["6-12", "6-13"] }
+      ],
+      "instruction": "Переведите аппарат в требуемое руководством состояние и запустите проверку утечки/растяжимости, следуя подсказкам экрана. Затем выполните проверку клапана APL. Запишите фактический результат каждого теста; визуальная оценка не заменяет тест аппарата.",
+      "expectedOutcome": "Проверка утечки/растяжимости и проверка APL завершены PASS, открытых предупреждений аппарата нет.",
+      "objects": ["front_display", "preuse_test_control", "breathing_circuit", "apl_valve", "manual_ventilation_bag"],
+      "visual": {
+        "cameraPreset": "front_display_close",
+        "highlight": ["front_display", "preuse_test_control", "apl_valve"],
+        "effect": "status_focus",
+        "annotations": [
+          { "object": "front_display", "label": "Следуйте подсказкам аппарата" },
+          { "object": "breathing_circuit", "label": "При FAIL проверьте сильфон, трубки, канистру и уплотнения" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-preuse-setup", "type": "confirm", "label": "Аппарат подготовлен к тестам по руководству", "required": true },
+        { "id": "record-leak-compliance-test", "type": "pass_fail", "label": "Утечка/растяжимость", "required": true },
+        { "id": "record-apl-test", "type": "pass_fail", "label": "Проверка клапана APL", "required": true },
+        { "id": "record-device-message", "type": "input_text_optional", "label": "Код или текст сообщения аппарата", "required": false }
+      ],
+      "validation": { "method": "device_test_result", "criteria": ["Оба теста завершены.", "Результат утечки/растяжимости — PASS.", "Результат APL — PASS.", "Открытых тревог нет."], "onFail": "block_and_create_service_case" },
+      "warnings": ["При FAIL аппарат использовать запрещается.", "Проверьте сильфон, дыхательные трубки, канистру поглотителя, соединители и уплотнения; при неустранённой утечке обратитесь к обслуживающему персоналу."],
+      "reporting": { "resultKey": "preuseTests", "capture": ["testResult", "errorText", "optionalPhoto"] }
+    },
+    {
+      "id": "step-18-agss-inspection",
+      "order": 18,
+      "kind": "optional",
+      "title": "Функциональный осмотр СУГА",
+      "source": { "startSec": 813, "endSec": 876, "chapter": "Удаление анестезирующих газов" },
+      "sourceAuthority": "manual_primary_video_context",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "6.11", "pages": ["6-17"] }],
+      "instruction": "При установленной активной СУГА включите больничную систему удаления отработанных газов и убедитесь, что поплавок свободно поднимается выше отметки MIN. Не закрывайте отверстие компенсации давления.",
+      "expectedOutcome": "Поплавок активной СУГА свободно движется и при включённом отсосе находится выше MIN; отверстие компенсации давления открыто.",
+      "objects": ["agss_transfer_unit", "agss_float", "agss_min_mark", "agss_pressure_compensation_opening"],
+      "visual": {
+        "cameraPreset": "agss_float_close",
+        "highlight": ["agss_float", "agss_min_mark", "agss_pressure_compensation_opening"],
+        "effect": "status_focus",
+        "annotations": [
+          { "object": "agss_float", "label": "Должен подняться выше MIN" },
+          { "object": "agss_pressure_compensation_opening", "label": "Не закрывать при проверке" }
+        ]
+      },
+      "actions": [
+        { "id": "confirm-agss-applicability", "type": "confirm_or_not_applicable", "label": "Активная СУГА установлена или шаг неприменим", "required": true },
+        { "id": "record-agss-float-test", "type": "pass_fail", "label": "Поплавок выше MIN", "required": true }
+      ],
+      "validation": { "method": "conditional_device_test", "criteria": ["Поплавок движется свободно.", "При активном отсосе поплавок выше MIN.", "Фильтр не засорён.", "Отверстие компенсации давления открыто."], "onFail": "block" },
+      "warnings": ["Если поплавок не поднимается, проверьте его подвижность, фильтр и работу больничной системы удаления газов."],
+      "reporting": { "resultKey": "agssInspection", "capture": ["applicability", "testResult"] }
+    },
+    {
+      "id": "step-19-signoff",
+      "order": 19,
+      "kind": "mandatory",
+      "title": "Завершение и формирование отчёта",
+      "source": { "startSec": 954, "endSec": 981, "chapter": "Заключение" },
+      "sourceAuthority": "manual_primary_video_context",
+      "manualRefs": [{ "documentId": "mindray-wato-ex35-operation-manual-ru-2013", "section": "6.1", "pages": ["6-1"] }],
+      "instruction": "Проверьте результаты всех обязательных и применимых опциональных шагов. Подтвердите отсутствие открытых предупреждений, зафиксируйте серийный номер, исполнителя и подпись. Перед каждым пациентом выполните проверки, предусмотренные руководством и локальным регламентом.",
+      "expectedOutcome": "Отчёт содержит конфигурацию и результаты тестов; успешное завершение допускается только при PASS обязательных проверок и отсутствии открытых условий остановки.",
+      "objects": ["wato_ex35_root", "front_display"],
+      "visual": {
+        "cameraPreset": "front_three_quarter",
+        "highlight": ["wato_ex35_root", "front_display"],
+        "effect": "completion_state",
+        "annotations": [{ "object": "front_display", "label": "Все обязательные тесты — PASS" }]
+      },
+      "actions": [
+        { "id": "enter-equipment-serial", "type": "input_text", "label": "Серийный номер аппарата", "required": true },
+        { "id": "confirm-required-checks", "type": "confirm", "label": "Все обязательные и применимые проверки завершены PASS", "required": true },
+        { "id": "confirm-no-open-warnings", "type": "confirm", "label": "Открытых предупреждений и условий остановки нет", "required": true },
+        { "id": "engineer-signature", "type": "signature", "label": "Подпись исполнителя", "required": true }
+      ],
+      "validation": { "method": "completion_gate", "criteria": ["Все requiredStepIds имеют PASS.", "Применимые опциональные шаги имеют PASS.", "Условия остановки отсутствуют.", "Серийный номер и подпись сохранены."], "onFail": "block" },
+      "warnings": ["Завершение учебного сценария само по себе не является разрешением на клиническую эксплуатацию."],
+      "reporting": { "resultKey": "signoff", "capture": ["textInput", "confirmation", "signature"] }
+    }
+  ]
+}
