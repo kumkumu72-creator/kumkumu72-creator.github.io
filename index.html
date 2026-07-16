@@ -627,115 +627,6 @@
       background: transparent;
       transition: opacity .28s ease, visibility .28s ease;
     }
-    photo-360-viewer {
-      position: absolute;
-      z-index: 3;
-      inset: 0;
-      display: block;
-      width: 100%;
-      height: 620px;
-      overflow: hidden;
-      background: #fff;
-      cursor: ew-resize;
-      outline: none;
-      touch-action: pan-y;
-      transition: opacity .28s ease, visibility .28s ease;
-    }
-    photo-360-viewer:focus-visible {
-      outline: 3px solid rgba(185, 243, 75, .82);
-      outline-offset: -6px;
-    }
-    photo-360-viewer.is-dragging { cursor: grabbing; }
-    photo-360-viewer img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-    photo-360-viewer::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cyan) 0 var(--photo360-progress, 0%), rgba(53, 217, 255, .14) var(--photo360-progress, 0%) 100%);
-      pointer-events: none;
-    }
-    .photo360-hint,
-    .photo360-angle {
-      position: absolute;
-      z-index: 2;
-      border: 1px solid rgba(53, 217, 255, .24);
-      background: rgba(5, 16, 31, .84);
-      color: #d7e5f5;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, .18);
-      backdrop-filter: blur(12px);
-      pointer-events: none;
-    }
-    .photo360-hint {
-      bottom: 82px;
-      left: 50%;
-      padding: 8px 12px;
-      border-radius: 999px;
-      transform: translateX(-50%);
-      font-size: 12px;
-      white-space: nowrap;
-    }
-    .photo360-angle {
-      top: 116px;
-      right: 22px;
-      min-width: 58px;
-      padding: 7px 10px;
-      border-radius: 10px;
-      color: var(--cyan);
-      font-size: 12px;
-      font-weight: 750;
-      text-align: center;
-    }
-    .model-stage[data-mode="photo"] model-viewer,
-    .model-stage[data-mode="geometry"] photo-360-viewer {
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-    }
-    .model-stage[data-mode="photo"] .model-active-marker,
-    .model-stage[data-mode="photo"] .drawer-controls { display: none; }
-    .model-mode-switch {
-      position: absolute;
-      z-index: 8;
-      top: 66px;
-      left: 50%;
-      display: flex;
-      gap: 4px;
-      padding: 4px;
-      border: 1px solid rgba(53, 217, 255, .24);
-      border-radius: 13px;
-      background: rgba(5, 16, 31, .88);
-      box-shadow: 0 10px 34px rgba(0, 0, 0, .22);
-      transform: translateX(-50%);
-      backdrop-filter: blur(14px);
-    }
-    .model-mode-button {
-      min-height: 34px;
-      padding: 0 12px;
-      border: 0;
-      border-radius: 9px;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .model-mode-button:hover { color: var(--cyan); }
-    .model-mode-button[aria-pressed="true"] {
-      background: rgba(53, 217, 255, .15);
-      color: var(--cyan);
-      box-shadow: inset 0 0 0 1px rgba(53, 217, 255, .28);
-    }
     #model-stage:fullscreen {
       width: 100vw;
       height: 100vh;
@@ -744,10 +635,6 @@
       border-radius: 0;
     }
     #model-stage:fullscreen model-viewer {
-      height: 100vh;
-      min-height: 100vh;
-    }
-    #model-stage:fullscreen photo-360-viewer {
       height: 100vh;
       min-height: 100vh;
     }
@@ -946,9 +833,7 @@
       .layer { min-height: 180px; }
       .layer:not(:last-child)::after { display: none; }
       .architecture-stage { min-height: auto; padding: 22px; }
-      .model-stage, model-viewer, photo-360-viewer { min-height: 480px; height: 480px; }
-      .model-mode-switch { top: 62px; }
-      .photo360-angle { top: 112px; }
+      .model-stage, model-viewer { min-height: 480px; height: 480px; }
       .drawer-controls { order: 3; flex-basis: 100%; }
       .model-copy-card { padding: 26px; min-height: auto; }
       .scenario-tabs { grid-template-columns: 1fr; }
@@ -977,11 +862,8 @@
       .step-card { padding: 22px; }
       .model-badge { top: 16px; left: 16px; }
       .model-status { top: 51px; right: 16px; left: 16px; text-align: center; }
-      .model-mode-switch { top: 82px; }
-      .photo360-angle { top: 132px; right: 16px; }
       .model-active-marker { top: 132px; left: 16px; max-width: calc(100% - 86px); }
       .model-controls { right: 14px; bottom: 14px; left: 14px; }
-      .photo360-hint { bottom: 124px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1166,34 +1048,15 @@
     <section class="section model-section" id="model" aria-labelledby="model-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div><span class="section-index">04 / 360° + 3D</span><h2 id="model-title">Фотографический обзор 360° и учебная 3D‑модель</h2></div>
-          <p>Фотографический обзор из 36 ракурсов показывает реальный аппарат по кругу. Для учебных узлов, интерактивных ящиков и AR‑сценария можно переключиться на геометрическую 3D‑модель.</p>
+          <div><span class="section-index">04 / 3D</span><h2 id="model-title">Учебная 3D‑модель</h2></div>
+          <p>Интерактивная модель Mindray WATO EX‑35 для изучения узлов оборудования и прохождения учебного AR‑сценария.</p>
         </div>
 
         <div class="model-layout reveal">
-          <div class="model-stage" id="model-stage" data-mode="photo">
-            <span class="model-badge" id="model-badge">PHOTO / 360°</span>
+          <div class="model-stage" id="model-stage" data-mode="geometry">
+            <span class="model-badge" id="model-badge">MESTARO / TRAINING MODEL</span>
             <div class="model-active-marker" id="model-active-marker">Активная зона сценария</div>
-            <p class="model-status" id="model-status" aria-live="polite">Загрузка 36 фоторакурсов…</p>
-            <div class="model-mode-switch" role="group" aria-label="Режим отображения аппарата">
-              <button class="model-mode-button" type="button" data-model-mode="photo" aria-pressed="true">Фото 360°</button>
-              <button class="model-mode-button" type="button" data-model-mode="geometry" aria-pressed="false">Учебная 3D</button>
-            </div>
-
-            <photo-360-viewer
-              id="wato-photo360"
-              data-frame-count="36"
-              data-base-path="./assets/models/wato-ex35/360"
-              data-frame-interval="150"
-              data-drag-sensitivity="9"
-              autoplay
-              tabindex="0"
-              role="img"
-              aria-label="Фотографический обзор Mindray WATO EX-35 на 360 градусов. Перетаскивайте влево и вправо или используйте клавиши со стрелками.">
-              <img src="./assets/models/wato-ex35/360/frame-00.webp" width="1000" height="1000" decoding="async" fetchpriority="high" alt="">
-              <span class="photo360-angle" id="photo360-angle" aria-hidden="true">0°</span>
-              <span class="photo360-hint" aria-hidden="true">↔ Потяните, чтобы повернуть</span>
-            </photo-360-viewer>
+            <p class="model-status" id="model-status" aria-live="polite">Загрузка учебной 3D‑модели…</p>
 
             <model-viewer
               id="wato-model"
@@ -1279,7 +1142,6 @@
       loadArScenario,
       ArScenarioController
     } from './assets/scenarios/wato-ex35/ar-scenario-controller.js?v=7';
-    import './assets/models/wato-ex35/photo360-viewer.js?v=1';
 
     const mapCopy = {
       1: 'Подсказка появляется именно на том узле оборудования, с которым работает инженер.',
@@ -1692,14 +1554,11 @@
     });
 
     const modelViewer = document.querySelector('#wato-model');
-    const photoViewer = document.querySelector('#wato-photo360');
-    const photoAngle = document.querySelector('#photo360-angle');
     const modelStatus = document.querySelector('#model-status');
     const modelBadge = document.querySelector('#model-badge');
     const rotationButton = document.querySelector('#toggle-rotation');
     const fullscreenButton = document.querySelector('#model-fullscreen');
     const modelStage = document.querySelector('#model-stage');
-    const modelModeButtons = $$('[data-model-mode]', modelStage);
     const scenarioHotspot = document.querySelector('#scenario-hotspot');
     const scenarioHotspotLabel = document.querySelector('#scenario-hotspot-label');
     const modelStepContext = document.querySelector('#model-step-context');
@@ -1718,54 +1577,25 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let drawersReady = false;
     let pointerStart = null;
-    let modelMode = 'photo';
+    let modelMode = 'geometry';
 
     function syncRotationControl() {
-      const isRotating = modelMode === 'photo'
-        ? Boolean(photoViewer.playing)
-        : modelViewer.hasAttribute('auto-rotate');
+      const isRotating = modelViewer.hasAttribute('auto-rotate');
       rotationButton.setAttribute('aria-pressed', String(isRotating));
       rotationButton.textContent = isRotating ? 'Ⅱ Остановить вращение' : '▶ Включить вращение';
     }
 
-    function setModelMode(mode) {
-      if (mode !== 'photo' && mode !== 'geometry') return;
-      modelMode = mode;
-      modelStage.dataset.mode = mode;
-      modelModeButtons.forEach((button) => {
-        button.setAttribute('aria-pressed', String(button.dataset.modelMode === mode));
-      });
-
-      if (mode === 'photo') {
-        stopModelRotation(false);
-        modelBadge.textContent = 'PHOTO / 360°';
-        if (prefersReducedMotion) photoViewer.stop();
-        else photoViewer.start();
-        modelStatus.textContent = 'Фото 360° · 36 ракурсов';
+    function setModelMode() {
+      modelMode = 'geometry';
+      modelStage.dataset.mode = 'geometry';
+      modelBadge.textContent = 'MESTARO / TRAINING MODEL';
+      if (activeScenarioBinding && scenarioController?.currentStep) {
+        focusScenarioOnModel(activeScenarioBinding, scenarioController.currentStep);
       } else {
-        photoViewer.stop();
-        modelBadge.textContent = 'MESTARO / TRAINING MODEL';
-        if (activeScenarioBinding && scenarioController?.currentStep) {
-          focusScenarioOnModel(activeScenarioBinding, scenarioController.currentStep);
-        } else {
-          modelStatus.textContent = drawersReady ? 'Модель готова · ящики интерактивны' : 'Учебная 3D‑модель';
-        }
+        modelStatus.textContent = drawersReady ? 'Модель готова · ящики интерактивны' : 'Учебная 3D‑модель';
       }
       syncRotationControl();
     }
-
-    modelModeButtons.forEach((button) => {
-      button.addEventListener('click', () => setModelMode(button.dataset.modelMode));
-    });
-    photoViewer.addEventListener('photo360:frame', (event) => {
-      photoAngle.textContent = `${event.detail.angle}°`;
-    });
-    photoViewer.addEventListener('photo360:ready', () => {
-      if (modelMode === 'photo') modelStatus.textContent = 'Фото 360° готово · 36 ракурсов';
-    });
-    photoViewer.addEventListener('photo360:playback', () => {
-      if (modelMode === 'photo') syncRotationControl();
-    });
 
     function resolveModelPosition(logicalId, visited = new Set()) {
       if (!logicalId || visited.has(logicalId)) return [0, .8, 0];
@@ -1880,11 +1710,6 @@
       if (drawerNumber) toggleDrawer(drawerNumber);
     });
     rotationButton.addEventListener('click', () => {
-      if (modelMode === 'photo') {
-        photoViewer.togglePlayback();
-        syncRotationControl();
-        return;
-      }
       const isRotating = modelViewer.hasAttribute('auto-rotate');
       modelViewer.toggleAttribute('auto-rotate', !isRotating);
       syncRotationControl();
@@ -1909,7 +1734,7 @@
       }
     });
 
-    setModelMode('photo');
+    setModelMode('geometry');
     initializeArScenario();
 
     const sections = ['concept', 'architecture', 'scenarios', 'model'].map((id) => document.getElementById(id));
