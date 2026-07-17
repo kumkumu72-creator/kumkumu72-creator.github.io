@@ -1060,7 +1060,7 @@
 
             <model-viewer
               id="wato-model"
-              src="assets/models/wato-ex35/WATO_EX35_web.glb"
+              src="assets/models/wato-ex35/WATO_EX35_web.glb?v=drawers-2"
               alt="Трёхмерная модель наркозно-дыхательного аппарата Mindray WATO EX-35"
               camera-controls
               camera-target="auto 0.9m auto"
@@ -1088,6 +1088,7 @@
                 <button class="model-control drawer-control" type="button" data-drawer="1" aria-pressed="false" disabled>Ящик 1</button>
                 <button class="model-control drawer-control" type="button" data-drawer="2" aria-pressed="false" disabled>Ящик 2</button>
                 <button class="model-control drawer-control" type="button" data-drawer="3" aria-pressed="false" disabled>Ящик 3</button>
+                <button class="model-control drawer-control" type="button" data-drawer="4" aria-pressed="false" disabled>Ящик 4</button>
               </div>
               <div class="model-controls-group">
                 <button class="model-control" id="model-fullscreen" type="button">⛶ На весь экран</button>
@@ -1566,12 +1567,14 @@
     const drawerLabels = {
       1: 'Верхний ящик',
       2: 'Средний ящик',
-      3: 'Нижний ящик'
+      3: 'Нижний ящик',
+      4: 'Самый нижний ящик'
     };
     const drawerMeshMap = new Map([
-      [24, 1], [25, 1],
-      [26, 2], [27, 2],
-      [28, 3], [29, 3]
+      [1, 1],
+      [2, 2],
+      [3, 3],
+      [5, 4]
     ]);
     const openDrawers = new Set();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1679,7 +1682,7 @@
 
     modelViewer.addEventListener('load', () => {
       const availableAnimations = new Set(modelViewer.availableAnimations);
-      drawersReady = [1, 2, 3].every((number) => availableAnimations.has(`drawer-${number}`));
+      drawersReady = [1, 2, 3, 4].every((number) => availableAnimations.has(`drawer-${number}`));
       drawerButtons.forEach((button) => {
         button.disabled = !drawersReady;
         updateDrawerButton(Number(button.dataset.drawer), false);
