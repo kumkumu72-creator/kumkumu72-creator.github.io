@@ -1,6 +1,6 @@
-"""Add three animated drawers to the detailed WATO EX-35 web GLB.
+"""Add four animated drawers to the detailed WATO EX-35 web GLB.
 
-The archive model was exported as one mesh.  The three visible drawer fronts
+The archive model was exported as one mesh.  The four visible drawer fronts
 are therefore separated by their stable model-space bounds, put into their own
 meshes, and grouped with lightweight tray geometry.  The resulting animation
 names are consumed by the page's model-viewer controls.
@@ -19,12 +19,21 @@ MODEL_PATH = ROOT / "assets/models/wato-ex35/WATO_EX35_web.glb"
 JSON_CHUNK = b"JSON"
 BIN_CHUNK = b"BIN\x00"
 
-# Raw (pre node-transform) coordinate ranges of the three upper drawer fronts.
-# The fourth, lowest fascia is a fixed cabinet cover and intentionally remains
-# part of the static body.
+# Raw (pre node-transform) coordinate ranges of all four drawer fronts.
 DRAWER_Z_RANGES = ((6.95, 8.33), (5.47, 6.96), (3.99, 5.47), (2.50, 3.99))
 DRAWER_X_RANGE = (-2.71, 3.81)
 DRAWER_Y_RANGE = (-2.64, -2.01)
+
+# Exact front bounds measured from the separated archive geometry.  Tray walls
+# use the same vertical bounds so the fascia cannot appear to hang below them.
+DRAWER_FRONT_BOUNDS = (
+    (6.9712157, 8.3141850),
+    (5.4881230, 6.9416633),
+    (4.0050306, 5.4585705),
+    (2.5219371, 3.9754765),
+)
+TRAY_Y = -0.52
+TRAY_DEPTH = 3.04
 
 
 def read_glb(path: Path) -> tuple[dict, bytearray]:
@@ -232,8 +241,8 @@ def add_drawers(gltf: dict, binary: bytearray) -> int:
 
     group_indices: list[int] = []
     animation_groups: list[tuple[int, int]] = []
-    drawer_centres = (7.6425, 6.215, 4.732, 3.249)
-    drawer_heights = (1.19, 1.30, 1.30, 1.30)
+    drawer_centres = tuple((low + high) / 2 for low, high in DRAWER_FRONT_BOUNDS)
+    drawer_heights = tuple(high - low for low, high in DRAWER_FRONT_BOUNDS)
 
     for drawer_number, front_mesh_index in front_mesh_indices:
         centre_z = drawer_centres[drawer_number - 1]
@@ -253,9 +262,9 @@ def add_drawers(gltf: dict, binary: bytearray) -> int:
         animation_groups.append((drawer_number, group_index))
 
         tray_parts = (
-            ("BOTTOM", [0.548, -0.48, centre_z - height / 2 + 0.08], [6.05, 3.05, 0.16]),
-            ("SIDE_LEFT", [-2.43, -0.48, centre_z], [0.14, 3.05, height]),
-            ("SIDE_RIGHT", [3.53, -0.48, centre_z], [0.14, 3.05, height]),
+            ("BOTTOM", [0.548, TRAY_Y, centre_z - height / 2 + 0.08], [6.05, TRAY_DEPTH, 0.16]),
+            ("SIDE_LEFT", [-2.43, TRAY_Y, centre_z], [0.14, TRAY_DEPTH, height]),
+            ("SIDE_RIGHT", [3.53, TRAY_Y, centre_z], [0.14, TRAY_DEPTH, height]),
             ("BACK", [0.548, 1.0, centre_z], [6.05, 0.14, height]),
         )
         for part_name, translation, scale in tray_parts:
@@ -302,6 +311,26 @@ def add_drawers(gltf: dict, binary: bytearray) -> int:
     return len(animation_groups)
 
 
+def align_drawer_trays(gltf: dict) -> None:
+    """Attach every existing tray flush to its original front geometry."""
+    nodes = {node.get("name"): node for node in gltf["nodes"]}
+    for drawer_number, (low, high) in enumerate(DRAWER_FRONT_BOUNDS, 1):
+        centre_z = (low + high) / 2
+        height = high - low
+        expected = {
+            "BOTTOM": ([0.548, TRAY_Y, low + 0.08], [6.05, TRAY_DEPTH, 0.16]),
+            "SIDE_LEFT": ([-2.43, TRAY_Y, centre_z], [0.14, TRAY_DEPTH, height]),
+            "SIDE_RIGHT": ([3.53, TRAY_Y, centre_z], [0.14, TRAY_DEPTH, height]),
+            "BACK": ([0.548, 1.0, centre_z], [6.05, 0.14, height]),
+        }
+        for part_name, (translation, scale) in expected.items():
+            node_name = f"DRAWER_{drawer_number}_{part_name}"
+            if node_name not in nodes:
+                raise ValueError(f"Expected drawer tray node {node_name}")
+            nodes[node_name]["translation"] = translation
+            nodes[node_name]["scale"] = scale
+
+
 def write_glb(path: Path, gltf: dict, binary: bytearray) -> None:
     json_bytes = json.dumps(gltf, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     json_bytes += b" " * ((-len(json_bytes)) % 4)
@@ -321,9 +350,10 @@ def write_glb(path: Path, gltf: dict, binary: bytearray) -> None:
 def main() -> None:
     gltf, binary = read_glb(MODEL_PATH)
     added = add_drawers(gltf, binary)
+    align_drawer_trays(gltf)
     write_glb(MODEL_PATH, gltf, binary)
     print(
-        f"Added {added} animated drawer(s) to {MODEL_PATH} "
+        f"Added {added} animated drawer(s) and aligned 4 trays in {MODEL_PATH} "
         f"({MODEL_PATH.stat().st_size:,} bytes)"
     )
 
