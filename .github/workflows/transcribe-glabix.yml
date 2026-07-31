@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - chatgpt-video-transcript-20260731
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -29,7 +32,7 @@ jobs:
           SHARE_URL: https://medford.glabix.com/share/c8ccd260-3f68-43f1-8ef4-c7954a7895b9
         run: |
           cat > discover.py <<'PY'
-          import os, re, json, time, requests
+          import os, re, json, requests
           from pathlib import Path
           from playwright.sync_api import sync_playwright
 
@@ -58,7 +61,8 @@ jobs:
 
           seen=[]
           for item in candidates:
-              if item[0] not in [x[0] for x in seen]: seen.append(item)
+              if item[0] not in [x[0] for x in seen]:
+                  seen.append(item)
           Path('network_candidates.json').write_text(json.dumps(seen, ensure_ascii=False, indent=2), encoding='utf-8')
           print(json.dumps(seen, ensure_ascii=False, indent=2))
           if not seen:
@@ -73,7 +77,8 @@ jobs:
                   out=Path(f'candidate_{i}.bin')
                   with out.open('wb') as f:
                       for chunk in r.iter_content(1024*1024):
-                          if chunk: f.write(chunk)
+                          if chunk:
+                              f.write(chunk)
                   print(out, out.stat().st_size, r.headers.get('content-type'))
                   if out.stat().st_size > 1_000_000:
                       out.rename('recording.mp4')
@@ -81,7 +86,6 @@ jobs:
               except Exception as e:
                   print('download failed', media, repr(e))
           if not Path('recording.mp4').exists():
-              # Let ffmpeg handle HLS if available
               hls=next((u for u,_ in seen if '.m3u8' in u), None)
               if hls:
                   import subprocess
