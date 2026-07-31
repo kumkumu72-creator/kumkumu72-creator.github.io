@@ -1,0 +1,120 @@
+name: Temporary Glabix Transcription
+
+on:
+  push:
+    branches:
+      - chatgpt-video-transcript-20260731
+  workflow_dispatch:
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install faster-whisper playwright requests beautifulsoup4
+          python -m playwright install --with-deps chromium
+
+      - name: Discover and download video
+        env:
+          SHARE_URL: https://medford.glabix.com/share/c8ccd260-3f68-43f1-8ef4-c7954a7895b9
+        run: |
+          cat > discover.py <<'PY'
+          import os, re, json, time, requests
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          url = os.environ['SHARE_URL']
+          candidates = []
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page()
+              def record(resp):
+                  u = resp.url
+                  ct = (resp.headers.get('content-type') or '').lower()
+                  if any(x in ct for x in ['video/', 'audio/', 'application/vnd.apple.mpegurl']) or re.search(r'\.(mp4|webm|m3u8|mp3|m4a)(\?|$)', u, re.I):
+                      candidates.append((u, ct))
+              page.on('response', record)
+              page.goto(url, wait_until='networkidle', timeout=120000)
+              try:
+                  page.locator('video').first.click(timeout=5000)
+              except Exception:
+                  pass
+              page.wait_for_timeout(15000)
+              html = page.content()
+              for u in re.findall(r'https?://[^\"\'<> ]+', html):
+                  if re.search(r'\.(mp4|webm|m3u8|mp3|m4a)(\?|$)', u, re.I):
+                      candidates.append((u.replace('&amp;', '&'), ''))
+              browser.close()
+
+          seen=[]
+          for item in candidates:
+              if item[0] not in [x[0] for x in seen]: seen.append(item)
+          Path('network_candidates.json').write_text(json.dumps(seen, ensure_ascii=False, indent=2), encoding='utf-8')
+          print(json.dumps(seen, ensure_ascii=False, indent=2))
+          if not seen:
+              raise SystemExit('No media URL discovered')
+
+          for i,(media,ct) in enumerate(seen):
+              try:
+                  if '.m3u8' in media:
+                      continue
+                  r=requests.get(media, timeout=300, stream=True, headers={'Referer':url,'User-Agent':'Mozilla/5.0'})
+                  r.raise_for_status()
+                  out=Path(f'candidate_{i}.bin')
+                  with out.open('wb') as f:
+                      for chunk in r.iter_content(1024*1024):
+                          if chunk: f.write(chunk)
+                  print(out, out.stat().st_size, r.headers.get('content-type'))
+                  if out.stat().st_size > 1_000_000:
+                      out.rename('recording.mp4')
+                      break
+              except Exception as e:
+                  print('download failed', media, repr(e))
+          if not Path('recording.mp4').exists():
+              # Let ffmpeg handle HLS if available
+              hls=next((u for u,_ in seen if '.m3u8' in u), None)
+              if hls:
+                  import subprocess
+                  subprocess.run(['ffmpeg','-y','-headers',f'Referer: {url}\r\nUser-Agent: Mozilla/5.0\r\n','-i',hls,'-c','copy','recording.mp4'],check=True)
+          if not Path('recording.mp4').exists():
+              raise SystemExit('Could not download media')
+          PY
+          python discover.py
+          ffprobe -v error -show_entries format=duration,size -of json recording.mp4
+
+      - name: Transcribe Russian audio
+        run: |
+          ffmpeg -y -i recording.mp4 -vn -ac 1 -ar 16000 audio.wav
+          cat > transcribe.py <<'PY'
+          from faster_whisper import WhisperModel
+          from pathlib import Path
+          model = WhisperModel('small', device='cpu', compute_type='int8')
+          segments, info = model.transcribe('audio.wav', language='ru', vad_filter=True, beam_size=5)
+          lines=[]
+          for s in segments:
+              h1=int(s.start//3600); m1=int((s.start%3600)//60); sec1=s.start%60
+              h2=int(s.end//3600); m2=int((s.end%3600)//60); sec2=s.end%60
+              lines.append(f'[{h1:02d}:{m1:02d}:{sec1:06.3f} --> {h2:02d}:{m2:02d}:{sec2:06.3f}] {s.text.strip()}')
+          Path('transcript_ru.txt').write_text('\n'.join(lines), encoding='utf-8')
+          print('language', info.language, 'probability', info.language_probability, 'segments', len(lines))
+          PY
+          python transcribe.py
+
+      - name: Upload transcript
+        uses: actions/upload-artifact@v4
+        with:
+          name: glabix-transcript
+          path: |
+            transcript_ru.txt
+            network_candidates.json
+          retention-days: 1
