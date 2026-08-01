@@ -787,6 +787,123 @@
       box-shadow: 0 0 0 5px rgba(185, 243, 75, .14), 0 0 16px var(--lime);
     }
     .model-scenario-context { margin: 10px 0 22px; padding: 13px; border: 1px solid rgba(53, 217, 255, .2); border-radius: 12px; background: var(--cyan-soft); color: #dceafa; font-size: 12px; }
+
+    .about-section {
+      position: relative;
+      border-top: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .about-section::before {
+      content: "M";
+      position: absolute;
+      top: 40px;
+      right: max(-30px, calc((100vw - var(--max)) / 2 - 120px));
+      color: rgba(53, 217, 255, .025);
+      font-size: clamp(300px, 40vw, 620px);
+      font-weight: 900;
+      line-height: .8;
+      letter-spacing: -.12em;
+      pointer-events: none;
+      user-select: none;
+    }
+    .about-intro {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(270px, .72fr) minmax(0, 1.28fr);
+      gap: 42px;
+      margin-bottom: 22px;
+      padding: clamp(28px, 5vw, 58px);
+      border: 1px solid rgba(53, 217, 255, .24);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(11, 30, 54, .96), rgba(5, 14, 29, .97));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .about-intro::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -130px;
+      width: 340px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(185, 243, 75, .12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 55px rgba(185, 243, 75, .025), 0 0 0 110px rgba(185, 243, 75, .015);
+      pointer-events: none;
+    }
+    .about-brand { position: relative; z-index: 1; }
+    .about-brand h3 {
+      margin-bottom: 18px;
+      color: var(--cyan);
+      font-size: clamp(46px, 7vw, 88px);
+      line-height: .9;
+      letter-spacing: -.065em;
+      text-shadow: 0 0 36px rgba(53, 217, 255, .2);
+    }
+    .about-brand p { max-width: 400px; margin: 0; color: #d9e7f6; font-size: 18px; line-height: 1.4; }
+    .about-story { position: relative; z-index: 1; }
+    .about-story p { color: var(--muted); }
+    .about-story p:last-child { margin-bottom: 0; }
+    .about-story strong { color: var(--text); }
+    .about-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 22px; }
+    .about-card {
+      padding: clamp(26px, 4vw, 40px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(11, 26, 49, .9), rgba(5, 14, 29, .96));
+      box-shadow: var(--shadow);
+    }
+    .about-card--wide { grid-row: span 2; }
+    .about-card h3 { margin-bottom: 22px; font-size: 29px; line-height: 1.08; letter-spacing: -.025em; }
+    .about-card p { color: var(--muted); }
+    .about-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: about-item; }
+    .about-list li {
+      position: relative;
+      padding: 15px 0 15px 50px;
+      border-top: 1px solid var(--line);
+      color: #d7e4f3;
+      counter-increment: about-item;
+    }
+    .about-list li::before {
+      content: counter(about-item, decimal-leading-zero);
+      position: absolute;
+      top: 16px;
+      left: 0;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .about-list--pilot li::before { color: var(--lime); }
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .metrics span {
+      padding: 8px 11px;
+      border: 1px solid rgba(53, 217, 255, .2);
+      border-radius: 999px;
+      background: var(--cyan-soft);
+      color: #dceaf8;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .about-conclusion {
+      position: relative;
+      margin-top: 22px;
+      padding: clamp(28px, 5vw, 48px);
+      border: 1px solid rgba(185, 243, 75, .3);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(120deg, rgba(185, 243, 75, .12), rgba(53, 217, 255, .07));
+      color: var(--text);
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 720;
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+    .about-conclusion strong { color: var(--lime); }
     .site-footer { padding: 34px 0 46px; border-top: 1px solid var(--line); color: var(--muted); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-inner strong { color: var(--text); }
@@ -809,6 +926,8 @@
       .model-layout { grid-template-columns: 1fr; }
       .model-copy-card { min-height: 420px; }
       .model-scenario-card { height: auto; max-height: none; }
+      .about-intro, .about-grid { grid-template-columns: 1fr; }
+      .about-card--wide { grid-row: auto; }
       .scenario-workbench { grid-template-columns: 1fr; }
       .scenario-copy { border-right: 0; border-bottom: 1px solid var(--line); }
       .principles { grid-template-columns: repeat(2, 1fr); }
@@ -856,6 +975,7 @@
       .nav-links a:nth-child(2)::before { content: "02"; }
       .nav-links a:nth-child(3)::before { content: "03"; }
       .nav-links a:nth-child(4)::before { content: "04"; }
+      .nav-links a:nth-child(5)::before { content: "05"; }
       .system-map { grid-template-columns: 1fr; }
       .layer-flow { grid-template-columns: 1fr; }
       .scenario-copy, .scenario-visual { padding: 22px; }
@@ -887,6 +1007,7 @@
         <a href="#architecture">Архитектура</a>
         <a href="#scenarios">Сценарии</a>
         <a href="#model">3D-модель</a>
+        <a href="#about">О компании</a>
       </div>
     </nav>
   </header>
@@ -1127,6 +1248,73 @@
             <p class="model-note">Учебная визуализация не заменяет официальную документацию и требует экспертной проверки.</p>
           </aside>
         </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">05 / О КОМПАНИИ</span><h2 id="about-title">Платформа MESTARO</h2></div>
+          <p>Цифровая платформа обучения и поддержки сервисных инженеров медицинского оборудования.</p>
+        </div>
+
+        <div class="about-intro reveal">
+          <div class="about-brand">
+            <p class="eyebrow">О компании</p>
+            <h3>MESTARO</h3>
+            <p>Цифровая платформа обучения и поддержки сервисных инженеров медицинского оборудования</p>
+          </div>
+          <div class="about-story">
+            <p>Производители медицинского оборудования сталкиваются с необходимостью быстро обучать собственных инженеров и специалистов сервисных партнёров, обеспечивать единые стандарты технического обслуживания и своевременно доводить до них актуальную документацию. При этом сложность оборудования растёт, а качество работ на объектах по-прежнему во многом зависит от опыта конкретного специалиста и доступности технического эксперта.</p>
+            <p><strong>MESTARO</strong> — разрабатываемая цифровая платформа для обучения и сопровождения сервисных инженеров медицинского оборудования. Решение объединяет интерактивные инструкции, трёхмерные модели оборудования, технологии дополненной реальности, базу технических знаний и инструменты удалённой экспертной поддержки.</p>
+            <p>Платформа создаётся совместно с производителем и адаптируется под конкретные модели оборудования, внутренние регламенты и структуру сервисной сети.</p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card about-card--wide reveal">
+            <p class="eyebrow">Что умеет платформа</p>
+            <h3>Возможности MESTARO</h3>
+            <ol class="about-list">
+              <li>Интерактивное изучение конструкции и основных узлов оборудования</li>
+              <li>Пошаговые инструкции по техническому обслуживанию, диагностике и ремонту</li>
+              <li>Отображение подсказок непосредственно на изображении или 3D-модели оборудования</li>
+              <li>Контроль правильности и последовательности выполнения операций</li>
+              <li>Быстрый доступ к руководствам, схемам, сервисным бюллетеням и кодам ошибок</li>
+              <li>Проведение дистанционного обучения и проверки знаний инженеров</li>
+              <li>Удалённое подключение технического эксперта к инженеру на объекте</li>
+              <li>Фиксация результатов работ и формирование цифровой истории обслуживания</li>
+              <li>Интеграция с CRM, Service Desk, FSM и CMMS-системами производителя</li>
+            </ol>
+          </article>
+
+          <article class="about-card reveal">
+            <p class="eyebrow">Результат внедрения</p>
+            <h3>Выгоды для производителя</h3>
+            <p>MESTARO помогает стандартизировать сервисные процессы и обеспечить одинаковый уровень подготовки специалистов независимо от региона и сервисной организации. Использование платформы позволяет ускорить ввод новых инженеров в работу, сократить зависимость от отдельных экспертов, повысить качество диагностики и уменьшить количество повторных обращений.</p>
+            <p>Производитель получает централизованную систему управления техническими знаниями: при изменении регламентов, конструкции оборудования или программного обеспечения актуальная информация становится доступна всей авторизованной сервисной сети.</p>
+            <p>Эффективность внедрения оценивается по измеримым показателям: продолжительности обучения, времени диагностики и ремонта, MTTR, количеству повторных выездов, доле устранения неисправностей с первого обращения и числу обращений к экспертам.</p>
+            <div class="metrics" aria-label="Показатели эффективности">
+              <span>Продолжительность обучения</span><span>Диагностика и ремонт</span><span>MTTR</span><span>Повторные выезды</span><span>Устранение с первого обращения</span><span>Обращения к экспертам</span>
+            </div>
+          </article>
+
+          <article class="about-card reveal">
+            <p class="eyebrow">Первый этап</p>
+            <h3>Формат пилотного проекта</h3>
+            <p>Пилот запускается для одной выбранной модели оборудования и включает:</p>
+            <ol class="about-list about-list--pilot">
+              <li>Создание цифровой структуры оборудования и базы знаний</li>
+              <li>Разработку нескольких типовых сценариев обслуживания</li>
+              <li>Подготовку интерактивных или AR-инструкций</li>
+              <li>Обучение пилотной группы инженеров</li>
+              <li>Сравнение результатов до и после применения MESTARO</li>
+              <li>Подготовку предложений по масштабированию на другие модели оборудования</li>
+            </ol>
+          </article>
+        </div>
+
+        <p class="about-conclusion reveal"><strong>MESTARO</strong> превращает техническую документацию и опыт экспертов производителя в управляемую цифровую систему обучения и сервисной поддержки.</p>
       </div>
     </section>
   </main>
@@ -1740,7 +1928,7 @@
     setModelMode('geometry');
     initializeArScenario();
 
-    const sections = ['concept', 'architecture', 'scenarios', 'model'].map((id) => document.getElementById(id));
+    const sections = ['concept', 'architecture', 'scenarios', 'model', 'about'].map((id) => document.getElementById(id));
     const navLinks = $$('.nav-links a');
     const sectionObserver = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
