@@ -1,0 +1,18 @@
+{
+  "name": "MESTARO Assist",
+  "short_name": "MESTARO Assist",
+  "description": "Цифровая платформа обучения и поддержки сервисных инженеров медицинского оборудования.",
+  "lang": "ru-RU",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050b18",
+  "theme_color": "#050b18",
+  "icons": [
+    {
+      "src": "/assets/brand/mestaro-assist-mark.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

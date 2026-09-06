@@ -3,9 +3,58 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Интерактивная концепция AR-обучения сервисных инженеров медицинского оборудования">
-  <title>AR-обучение сервисных инженеров</title>
-  <script type="module" src="model-viewer.min.js"></script>
+  <title>MESTARO Assist — поддержка сервисных инженеров медицинского оборудования</title>
+  <meta name="description" content="MESTARO Assist превращает техническую документацию и опыт экспертов в интерактивные инструкции, 3D/AR‑подсказки и контролируемые сервисные процессы.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#050b18">
+  <link rel="canonical" href="https://mestaro.tech/">
+  <link rel="icon" href="/assets/brand/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="MESTARO Assist">
+  <meta property="og:title" content="MESTARO Assist — поддержка сервисных инженеров медицинского оборудования">
+  <meta property="og:description" content="Интерактивные инструкции, 3D/AR‑подсказки и управляемые сервисные процессы для производителей медицинского оборудования.">
+  <meta property="og:url" content="https://mestaro.tech/">
+  <meta property="og:image" content="https://mestaro.tech/assets/brand/mestaro-assist-og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MESTARO Assist — цифровая платформа обучения и поддержки сервисных инженеров">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MESTARO Assist — поддержка сервисных инженеров">
+  <meta name="twitter:description" content="Интерактивные инструкции, 3D/AR‑подсказки и управляемые сервисные процессы.">
+  <meta name="twitter:image" content="https://mestaro.tech/assets/brand/mestaro-assist-og.png">
+  <meta name="twitter:image:alt" content="MESTARO Assist — цифровая платформа обучения и поддержки сервисных инженеров">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://mestaro.tech/#organization",
+        "name": "MESTARO",
+        "url": "https://mestaro.tech/",
+        "logo": "https://mestaro.tech/assets/brand/mestaro-assist-mark.png"
+      },
+      {
+        "@type": ["Product", "SoftwareApplication"],
+        "@id": "https://mestaro.tech/#assist",
+        "name": "MESTARO Assist",
+        "url": "https://mestaro.tech/",
+        "image": "https://mestaro.tech/assets/brand/mestaro-assist-og.png",
+        "brand": { "@id": "https://mestaro.tech/#organization" },
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Цифровая платформа обучения и поддержки сервисных инженеров медицинского оборудования.",
+        "publisher": { "@id": "https://mestaro.tech/#organization" }
+      }
+    ]
+  }
+  </script>
   <style>
     :root {
       color-scheme: dark;
@@ -45,6 +94,7 @@
     button, a { font: inherit; }
     button { color: inherit; }
     a { color: inherit; }
+    [hidden] { display: none !important; }
     .sr-only {
       position: absolute;
       width: 1px;
@@ -135,7 +185,7 @@
     }
 
     main { display: block; }
-    section { scroll-margin-top: 104px; }
+    section, #scenarios { scroll-margin-top: 104px; }
     .hero {
       display: grid;
       grid-template-columns: minmax(0, .82fr) minmax(560px, 1.18fr);
@@ -259,7 +309,7 @@
     .node-1 { top: 3%; left: calc(50% - 110px); }
     .node-2 { top: calc(50% - 55px); left: 0; }
     .node-3 { top: calc(50% - 55px); right: 0; }
-    .node-4 { bottom: 92px; left: calc(50% - 110px); }
+    .node-4 { bottom: 72px; left: calc(50% - 110px); }
     .map-detail {
       position: absolute;
       z-index: 6;
@@ -904,10 +954,219 @@
       letter-spacing: -.025em;
     }
     .about-conclusion strong { color: var(--lime); }
+
+    /* MESTARO Assist product layer */
+    .brand { min-width: max-content; }
+    .brand-mark {
+      width: 38px;
+      border-color: rgba(53, 217, 255, .72);
+      background: linear-gradient(145deg, rgba(53, 217, 255, .17), rgba(185, 243, 75, .06));
+      font-size: 11px;
+      letter-spacing: -.02em;
+    }
+    .brand-copy { display: grid; gap: 1px; line-height: 1; }
+    .brand-copy strong { font-size: 14px; letter-spacing: .015em; }
+    .brand-copy small { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(8, 20, 39, .82);
+      cursor: pointer;
+    }
+    .nav-toggle-icon { display: grid; gap: 4px; width: 17px; }
+    .nav-toggle-icon i { display: block; width: 100%; height: 1px; background: currentColor; transition: transform .18s ease, opacity .18s ease; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon i:first-child { transform: translateY(2.5px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon i:last-child { transform: translateY(-2.5px) rotate(-45deg); }
+    .nav-links .nav-cta { margin-left: 4px; border: 1px solid rgba(185, 243, 75, .34); color: var(--lime); }
+    .nav-links .nav-cta:hover { background: var(--lime-soft); }
+
+    .hero {
+      grid-template-columns: minmax(0, .98fr) minmax(520px, 1.02fr);
+      gap: clamp(30px, 5vw, 70px);
+      padding-top: 82px;
+    }
+    .hero-title { max-width: 700px; margin-bottom: 28px; font-size: clamp(42px, 4.8vw, 70px); }
+    .hero-title .hero-product {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--cyan);
+      font-size: clamp(28px, 3.4vw, 48px);
+      line-height: 1;
+      letter-spacing: -.035em;
+      text-shadow: 0 0 32px rgba(53, 217, 255, .23);
+    }
+    .hero-title .hero-headline { display: block; color: var(--text); font-size: .76em; line-height: 1.08; letter-spacing: -.045em; text-shadow: none; }
+    .hero-copy > .hero-lead { max-width: 670px; color: #b6c5d8; font-size: clamp(17px, 1.45vw, 20px); }
+    .secondary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 0 22px;
+      border: 1px solid rgba(185, 243, 75, .48);
+      border-radius: 14px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      text-decoration: none;
+      font-weight: 720;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .secondary-action:hover { transform: translateY(-3px); background: rgba(185, 243, 75, .2); }
+    .hero-proof { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 28px; padding: 0; list-style: none; color: var(--muted); font-size: 12px; }
+    .hero-proof li { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-proof li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px rgba(185, 243, 75, .65); }
+    .system-map .core strong { max-width: 132px; }
+
+    .outcomes { position: relative; border-top: 1px solid var(--line); }
+    .outcome-grid, .module-grid, .kpi-grid, .integration-grid { display: grid; gap: 12px; }
+    .outcome-grid { grid-template-columns: repeat(3, 1fr); }
+    .outcome-card, .module-card, .kpi-card, .integration-card {
+      position: relative;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, rgba(11, 26, 49, .82), rgba(5, 14, 29, .94));
+      overflow: hidden;
+    }
+    .outcome-card::after, .module-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -34px -48px auto;
+      width: 108px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(53, 217, 255, .08);
+      border-radius: 50%;
+    }
+    .outcome-no, .module-no { display: block; margin-bottom: 25px; color: var(--cyan); font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+    .outcome-card h3, .module-card h3 { margin-bottom: 9px; font-size: 20px; line-height: 1.18; }
+    .outcome-card p, .module-card p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .outcomes-summary { margin-top: 22px; padding: 22px 24px; border-left: 2px solid var(--lime); background: var(--lime-soft); color: #dce9ee; }
+
+    .capabilities { border-top: 1px solid var(--line); }
+    .module-grid { grid-template-columns: repeat(3, 1fr); }
+    .module-card { min-height: 190px; }
+    .scenario-anchor { scroll-margin-top: 112px; margin-top: 86px; }
+    .subsection-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    .subsection-heading h3 { max-width: 680px; margin: 0; font-size: clamp(31px, 4vw, 48px); line-height: 1.05; letter-spacing: -.04em; }
+    .subsection-heading p { max-width: 430px; margin: 0; color: var(--muted); }
+
+    .how-steps .layer-no { color: var(--lime); }
+    .how-steps .layer { min-height: 230px; }
+    .how-steps .layer strong { font-size: 18px; }
+
+    .demo-disclaimer {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: -20px 0 30px;
+      padding: 15px 17px;
+      border: 1px solid rgba(255, 191, 107, .26);
+      border-radius: 14px;
+      background: rgba(255, 176, 67, .07);
+      color: #e6cfad;
+      font-size: 13px;
+    }
+    .demo-disclaimer b { color: #ffd69d; }
+    .demo-disclaimer i { flex: 0 0 auto; display: grid; place-items: center; width: 22px; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; font-style: normal; font-weight: 800; }
+    .model-stage.is-idle model-viewer, .model-stage.is-idle .model-controls, .model-stage.is-idle .model-active-marker { opacity: 0; visibility: hidden; }
+    .demo-launcher {
+      position: absolute;
+      z-index: 8;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 34px;
+      background:
+        linear-gradient(180deg, rgba(5, 12, 25, .12), rgba(5, 12, 25, .88)),
+        url("assets/models/wato-ex35/wato-ex35-poster.webp") center / cover no-repeat,
+        radial-gradient(circle at 50% 42%, rgba(53, 217, 255, .2), transparent 42%);
+      text-align: center;
+      transition: opacity .28s ease, visibility .28s ease;
+    }
+    .model-stage:not(.is-idle) .demo-launcher { opacity: 0; visibility: hidden; pointer-events: none; }
+    .demo-launch-card { max-width: 460px; padding: 26px; border: 1px solid rgba(53, 217, 255, .34); border-radius: 20px; background: rgba(5, 14, 29, .88); box-shadow: var(--shadow); backdrop-filter: blur(16px); }
+    .demo-launch-card strong { display: block; margin-bottom: 8px; font-size: 25px; }
+    .demo-launch-card p { margin-bottom: 20px; color: var(--muted); font-size: 13px; }
+    .demo-launch {
+      min-height: 52px;
+      padding: 0 20px;
+      border: 1px solid var(--cyan);
+      border-radius: 13px;
+      background: var(--cyan-soft);
+      color: var(--cyan);
+      font-weight: 760;
+      cursor: pointer;
+    }
+    .demo-launch:disabled { opacity: .65; cursor: wait; }
+    .demo-link { color: var(--cyan); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+    .kpi-section, .pilot-section, .integration-section, .contact-section { border-top: 1px solid var(--line); }
+    .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+    .kpi-card { min-height: 170px; }
+    .kpi-card strong { display: block; margin-bottom: 18px; color: var(--lime); font-size: 27px; letter-spacing: -.03em; }
+    .kpi-card span { display: block; color: #dbe7f5; font-weight: 700; line-height: 1.25; }
+    .kpi-card p { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    .kpi-note { margin-top: 22px; color: var(--muted); font-size: 13px; }
+
+    .pilot-layout { display: grid; grid-template-columns: minmax(0, .88fr) minmax(430px, 1.12fr); gap: 22px; }
+    .pilot-intro, .pilot-plan { padding: clamp(28px, 4vw, 42px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: linear-gradient(145deg, rgba(11, 26, 49, .92), rgba(5, 14, 29, .97)); }
+    .pilot-intro h3 { margin-bottom: 14px; font-size: 32px; line-height: 1.05; }
+    .pilot-intro > p { color: var(--muted); }
+    .pilot-badge { display: inline-flex; margin-top: 22px; padding: 9px 12px; border: 1px solid rgba(185, 243, 75, .28); border-radius: 999px; color: var(--lime); font-size: 12px; }
+    .pilot-plan { counter-reset: pilot-step; }
+    .pilot-step { display: grid; grid-template-columns: 36px 1fr; gap: 15px; padding: 17px 0; border-top: 1px solid var(--line); counter-increment: pilot-step; }
+    .pilot-step:first-child { border-top: 0; padding-top: 0; }
+    .pilot-step::before { content: counter(pilot-step, decimal-leading-zero); color: var(--cyan); font-size: 12px; font-weight: 800; }
+    .pilot-step strong { display: block; margin-bottom: 4px; }
+    .pilot-step span { color: var(--muted); font-size: 13px; }
+
+    .integration-grid { grid-template-columns: repeat(3, 1fr); }
+    .integration-card h3 { margin-bottom: 12px; font-size: 23px; }
+    .integration-card p { color: var(--muted); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
+    .tag-list li { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: #c9d7e8; font-size: 11px; }
+
+    .about-section .about-intro { margin-bottom: 0; }
+    .about-brand h3 { font-size: clamp(40px, 6vw, 72px); }
+
+    .contact-card { display: grid; grid-template-columns: minmax(280px, .8fr) minmax(430px, 1.2fr); gap: 28px; padding: clamp(26px, 5vw, 54px); border: 1px solid rgba(53, 217, 255, .28); border-radius: var(--radius-lg); background: linear-gradient(135deg, rgba(12, 35, 61, .96), rgba(5, 14, 29, .98)); box-shadow: var(--shadow); }
+    .contact-copy h2 { margin-bottom: 18px; font-size: clamp(38px, 5vw, 62px); line-height: 1.02; letter-spacing: -.045em; }
+    .contact-copy > p { color: var(--muted); }
+    .contact-note { margin-top: 28px; padding: 15px; border-left: 2px solid var(--lime); background: var(--lime-soft); color: #dbe8f4; font-size: 12px; }
+    .pilot-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field { display: grid; gap: 7px; }
+    .form-field--wide { grid-column: 1 / -1; }
+    .form-field label, .form-consent { color: #cbd8e8; font-size: 12px; }
+    .form-field input, .form-field textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(4, 13, 27, .76);
+      color: var(--text);
+      font: inherit;
+    }
+    .form-field textarea { min-height: 92px; resize: vertical; }
+    .form-field input:focus, .form-field textarea:focus { outline: 2px solid rgba(53, 217, 255, .45); border-color: var(--cyan); }
+    .form-consent { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 9px; }
+    .form-consent input { margin-top: 3px; accent-color: var(--lime); }
+    .form-consent a { color: var(--cyan); }
+    .form-submit { grid-column: 1 / -1; justify-self: start; border: 0; cursor: pointer; }
+    .form-status { grid-column: 1 / -1; min-height: 20px; margin: 0; color: var(--lime); font-size: 12px; }
+
     .site-footer { padding: 34px 0 46px; border-top: 1px solid var(--line); color: var(--muted); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-inner strong { color: var(--text); }
     .footer-note { font-size: 12px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: 12px; }
+    .footer-links a { color: #cbd8e8; text-underline-offset: 4px; }
+    .footer-legal { display: grid; grid-template-columns: .72fr 1.28fr; gap: 24px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); color: #6f829d; font-size: 10px; }
 
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -966,6 +1225,7 @@
       .step-number { width: 48px; }
       .principles { grid-template-columns: 1fr; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-legal { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 460px) {
@@ -986,6 +1246,67 @@
       .model-controls { right: 14px; bottom: 14px; left: 14px; }
     }
 
+    @media (max-width: 1120px) {
+      .outcome-grid, .module-grid { grid-template-columns: repeat(2, 1fr); }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .integration-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 980px) {
+      .nav { position: relative; }
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        display: grid;
+        width: min(360px, calc(100vw - 24px));
+        padding: 10px;
+        border: 1px solid rgba(53, 217, 255, .24);
+        border-radius: 16px;
+        background: rgba(5, 14, 30, .97);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+      }
+      .nav-links.is-open { opacity: 1; visibility: visible; transform: none; }
+      .nav-links a, .nav-links .nav-cta { margin: 0; padding: 13px 14px; font-size: 14px; }
+      .nav-links a[aria-current="true"]::after { right: 14px; left: 14px; }
+      .pilot-layout, .contact-card { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .brand > .brand-copy { display: grid !important; }
+      .brand-copy small { display: none; }
+      .hero { padding-top: 64px; }
+      .hero-title { font-size: clamp(38px, 11vw, 54px); }
+      .hero-title .hero-product { font-size: clamp(27px, 8vw, 40px); }
+      .hero-actions { align-items: stretch; gap: 10px; }
+      .hero-actions .primary-action, .hero-actions .secondary-action { width: 100%; }
+      .outcome-grid, .module-grid, .kpi-grid { grid-template-columns: 1fr; }
+      .subsection-heading { align-items: flex-start; flex-direction: column; }
+      .scenario-anchor { margin-top: 62px; }
+      .how-steps .layer { min-height: 150px; }
+      .pilot-form { grid-template-columns: 1fr; }
+      .form-field, .form-field--wide, .form-consent, .form-submit, .form-status { grid-column: 1; }
+      .demo-launcher { padding: 18px; background-size: auto 100%; }
+      .demo-launch-card { padding: 21px; }
+    }
+
+    @media (max-width: 460px) {
+      .nav-links a { font-size: 14px; }
+      .nav-links a::before { content: none !important; }
+      .brand-mark { width: 34px; }
+      .brand-copy strong { font-size: 13px; }
+      .nav-toggle { padding-inline: 10px; }
+      .nav-toggle > span:first-child { font-size: 12px; }
+      .demo-disclaimer { margin-top: -8px; }
+      .contact-card { padding: 24px 18px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -998,33 +1319,45 @@
 
   <header class="site-header shell">
     <nav class="nav" aria-label="Основная навигация">
-      <a class="brand" href="#concept">
-        <span class="brand-mark" aria-hidden="true">AR</span>
-        <span>Service Learning</span>
+      <a class="brand" href="#top" aria-label="MESTARO Assist — на первый экран">
+        <span class="brand-mark" aria-hidden="true">MA</span>
+        <span class="brand-copy"><strong>MESTARO Assist</strong><small>продукт MESTARO</small></span>
       </a>
-      <div class="nav-links">
-        <a href="#concept" aria-current="true">Концепция</a>
-        <a href="#architecture">Архитектура</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span>Меню</span>
+        <span class="nav-toggle-icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#capabilities">Возможности</a>
+        <a href="#how-it-works">Как работает</a>
         <a href="#scenarios">Сценарии</a>
-        <a href="#model">3D-модель</a>
-        <a href="#about">О компании</a>
+        <a href="#demo">Демо WATO EX‑35</a>
+        <a class="nav-cta" href="#contact">Пилот и контакты</a>
       </div>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero shell" id="concept" aria-labelledby="hero-title">
+    <section class="hero shell" id="top" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="eyebrow">AR training system / 01</p>
-        <h1 id="hero-title">Обучение сервисных инженеров с <span>AR</span></h1>
-        <p>Единая среда связывает инженера, контекстные подсказки, проверенные знания и сервисные системы — от тренировки до работы с реальным оборудованием.</p>
+        <p class="eyebrow">Цифровая сервисная платформа</p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="hero-product">MESTARO Assist</span>
+          <span class="hero-headline">Цифровая платформа обучения и поддержки сервисных инженеров медицинского оборудования.</span>
+        </h1>
+        <p class="hero-lead">Превращает техническую документацию и опыт экспертов в интерактивные инструкции, 3D/AR‑подсказки и контролируемые сервисные процессы.</p>
         <div class="hero-actions">
-          <a class="primary-action" href="#architecture"><span class="arrow" aria-hidden="true">→</span> Исследовать архитектуру</a>
-          <span class="offline-note"><i aria-hidden="true"></i> Автономная интерактивная модель</span>
+          <a class="primary-action" href="#demo"><span class="arrow" aria-hidden="true">→</span> Посмотреть демо WATO EX‑35</a>
+          <a class="secondary-action" href="#contact">Запросить пилотный проект</a>
         </div>
+        <ul class="hero-proof" aria-label="Ключевые свойства платформы">
+          <li>Для производителей медоборудования</li>
+          <li>Единый стандарт сервисной сети</li>
+          <li>Измеримый результат</li>
+        </ul>
       </div>
 
-      <section class="system-map reveal" aria-label="Схема AR-среды обучения">
+      <section class="system-map reveal" aria-label="Ценность MESTARO Assist для сервисной сети">
         <div class="map-grid" aria-hidden="true"></div>
         <svg class="map-lines" viewBox="0 0 760 610" preserveAspectRatio="none" aria-hidden="true">
           <circle class="ring" cx="380" cy="305" r="210"></circle>
@@ -1036,80 +1369,113 @@
           <path d="M236 159 Q380 28 524 159"></path>
           <path d="M236 451 Q380 582 524 451"></path>
         </svg>
-        <div class="core" aria-hidden="true"><div><span class="core-icon">⌁ AR</span><strong>Инженер в контексте</strong></div></div>
+        <div class="core" aria-hidden="true"><div><span class="core-icon">MA</span><strong>MESTARO Assist</strong></div></div>
 
         <button class="orbit-node node-1" type="button" data-map-node="1" aria-pressed="true">
-          <span class="node-kicker">AR / GUIDE</span><b>Контекстные подсказки</b><small>Пошаговые инструкции и визуальные метки</small>
+          <span class="node-kicker">STANDARD / 01</span><b>Единые регламенты</b><small>Одинаковый стандарт работ во всей сервисной сети</small>
         </button>
         <button class="orbit-node node-2" type="button" data-map-node="2" aria-pressed="false">
-          <span class="node-kicker">KB / VERIFIED</span><b>База знаний</b><small>Регламенты, схемы, кейсы и решения</small>
+          <span class="node-kicker">ONBOARDING / 02</span><b>Быстрее к практике</b><small>Подготовка инженеров в контексте оборудования</small>
         </button>
         <button class="orbit-node node-3" type="button" data-map-node="3" aria-pressed="false">
-          <span class="node-kicker">CMMS / FSM</span><b>Сервисные системы</b><small>Заявки, активы, история и статусы работ</small>
+          <span class="node-kicker">KNOWLEDGE / 03</span><b>Актуальные знания</b><small>Управляемые версии инструкций и сценариев</small>
         </button>
         <button class="orbit-node node-4" type="button" data-map-node="4" aria-pressed="false">
-          <span class="node-kicker">QA / ANALYTICS</span><b>Контроль и аналитика</b><small>Прогресс, ошибки и качество обслуживания</small>
+          <span class="node-kicker">TRACE / 04</span><b>Подтверждённая история</b><small>Шаги, результат и данные для сервисных систем</small>
         </button>
-        <div class="map-detail" id="map-detail" aria-live="polite">Подсказка появляется именно на том узле оборудования, с которым работает инженер.</div>
+        <div class="map-detail" id="map-detail" aria-live="polite">Производитель управляет единым стандартом работ для собственной и партнёрской сервисной сети.</div>
       </section>
     </section>
 
-    <section class="section architecture" id="architecture" aria-labelledby="architecture-title">
+    <section class="section outcomes" id="outcomes" aria-labelledby="outcomes-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div><span class="section-index">02 / АРХИТЕКТУРА</span><h2 id="architecture-title">Четыре слоя решения</h2></div>
-          <p>Архитектура отделяет интерфейс инженера от логики обучения и корпоративных данных. Это упрощает обновление инструкций, контроль доступа и интеграцию.</p>
+          <div><span class="section-index">01 / ЗАДАЧИ БИЗНЕСА</span><h2 id="outcomes-title">Сервисная сеть работает по единому стандарту</h2></div>
+          <p>Основной клиент MESTARO Assist — производитель медицинского оборудования. Инженер получает удобный рабочий инструмент, а производитель — управляемый сервисный процесс.</p>
         </div>
+        <div class="outcome-grid">
+          <article class="outcome-card reveal"><span class="outcome-no">01 / STANDARD</span><h3>Стандартизация работ</h3><p>Единая последовательность операций для собственных инженеров и сервисных партнёров.</p></article>
+          <article class="outcome-card reveal"><span class="outcome-no">02 / SPEED</span><h3>Быстрее подготовка</h3><p>Новые специалисты раньше переходят от теории к контролируемой практике.</p></article>
+          <article class="outcome-card reveal"><span class="outcome-no">03 / EXPERTISE</span><h3>Меньше зависимости от экспертов</h3><p>Опыт сильных специалистов превращается в повторяемые цифровые сценарии.</p></article>
+          <article class="outcome-card reveal"><span class="outcome-no">04 / VERSION</span><h3>Актуальные инструкции</h3><p>Версии регламентов управляются централизованно и доходят до всей сети.</p></article>
+          <article class="outcome-card reveal"><span class="outcome-no">05 / FIRST FIX</span><h3>Меньше повторных выездов</h3><p>Контрольные точки помогают выполнить процедуру полностью с первого раза.</p></article>
+          <article class="outcome-card reveal"><span class="outcome-no">06 / TRACE</span><h3>Подтверждённая история</h3><p>Результаты и отклонения фиксируются для анализа и передачи в CMMS/FSM.</p></article>
+        </div>
+        <p class="outcomes-summary reveal"><strong>MESTARO Assist</strong> соединяет знания производителя, действия инженера и данные сервисных систем в одном управляемом контуре.</p>
+      </div>
+    </section>
 
-        <div class="mode-switch reveal" role="group" aria-label="Режим архитектурной схемы">
-          <button type="button" data-mode="training" aria-pressed="true">Режим обучения</button>
-          <button type="button" data-mode="field" aria-pressed="false">Работа на объекте</button>
+    <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">02 / ВОЗМОЖНОСТИ</span><h2 id="capabilities-title">Модули одной сервисной платформы</h2></div>
+          <p>Подключайте только те инструменты, которые нужны конкретной модели оборудования, процедуре и роли специалиста.</p>
+        </div>
+        <div class="module-grid">
+          <article class="module-card reveal"><span class="module-no">01 / GUIDE</span><h3>Интерактивные инструкции</h3><p>Пошаговые процедуры, чек‑листы и обязательные контрольные точки.</p></article>
+          <article class="module-card reveal"><span class="module-no">02 / KNOWLEDGE</span><h3>База технических знаний</h3><p>Регламенты, схемы, сервисные бюллетени и проверенные кейсы.</p></article>
+          <article class="module-card reveal"><span class="module-no">03 / 3D</span><h3>3D‑модели оборудования</h3><p>Изучение конструкции, узлов и последовательности операций в контексте модели.</p></article>
+          <article class="module-card reveal"><span class="module-no">04 / AR</span><h3>AR‑подсказки</h3><p>Визуальные метки и действия, привязанные к рабочей области оборудования.</p></article>
+          <article class="module-card reveal"><span class="module-no">05 / REMOTE</span><h3>Удалённая помощь</h3><p>Подключение эксперта к инженеру с аннотациями прямо поверх изображения.</p></article>
+          <article class="module-card reveal"><span class="module-no">06 / QUALITY</span><h3>Контроль выполнения</h3><p>Проверка обязательных операций, условий перехода и результата процедуры.</p></article>
+          <article class="module-card reveal"><span class="module-no">07 / TRACE</span><h3>Журнал и отчётность</h3><p>Подтверждённая история действий, отклонений и выполненных работ.</p></article>
+          <article class="module-card reveal"><span class="module-no">08 / CONNECT</span><h3>Интеграции</h3><p>Обмен данными с CRM, Service Desk, FSM и CMMS производителя.</p></article>
+          <article class="module-card reveal"><span class="module-no">09 / GOVERN</span><h3>Роли и версии</h3><p>Управление доступом, публикацией и актуальностью сервисного контента.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section architecture" id="how-it-works" aria-labelledby="architecture-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">03 / КАК РАБОТАЕТ</span><h2 id="architecture-title">От документации до подтверждённого результата</h2></div>
+          <p>Четыре понятных шага связывают знания производителя с работой инженера и корпоративным сервисным контуром.</p>
         </div>
 
         <div class="architecture-layout reveal">
           <div class="architecture-stage" data-mode="training">
-            <div class="route-caption"><span>Поток данных и действий →</span><strong id="mode-caption">Безопасная учебная среда</strong></div>
-            <div class="layer-flow">
-              <button class="layer" type="button" data-layer="device" data-field="essential" aria-pressed="true">
-                <span class="layer-no">LAYER 01</span><strong>Устройство инженера</strong><small>Смартфон, планшет или AR-гарнитура</small>
+            <div class="route-caption"><span>Поток знаний и результата →</span><strong id="mode-caption">Управляемый сервисный процесс</strong></div>
+            <div class="layer-flow how-steps">
+              <button class="layer" type="button" data-layer="manufacturer" aria-pressed="true">
+                <span class="layer-no">ШАГ 01</span><strong>Документация производителя</strong><small>Регламенты, руководства и опыт экспертов</small>
               </button>
-              <button class="layer" type="button" data-layer="client" data-training="essential" data-field="essential" aria-pressed="false">
-                <span class="layer-no">LAYER 02</span><strong>AR-клиент</strong><small>Камера, подсказки, чек-листы и офлайн-кэш</small>
+              <button class="layer" type="button" data-layer="assist" aria-pressed="false">
+                <span class="layer-no">ШАГ 02</span><strong>MESTARO Assist</strong><small>Интерактивные сценарии и управляемые версии</small>
               </button>
-              <button class="layer" type="button" data-layer="logic" data-training="essential" aria-pressed="false">
-                <span class="layer-no">LAYER 03</span><strong>Логика обучения</strong><small>Маршруты, роли, проверки и удалённый эксперт</small>
+              <button class="layer" type="button" data-layer="engineer" aria-pressed="false">
+                <span class="layer-no">ШАГ 03</span><strong>Работа инженера</strong><small>Смартфон, планшет или AR‑устройство</small>
               </button>
-              <button class="layer" type="button" data-layer="enterprise" data-field="essential" aria-pressed="false">
-                <span class="layer-no">LAYER 04</span><strong>Контур предприятия</strong><small>База знаний, цифровой паспорт, CMMS/FSM</small>
+              <button class="layer" type="button" data-layer="result" aria-pressed="false">
+                <span class="layer-no">ШАГ 04</span><strong>Результат в системе</strong><small>Журнал работ и передача в CMMS/FSM</small>
               </button>
             </div>
           </div>
 
           <aside class="detail-panel" aria-labelledby="detail-title" aria-live="polite">
-            <p class="eyebrow">Выбранный слой</p>
+            <p class="eyebrow">Выбранный шаг</p>
             <div class="detail-icon" id="detail-icon" aria-hidden="true">01</div>
-            <h3 id="detail-title">Устройство инженера</h3>
-            <p id="detail-description">Передаёт изображение, показывает подсказки и сохраняет результат работы в привычном для инженера интерфейсе.</p>
+            <h3 id="detail-title">Производитель загружает знания</h3>
+            <p id="detail-description">Документация, регламенты и экспертный опыт становятся управляемым исходным материалом для сервисных сценариев.</p>
             <ul class="detail-list" id="detail-list">
-              <li>Камера и распознавание контекста</li>
-              <li>Голосовое или сенсорное управление</li>
-              <li>Защищённая рабочая сессия</li>
+              <li>Технические руководства и бюллетени</li>
+              <li>Внутренние регламенты производителя</li>
+              <li>Экспертная проверка перед публикацией</li>
             </ul>
           </aside>
         </div>
       </div>
     </section>
 
-    <section class="section scenarios" id="scenarios" aria-labelledby="scenarios-title">
+    <div class="section scenarios" id="scenarios" role="region" aria-labelledby="scenarios-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div><span class="section-index">03 / СЦЕНАРИИ</span><h2 id="scenarios-title">От тренировки к сервису</h2></div>
-          <p>Выберите сценарий и пройдите его по шагам. Каждый маршрут использует одну архитектуру, но по‑разному связывает знания, эксперта и сервисные данные.</p>
+          <div><span class="section-index">04 / СЦЕНАРИИ</span><h2 id="scenarios-title">Поддержка инженера в ключевых точках сервиса</h2></div>
+          <p>Интерактивная инструкция, удалённая помощь и интеграция с сервисной системой работают как части одного процесса MESTARO Assist.</p>
         </div>
 
         <div class="scenario-tabs reveal" role="tablist" aria-label="Общие сценарии применения">
           <button class="scenario-tab" id="general-tab-instruction" type="button" role="tab" aria-selected="true" aria-controls="general-scenario-panel" data-general-scenario="instruction">
-            <span class="tab-index">01 / GUIDED</span><strong>AR‑инструкция и чек‑лист</strong>
+            <span class="tab-index">01 / GUIDED</span><strong>Интерактивная инструкция и чек‑лист</strong>
           </button>
           <button class="scenario-tab" id="general-tab-remote" type="button" role="tab" aria-selected="false" aria-controls="general-scenario-panel" data-general-scenario="remote">
             <span class="tab-index">02 / REMOTE</span><strong>Удалённая поддержка экспертом</strong>
@@ -1122,7 +1488,7 @@
         <div class="scenario-workbench reveal" id="general-scenario-panel" role="tabpanel" tabindex="0" aria-labelledby="general-tab-instruction">
           <div class="scenario-copy">
             <p class="eyebrow">Активный маршрут</p>
-            <h3 id="general-scenario-title">AR‑инструкция и чек‑лист</h3>
+            <h3 id="general-scenario-title">Интерактивная инструкция и чек‑лист</h3>
             <p id="general-scenario-description">Инженер осваивает регламент в безопасном темпе, получает подсказки в контексте узла и подтверждает критические действия.</p>
             <ul class="role-line" id="general-scenario-roles" aria-label="Участники и системы"></ul>
             <div class="measure-title">Что можно оценивать</div>
@@ -1144,13 +1510,13 @@
         </div>
 
         <div class="model-catalog scenario-model-catalog reveal">
-          <p class="eyebrow">3D‑модели и специальные сценарии</p>
-          <h3>Выберите оборудование</h3>
-          <p>Карточка открывает интерактивную модель и исполняемый сценарий, подготовленный для конкретного аппарата.</p>
+          <p class="eyebrow">Демонстрационный пилот</p>
+          <h3>WATO EX‑35 показывает подход, а не границы продукта</h3>
+          <p>Пилот демонстрирует связку 3D‑модели и пошагового сценария. MESTARO Assist адаптируется под оборудование, регламенты и сервисную сеть конкретного производителя.</p>
           <div class="equipment-list">
-            <a class="equipment-card" href="#model" aria-label="Открыть 3D-модель и сценарий Mindray WATO EX-35">
+            <a class="equipment-card" href="#demo" aria-label="Открыть демонстрационную 3D-модель и сценарий WATO EX-35">
               <span class="equipment-index">01</span>
-              <span><strong>Mindray WATO EX‑35</strong><small>Сборка принадлежностей и предэксплуатационная проверка · 20 шагов</small></span>
+              <span><strong>Демо WATO EX‑35</strong><small>3D‑визуализация и интерактивный сервисный сценарий</small></span>
               <span class="equipment-arrow">→</span>
             </a>
           </div>
@@ -1164,24 +1530,36 @@
           <li class="principle"><b>TRACEABLE</b><span>Результат обучения и сервисной операции формирует проверяемую историю.</span></li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section class="section model-section" id="model" aria-labelledby="model-title">
+    <section class="section model-section" id="demo" aria-labelledby="model-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div><span class="section-index">04 / 3D</span><h2 id="model-title">Учебная 3D‑модель</h2></div>
-          <p>Интерактивная модель Mindray WATO EX‑35 для изучения узлов оборудования и прохождения учебного AR‑сценария.</p>
+          <div><span class="section-index">05 / ИНТЕРАКТИВНОЕ ДЕМО</span><h2 id="model-title">WATO EX‑35 в сценарии MESTARO Assist</h2></div>
+          <p>Демонстрационный пилот показывает, как 3D‑модель оборудования связывается с пошаговой инструкцией, контрольными действиями и отчётом.</p>
+        </div>
+
+        <div class="demo-disclaimer reveal" role="note">
+          <i aria-hidden="true">!</i>
+          <span><b>Демонстрационный прототип.</b> Не заменяет руководство производителя и требует экспертной валидации. MESTARO Assist не заявляет официального одобрения или участия производителя WATO EX‑35 в разработке этого прототипа.</span>
         </div>
 
         <div class="model-layout reveal">
-          <div class="model-stage" id="model-stage" data-mode="geometry">
-            <span class="model-badge" id="model-badge">MESTARO / TRAINING MODEL</span>
+          <div class="model-stage is-idle" id="model-stage" data-mode="geometry">
+            <div class="demo-launcher" id="demo-launcher">
+              <div class="demo-launch-card">
+                <strong>Интерактивная 3D‑демонстрация</strong>
+                <p>Модель и сценарий загрузятся только после запуска. Объём 3D‑данных — около 14 МБ.</p>
+                <button class="demo-launch" id="demo-launch" type="button">Запустить демо WATO EX‑35</button>
+              </div>
+            </div>
+            <span class="model-badge" id="model-badge">MESTARO Assist / DEMO</span>
             <div class="model-active-marker" id="model-active-marker">Активная зона сценария</div>
-            <p class="model-status" id="model-status" aria-live="polite">Загрузка учебной 3D‑модели…</p>
+            <p class="model-status" id="model-status" aria-live="polite">Демо не загружено</p>
 
             <model-viewer
               id="wato-model"
-              src="assets/models/wato-ex35/WATO_EX35_web.glb?v=drawers-3"
+              data-src="assets/models/wato-ex35/WATO_EX35_web.glb?v=drawers-3"
               alt="Трёхмерная модель наркозно-дыхательного аппарата Mindray WATO EX-35"
               camera-controls
               camera-target="auto 0.9m auto"
@@ -1194,9 +1572,9 @@
               environment-image="neutral"
               interaction-prompt="auto"
               touch-action="pan-y"
-              loading="eager">
+              loading="lazy">
               <div class="model-poster" slot="poster"><div><strong>WATO EX-35</strong><span>Подготовка интерактивной модели…</span></div></div>
-              <button class="scenario-hotspot" id="scenario-hotspot" slot="hotspot-scenario" data-position="0m 0.8m 0m" data-normal="0 0 -1" hidden>
+              <button class="scenario-hotspot" id="scenario-hotspot" slot="hotspot-scenario" data-position="0m 0.8m 0m" data-normal="0 0 -1" tabindex="-1" aria-hidden="true" hidden>
                 <span id="scenario-hotspot-label">Текущий шаг</span>
               </button>
             </model-viewer>
@@ -1218,13 +1596,13 @@
           </div>
 
           <aside class="model-scenario-card" id="scenario-panel" tabindex="0" aria-labelledby="scenario-title">
-            <p class="eyebrow">Сценарий выбранной модели</p>
-            <h3 id="scenario-title">Загрузка сценария…</h3>
-            <p id="scenario-description">Подключаем пакет шагов и карту логических узлов модели.</p>
+            <p class="eyebrow">Сценарий демонстрационной модели</p>
+            <h3 id="scenario-title">Запустите демо</h3>
+            <p id="scenario-description">После запуска откроется интерактивный сценарий и связь шагов с узлами 3D‑модели.</p>
             <div class="scenario-package-meta" aria-label="Статус пакета">
-              <span>20 шагов</span><span>WATO EX‑35</span><span>GLB‑привязка</span>
+              <span>Прототип</span><span>WATO EX‑35</span><span>Требует экспертной проверки</span>
             </div>
-            <p class="model-scenario-context" id="model-step-context">Сценарий связывается с моделью…</p>
+            <p class="model-scenario-context" id="model-step-context">3D‑данные и сценарий пока не загружены.</p>
 
             <div class="scenario-visual">
               <div class="step-status"><span id="scenario-progress-label">Последовательность действий</span><b id="step-status">Подготовка…</b></div>
@@ -1245,8 +1623,67 @@
                 <button type="button" id="next-step" disabled>Подтвердить и далее →</button>
               </div>
             </div>
-            <p class="model-note">Учебная визуализация не заменяет официальную документацию и требует экспертной проверки.</p>
+            <p class="model-note">Демонстрационный прототип. Не заменяет руководство производителя и требует экспертной валидации.</p>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section kpi-section" id="kpi" aria-labelledby="kpi-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">06 / ИЗМЕРИМЫЙ ЭФФЕКТ</span><h2 id="kpi-title">Пилот начинается с базовой линии KPI</h2></div>
+          <p>До запуска фиксируются текущие показатели, после пилота — изменения. Так эффект MESTARO Assist оценивается на данных сервисной сети, а не на обещаниях.</p>
+        </div>
+        <div class="kpi-grid">
+          <article class="kpi-card reveal"><strong>TTA</strong><span>Время до начала результативной работы</span><p>Как быстро инженер переходит от обращения к осмысленному действию.</p></article>
+          <article class="kpi-card reveal"><strong>MTTR</strong><span>Среднее время ремонта</span><p>Продолжительность диагностики и восстановления оборудования.</p></article>
+          <article class="kpi-card reveal"><strong>Downtime</strong><span>Время простоя</span><p>Период недоступности оборудования из‑за сервисного события.</p></article>
+          <article class="kpi-card reveal"><strong>First-time fix</strong><span>Решение с первого выезда</span><p>Доля обращений, закрытых без повторного посещения объекта.</p></article>
+          <article class="kpi-card reveal"><strong>Repeat visits</strong><span>Повторные выезды</span><p>Количество возвратов по той же неисправности или процедуре.</p></article>
+          <article class="kpi-card reveal"><strong>Expert calls</strong><span>Обращения к экспертам</span><p>Частота и длительность удалённых консультаций.</p></article>
+          <article class="kpi-card reveal"><strong>Training time</strong><span>Продолжительность обучения</span><p>Время до допуска специалиста к выбранной сервисной процедуре.</p></article>
+          <article class="kpi-card reveal"><strong>Errors</strong><span>Ошибки в регламентах</span><p>Пропуски, отклонения и неверная последовательность операций.</p></article>
+        </div>
+        <p class="kpi-note reveal">Набор метрик и источники данных определяются вместе с производителем для каждой пилотной процедуры.</p>
+      </div>
+    </section>
+
+    <section class="section pilot-section" id="pilot" aria-labelledby="pilot-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">07 / ПИЛОТНЫЙ ПРОЕКТ</span><h2 id="pilot-title">Одна модель. Несколько процедур. Проверяемый результат.</h2></div>
+          <p>Пилот ограничивает объём, быстро проверяет гипотезу и даёт данные для решения о масштабировании.</p>
+        </div>
+        <div class="pilot-layout">
+          <article class="pilot-intro reveal">
+            <p class="eyebrow">Контролируемый старт</p>
+            <h3>Пилот под сервисную задачу производителя</h3>
+            <p>Выбираем модель оборудования и процедуры, где цена ошибки, время подготовки или зависимость от экспертов особенно заметны.</p>
+            <span class="pilot-badge">Результат: решение о масштабировании на основе KPI</span>
+          </article>
+          <div class="pilot-plan reveal" aria-label="Этапы пилотного проекта">
+            <div class="pilot-step"><div><strong>Одна модель оборудования</strong><span>Фиксируем конфигурацию, документацию и границы пилота.</span></div></div>
+            <div class="pilot-step"><div><strong>Приоритетные процедуры</strong><span>Выбираем несколько сценариев с понятной бизнес‑ценностью.</span></div></div>
+            <div class="pilot-step"><div><strong>Пилотная группа инженеров</strong><span>Определяем роли, доступы и критерии участия.</span></div></div>
+            <div class="pilot-step"><div><strong>Обучение и тестирование</strong><span>Проверяем понятность контента и работу в реальном контексте.</span></div></div>
+            <div class="pilot-step"><div><strong>Сравнение до и после</strong><span>Сопоставляем выбранные KPI с исходной базовой линией.</span></div></div>
+            <div class="pilot-step"><div><strong>План масштабирования</strong><span>Определяем следующие модели, процедуры и интеграции.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section integration-section" id="integration" aria-labelledby="integration-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="section-index">08 / КОНТУР ПРЕДПРИЯТИЯ</span><h2 id="integration-title">Интеграции, безопасность и управление знаниями</h2></div>
+          <p>MESTARO Assist встраивается в существующий сервисный ландшафт производителя и сохраняет управляемость контента.</p>
+        </div>
+        <div class="integration-grid">
+          <article class="integration-card reveal"><p class="eyebrow">Интеграции</p><h3>Без двойного ввода</h3><p>Контекст заявки поступает в инструкцию, а результат возвращается в сервисную систему.</p><ul class="tag-list"><li>CRM</li><li>Service Desk</li><li>FSM</li><li>CMMS</li><li>API</li></ul></article>
+          <article class="integration-card reveal"><p class="eyebrow">Безопасность</p><h3>Доступ по ролям</h3><p>Права пользователя, среда размещения и контур интеграции определяются требованиями производителя.</p><ul class="tag-list"><li>Роли</li><li>Аудит</li><li>Контроль доступа</li><li>Защищённый обмен</li></ul></article>
+          <article class="integration-card reveal"><p class="eyebrow">Знания</p><h3>Единая актуальная версия</h3><p>Контент проходит проверку, получает статус и распространяется на авторизованную сервисную сеть.</p><ul class="tag-list"><li>Версии</li><li>Согласование</li><li>Публикация</li><li>История изменений</li></ul></article>
         </div>
       </div>
     </section>
@@ -1254,27 +1691,27 @@
     <section class="section about-section" id="about" aria-labelledby="about-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div><span class="section-index">05 / О КОМПАНИИ</span><h2 id="about-title">Платформа MESTARO</h2></div>
-          <p>Цифровая платформа обучения и поддержки сервисных инженеров медицинского оборудования.</p>
+          <div><span class="section-index">09 / О MESTARO</span><h2 id="about-title">Компания создаёт цифровую среду для сервисных знаний</h2></div>
+          <p>MESTARO — компания и продуктовая экосистема. MESTARO Assist — её основная платформа обучения и поддержки сервисных инженеров.</p>
         </div>
 
         <div class="about-intro reveal">
           <div class="about-brand">
-            <p class="eyebrow">О компании</p>
+            <p class="eyebrow">Компания</p>
             <h3>MESTARO</h3>
-            <p>Цифровая платформа обучения и поддержки сервисных инженеров медицинского оборудования</p>
+            <p>Цифровые продукты для передачи технических знаний и поддержки сервисных команд.</p>
           </div>
           <div class="about-story">
             <p>Производители медицинского оборудования сталкиваются с необходимостью быстро обучать собственных инженеров и специалистов сервисных партнёров, обеспечивать единые стандарты технического обслуживания и своевременно доводить до них актуальную документацию. При этом сложность оборудования растёт, а качество работ на объектах по-прежнему во многом зависит от опыта конкретного специалиста и доступности технического эксперта.</p>
-            <p><strong>MESTARO</strong> — разрабатываемая цифровая платформа для обучения и сопровождения сервисных инженеров медицинского оборудования. Решение объединяет интерактивные инструкции, трёхмерные модели оборудования, технологии дополненной реальности, базу технических знаний и инструменты удалённой экспертной поддержки.</p>
-            <p>Платформа создаётся совместно с производителем и адаптируется под конкретные модели оборудования, внутренние регламенты и структуру сервисной сети.</p>
+            <p><strong>MESTARO Assist</strong> превращает документацию и опыт экспертов в интерактивные инструкции, 3D/AR‑подсказки, базу технических знаний и контролируемые сервисные процессы.</p>
+            <p>Продукт адаптируется под конкретные модели оборудования, внутренние регламенты, роли и структуру сервисной сети производителя.</p>
           </div>
         </div>
 
-        <div class="about-grid">
+        <div class="about-grid" hidden>
           <article class="about-card about-card--wide reveal">
             <p class="eyebrow">Что умеет платформа</p>
-            <h3>Возможности MESTARO</h3>
+            <h3>Возможности MESTARO Assist</h3>
             <ol class="about-list">
               <li>Интерактивное изучение конструкции и основных узлов оборудования</li>
               <li>Пошаговые инструкции по техническому обслуживанию, диагностике и ремонту</li>
@@ -1291,7 +1728,7 @@
           <article class="about-card reveal">
             <p class="eyebrow">Результат внедрения</p>
             <h3>Выгоды для производителя</h3>
-            <p>MESTARO помогает стандартизировать сервисные процессы и обеспечить одинаковый уровень подготовки специалистов независимо от региона и сервисной организации. Использование платформы позволяет ускорить ввод новых инженеров в работу, сократить зависимость от отдельных экспертов, повысить качество диагностики и уменьшить количество повторных обращений.</p>
+            <p>MESTARO Assist помогает стандартизировать сервисные процессы и обеспечить одинаковый уровень подготовки специалистов независимо от региона и сервисной организации. Использование платформы позволяет ускорить ввод новых инженеров в работу, сократить зависимость от отдельных экспертов, повысить качество диагностики и уменьшить количество повторных обращений.</p>
             <p>Производитель получает централизованную систему управления техническими знаниями: при изменении регламентов, конструкции оборудования или программного обеспечения актуальная информация становится доступна всей авторизованной сервисной сети.</p>
             <p>Эффективность внедрения оценивается по измеримым показателям: продолжительности обучения, времени диагностики и ремонта, MTTR, количеству повторных выездов, доле устранения неисправностей с первого обращения и числу обращений к экспертам.</p>
             <div class="metrics" aria-label="Показатели эффективности">
@@ -1308,21 +1745,50 @@
               <li>Разработку нескольких типовых сценариев обслуживания</li>
               <li>Подготовку интерактивных или AR-инструкций</li>
               <li>Обучение пилотной группы инженеров</li>
-              <li>Сравнение результатов до и после применения MESTARO</li>
+              <li>Сравнение результатов до и после применения MESTARO Assist</li>
               <li>Подготовку предложений по масштабированию на другие модели оборудования</li>
             </ol>
           </article>
         </div>
 
-        <p class="about-conclusion reveal"><strong>MESTARO</strong> превращает техническую документацию и опыт экспертов производителя в управляемую цифровую систему обучения и сервисной поддержки.</p>
+        <p class="about-conclusion reveal"><strong>MESTARO</strong> — компания. <strong>MESTARO Assist</strong> — продукт, который превращает технические знания производителя в управляемую систему обучения и сервисной поддержки.</p>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="shell">
+        <div class="contact-card reveal">
+          <div class="contact-copy">
+            <p class="eyebrow">10 / ПИЛОТ И КОНТАКТЫ</p>
+            <h2 id="contact-title">Обсудим сервисную задачу вашей сети</h2>
+            <p>Укажите модель оборудования и приоритетный процесс. Команда MESTARO поможет определить реалистичный объём пилота и набор KPI.</p>
+            <p class="contact-note"><strong>Демонстрационная форма:</strong> можно проверить заполнение полей. Заявки пока не отправляются; введённые данные не передаются на сервер и не сохраняются сайтом.</p>
+          </div>
+
+          <form class="pilot-form" id="pilot-form">
+            <div class="form-field"><label for="pilot-name">Имя *</label><input id="pilot-name" name="name" autocomplete="name" required></div>
+            <div class="form-field"><label for="pilot-company">Компания *</label><input id="pilot-company" name="company" autocomplete="organization" required></div>
+            <div class="form-field"><label for="pilot-role">Должность</label><input id="pilot-role" name="role" autocomplete="organization-title"></div>
+            <div class="form-field"><label for="pilot-contact">Email или телефон *</label><input id="pilot-contact" name="contact" autocomplete="email" required></div>
+            <div class="form-field form-field--wide"><label for="pilot-equipment">Модель оборудования *</label><input id="pilot-equipment" name="equipment" required></div>
+            <div class="form-field form-field--wide"><label for="pilot-task">Приоритетная сервисная задача</label><textarea id="pilot-task" name="task" placeholder="Например: ввод инженеров в работу, диагностика, регламентное обслуживание"></textarea></div>
+            <label class="form-consent"><input type="checkbox" name="consent" required><span>Я ознакомился с <a href="privacy.html">политикой конфиденциальности</a> и понимаю, что это демонстрационная форма.</span></label>
+            <button class="secondary-action form-submit" type="submit" disabled>Проверить заполнение</button>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <div><strong>AR Service Learning</strong><br><span class="footer-note">Концептуальная модель обучения сервисных инженеров медицинского оборудования</span></div>
-      <span class="footer-note">Все данные и взаимодействия встроены в страницу</span>
+      <div><strong>MESTARO Assist</strong><br><span class="footer-note">Продукт компании MESTARO для обучения и поддержки сервисных инженеров</span></div>
+      <div class="footer-links"><a href="#contact">Запросить пилот</a><a href="privacy.html">Конфиденциальность</a></div>
+    </div>
+    <div class="shell footer-legal">
+      <span>© 2026 MESTARO. Демонстрационный сайт продукта MESTARO Assist.</span>
+      <span>WATO EX‑35 и Mindray упоминаются только для идентификации демонстрационного оборудования. Прототип не заявлен как официальный продукт или разработка производителя оборудования.</span>
     </div>
   </footer>
 
@@ -1333,39 +1799,39 @@
     } from './assets/scenarios/wato-ex35/ar-scenario-controller.js?v=7';
 
     const mapCopy = {
-      1: 'Подсказка появляется именно на том узле оборудования, с которым работает инженер.',
-      2: 'Инструкция загружается из управляемой базы знаний с версиями и статусом актуальности.',
-      3: 'Заявка, цифровой паспорт и история обслуживания формируют рабочий контекст.',
-      4: 'Система фиксирует прогресс, отклонения и данные для оценки качества обучения.'
+      1: 'Производитель управляет единым стандартом работ для собственной и партнёрской сервисной сети.',
+      2: 'Интерактивная практика помогает новым инженерам быстрее перейти к результативной работе.',
+      3: 'Регламенты и инструкции получают управляемую версию, статус и единый канал распространения.',
+      4: 'Выполненные шаги, отклонения и результат формируют подтверждённую историю сервисной работы.'
     };
 
     const layerData = {
-      device: {
-        icon: '01', title: 'Устройство инженера',
-        description: 'Передаёт изображение, показывает подсказки и сохраняет результат работы в привычном для инженера интерфейсе.',
-        points: ['Камера и распознавание контекста', 'Голосовое или сенсорное управление', 'Защищённая рабочая сессия']
+      manufacturer: {
+        icon: '01', title: 'Производитель загружает знания',
+        description: 'Документация, регламенты и экспертный опыт становятся управляемым исходным материалом для сервисных сценариев.',
+        points: ['Технические руководства и бюллетени', 'Внутренние регламенты производителя', 'Экспертная проверка перед публикацией']
       },
-      client: {
-        icon: '02', title: 'AR-клиент',
-        description: 'Совмещает изображение реального оборудования с пошаговой инструкцией, метками и контрольными вопросами.',
-        points: ['Привязка подсказок к объекту', 'AR-чек-лист и фиксация результата', 'Офлайн-кэш для нестабильной связи']
+      assist: {
+        icon: '02', title: 'MESTARO формирует сценарии',
+        description: 'MESTARO Assist превращает проверенные материалы в интерактивные инструкции с ролями, условиями и контрольными точками.',
+        points: ['Пошаговая логика процедуры', '3D/AR‑привязка к оборудованию', 'Роли и управляемые версии контента']
       },
-      logic: {
-        icon: '03', title: 'Логика обучения',
-        description: 'Управляет последовательностью действий, ролями, условиями перехода и подключением удалённого эксперта.',
-        points: ['Маршруты по уровню подготовки', 'Проверка критических действий', 'Разбор ошибок и обратная связь']
+      engineer: {
+        icon: '03', title: 'Инженер проходит инструкцию',
+        description: 'Специалист получает контекстную последовательность действий на смартфоне, планшете или AR‑устройстве.',
+        points: ['Подсказки в нужный момент', 'Обязательные подтверждения', 'Возможность подключить эксперта']
       },
-      enterprise: {
-        icon: '04', title: 'Контур предприятия',
-        description: 'Связывает обучение с проверенными знаниями, цифровым паспортом оборудования и сервисными процессами.',
-        points: ['База знаний и управляемые версии', 'CMMS/FSM или Service Desk', 'Аналитика, доступ и аудит действий']
+      result: {
+        icon: '04', title: 'Результат фиксируется',
+        description: 'Система сохраняет ход и результат операции, формирует отчёт и передаёт данные в CMMS/FSM.',
+        points: ['Журнал выполненных действий', 'Отклонения и контрольные значения', 'Данные для аналитики и интеграций']
       }
     };
 
     const generalScenarios = {
       instruction: {
         tab: 'general-tab-instruction',
-        title: 'AR‑инструкция и чек‑лист',
+        title: 'Интерактивная инструкция и чек‑лист',
         description: 'Инженер осваивает регламент в безопасном темпе, получает подсказки в контексте узла и подтверждает критические действия.',
         roles: ['Инженер', 'AR‑клиент', 'База знаний'],
         measures: ['TTA', 'Ошибки по шагам', 'Усвоение навыка'],
@@ -1473,17 +1939,23 @@
     }
 
     $$('[data-general-scenario]').forEach((button) => {
+      button.tabIndex = button.getAttribute('aria-selected') === 'true' ? 0 : -1;
       button.addEventListener('click', () => {
         activeGeneralScenario = button.dataset.generalScenario;
         activeGeneralStep = 0;
-        $$('[data-general-scenario]').forEach((tab) => tab.setAttribute('aria-selected', String(tab === button)));
+        $$('[data-general-scenario]').forEach((tab) => {
+          const selected = tab === button;
+          tab.setAttribute('aria-selected', String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+        });
         renderGeneralScenario();
       });
       button.addEventListener('keydown', (event) => {
-        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
         const tabs = $$('[data-general-scenario]');
         const direction = event.key === 'ArrowRight' ? 1 : -1;
-        const nextIndex = (tabs.indexOf(button) + direction + tabs.length) % tabs.length;
+        const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (tabs.indexOf(button) + direction + tabs.length) % tabs.length;
         tabs[nextIndex].focus();
         tabs[nextIndex].click();
       });
@@ -1737,7 +2209,7 @@
       scenarioController?.next();
     });
     focusModelButton.addEventListener('click', () => {
-      document.querySelector('#model').scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      document.querySelector('#demo').scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
       setModelMode('geometry');
       if (activeScenarioBinding && scenarioController) focusScenarioOnModel(activeScenarioBinding, scenarioController.currentStep);
     });
@@ -1752,6 +2224,7 @@
     const scenarioHotspotLabel = document.querySelector('#scenario-hotspot-label');
     const modelStepContext = document.querySelector('#model-step-context');
     const drawerButtons = $$('.drawer-control', modelStage);
+    const demoLaunchButton = document.querySelector('#demo-launch');
     const drawerLabels = {
       1: 'Верхний ящик',
       2: 'Средний ящик',
@@ -1769,6 +2242,33 @@
     let drawersReady = false;
     let pointerStart = null;
     let modelMode = 'geometry';
+    let demoInitPromise = null;
+
+    function startDemo() {
+      if (demoInitPromise) return demoInitPromise;
+      demoInitPromise = (async () => {
+        demoLaunchButton.disabled = true;
+        demoLaunchButton.textContent = 'Загружаем 3D‑демо…';
+        modelStatus.textContent = 'Подключаем модуль 3D‑просмотра…';
+        await import('./model-viewer.min.js?v=mestaro-assist-1');
+        await customElements.whenDefined('model-viewer');
+        if (prefersReducedMotion) modelViewer.removeAttribute('auto-rotate');
+        modelStage.classList.remove('is-idle');
+        modelStatus.textContent = 'Загрузка 3D‑модели…';
+        modelViewer.setAttribute('src', modelViewer.dataset.src);
+        await initializeArScenario();
+      })().catch((error) => {
+        demoInitPromise = null;
+        demoLaunchButton.disabled = false;
+        demoLaunchButton.textContent = 'Повторить запуск демо';
+        modelStatus.textContent = 'Не удалось запустить демо';
+        document.querySelector('#scenario-description').textContent = error.message;
+        document.querySelector('#scenario-description').classList.add('scenario-load-error');
+      });
+      return demoInitPromise;
+    }
+
+    demoLaunchButton.addEventListener('click', startDemo);
 
     function syncRotationControl() {
       const isRotating = modelViewer.hasAttribute('auto-rotate');
@@ -1779,11 +2279,13 @@
     function setModelMode() {
       modelMode = 'geometry';
       modelStage.dataset.mode = 'geometry';
-      modelBadge.textContent = 'MESTARO / TRAINING MODEL';
+      modelBadge.textContent = 'MESTARO Assist / DEMO';
       if (activeScenarioBinding && scenarioController?.currentStep) {
         focusScenarioOnModel(activeScenarioBinding, scenarioController.currentStep);
       } else {
-        modelStatus.textContent = drawersReady ? 'Модель готова · ящики интерактивны' : 'Учебная 3D‑модель';
+        modelStatus.textContent = modelStage.classList.contains('is-idle')
+          ? 'Демо не загружено'
+          : drawersReady ? 'Модель готова · ящики интерактивны' : 'Демонстрационная 3D‑модель';
       }
       syncRotationControl();
     }
@@ -1926,16 +2428,51 @@
     });
 
     setModelMode('geometry');
-    initializeArScenario();
 
-    const sections = ['concept', 'architecture', 'scenarios', 'model', 'about'].map((id) => document.getElementById(id));
     const navLinks = $$('.nav-links a');
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
     const sectionObserver = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (!visible) return;
-      navLinks.forEach((link) => link.setAttribute('aria-current', String(link.getAttribute('href') === `#${visible.target.id}`)));
+      navLinks.forEach((link) => {
+        if (link.getAttribute('href') === `#${visible.target.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
     }, { rootMargin: '-20% 0px -65%', threshold: [0, .25, .5] });
     sections.forEach((section) => sectionObserver.observe(section));
+
+    const navToggle = document.querySelector('#nav-toggle');
+    const navPanel = document.querySelector('#nav-links');
+    function closeMenu(returnFocus = false) {
+      navPanel.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      if (returnFocus) navToggle.focus();
+    }
+    navToggle.addEventListener('click', () => {
+      const willOpen = !navPanel.classList.contains('is-open');
+      navPanel.classList.toggle('is-open', willOpen);
+      navToggle.setAttribute('aria-expanded', String(willOpen));
+      if (willOpen) navPanel.querySelector('a')?.focus();
+    });
+    navPanel.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navPanel.classList.contains('is-open')) closeMenu(true);
+    });
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.nav')) closeMenu();
+    });
+
+    const pilotForm = document.querySelector('#pilot-form');
+    const formStatus = document.querySelector('#form-status');
+    pilotForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      formStatus.textContent = 'Форма заполнена корректно. Это демонстрация: заявка не отправлена, данные не сохранены.';
+    });
+    pilotForm.querySelector('[type="submit"]').disabled = false;
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
