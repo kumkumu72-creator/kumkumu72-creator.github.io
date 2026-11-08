@@ -1,0 +1,62 @@
+.roi-calculator {
+  min-width: 0;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(12, 35, 61, .85), var(--surface));
+}
+.roi-calculator h3 { margin: 0 0 12px; font-size: 26px; line-height: 1.2; }
+.roi-intro, .roi-note { margin: 0 0 22px; color: #b5c5d9; font-size: 16px; line-height: 1.55; }
+.roi-intro a { color: var(--cyan); text-underline-offset: 4px; }
+.roi-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 18px; }
+.roi-field { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
+.roi-field label { color: var(--text); font-size: 16px; line-height: 1.4; }
+.roi-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid rgba(121, 174, 224, .36);
+  border-radius: 10px;
+  background: #050e1d;
+  color: var(--text);
+  font: inherit;
+}
+.roi-field input[aria-invalid="true"] { border-color: #ffb1a6; }
+.roi-field input:focus-visible, .roi-calculator summary:focus-visible, .roi-toggle input:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
+}
+.roi-field small { color: #a7b9d0; font-size: 14px; line-height: 1.45; }
+.roi-field .roi-error { color: #ffb1a6; }
+.roi-disclosure { margin-top: 24px; border-top: 1px solid var(--line); }
+.roi-disclosure summary { min-height: 44px; padding: 14px 0; color: var(--cyan); font-size: 16px; cursor: pointer; }
+.roi-disclosure p { color: #b5c5d9; font-size: 14px; line-height: 1.55; }
+.roi-toggle { display: flex; min-height: 44px; align-items: center; gap: 12px; margin: 2px 0 18px; font-size: 16px; cursor: pointer; }
+.roi-toggle input { flex: 0 0 auto; width: 20px; height: 20px; margin: 0; accent-color: var(--lime); }
+.roi-travel-fields { margin: 0; padding: 0; border: 0; }
+.roi-travel-fields:disabled { opacity: .65; }
+.roi-calculate { margin-top: 22px; min-height: 46px; padding: 12px 22px; border: 0; border-radius: 10px; background: var(--lime); color: #142109; font: inherit; font-weight: 700; cursor: pointer; }
+.roi-status { margin: 16px 0 0; color: #b5c5d9; font-size: 14px; line-height: 1.5; }
+.roi-results { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.roi-results h4 { margin: 0 0 16px; font-size: 18px; }
+.roi-primary-results { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; }
+.roi-result { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: rgba(3, 11, 23, .45); }
+.roi-result:first-child { grid-column: 1 / -1; border-color: rgba(185, 243, 75, .32); background: rgba(185, 243, 75, .05); }
+.roi-result dt { color: #b5c5d9; font-size: 14px; line-height: 1.4; }
+.roi-result dd { margin: 10px 0 0; color: var(--lime); font-size: 24px; line-height: 1.3; font-weight: 700; overflow-wrap: anywhere; }
+.roi-result:first-child dd { font-size: clamp(28px, 3vw, 36px); }
+.roi-result dd.roi-negative { color: #ffb1a6; }
+.roi-result [data-roi-result="paybackMonths"], .roi-result [data-roi-result="roi12MonthsPct"] { font-size: 20px; }
+.roi-secondary-results, .roi-breakdown { margin: 18px 0; }
+.roi-secondary-results > div, .roi-breakdown > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.roi-secondary-results dt, .roi-breakdown dt { color: #b5c5d9; }
+.roi-secondary-results dd, .roi-breakdown dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
+.roi-results .roi-note { margin: 18px 0 0; font-size: 14px; }
+.roi-formulas { display: grid; gap: 10px; margin: 12px 0; padding-left: 20px; color: #b5c5d9; font-size: 14px; line-height: 1.55; }
+#roi-payback-horizon { color: var(--lime); }
+@media (max-width: 640px) {
+  .roi-fields, .roi-primary-results { grid-template-columns: 1fr; }
+  .roi-calculator { padding: 20px 16px; border-radius: 20px; }
+  .roi-secondary-results > div, .roi-breakdown > div { display: block; }
+  .roi-secondary-results dd, .roi-breakdown dd { margin-top: 5px; text-align: left; }
+}
